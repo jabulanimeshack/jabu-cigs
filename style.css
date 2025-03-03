@@ -11,14 +11,6 @@
 </head>
 
 <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-            background: url('woman holding gaff.jpeg') no-repeat center center fixed;
-            background-size: cover;      
-        }
         .header {
             background-color: #333;
             color: white;
@@ -31,11 +23,44 @@
             background: white;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        .images img {
-            width: 100%;
-            max-width: 300px;
-            margin: 10px;
+      body {
+            background-image: url('model holding cig.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
         }
+        .hero {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.5);
+            width: 100%;
+        }
+        .hero h1 {
+            font-size: 4rem;
+            margin: 0;
+        }
+        .hero p {
+            font-size: 1.5rem;
+        }
+        nav {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }        }
         .footer {
             margin-top: 20px;
             padding: 10px;
