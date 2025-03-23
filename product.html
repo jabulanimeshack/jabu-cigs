@@ -6,14 +6,14 @@
     <title>Product | JABU CIGS</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Reset Styles */
+     
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        /* Full-Height Layout */
+       
         html, body {
             height: 100%;
             display: flex;
@@ -25,26 +25,26 @@
             background-size: cover;
         }
 
-        /* Header + Navigation Wrapper */
+       
         .header-nav {
             display: flex;
             flex-direction: column;
         }
 
-        /* Header */
+      
         header {
             background: rgba(0, 0, 0, 0.7);
             padding: 20px;
             font-size: 24px;
             font-weight: bold;
-            margin-bottom: 0; /* Prevents gap */
         }
 
-        /* Navigation - Flush with Header */
+        
         nav {
             background: black;
             padding: 15px;
-            margin: 0; /* Ensures no gap between header and navigation */
+            display: flex;
+            justify-content: center;
         }
 
         nav a {
@@ -60,7 +60,7 @@
             color: #f8c471;
         }
 
-        /* Main Content */
+      
         main {
             flex: 1;
             display: flex;
@@ -74,7 +74,7 @@
             margin-bottom: 15px;
         }
 
-        /* Product Grid */
+       
         .product-grid {
             display: flex;
             flex-wrap: wrap;
@@ -107,19 +107,21 @@
             color: white;
         }
 
-        /* Footer */
+        
         footer {
             background: rgba(0, 0, 0, 0.8);
             padding: 10px;
             font-size: 14px;
             text-align: center;
             width: 100%;
+            position: fixed;
+            bottom: 0;
         }
     </style>
 </head>
 <body>
 
-    <!-- Header + Navigation Wrapper -->
+
     <div class="header-nav">
         <header>
             <h1>PREMIUM QUALITY CIGARETTES</h1>
@@ -133,7 +135,7 @@
         </nav>
     </div>
 
-    <!-- Main Content -->
+   
     <main>
         <section class="product-page">
             <h1>OUR PRODUCTS</h1>
@@ -160,7 +162,7 @@
                     <p class="product-name">Brown Bear Herbs</p>
                 </div>
                 <div class="product">
-                    <img src="american spirit black.jpg" alt="American Spirit Black">
+                    <img src="american spirit black.jpg" alt="american Spirit Black">
                     <p class="product-name">American Spirit Black</p>
                 </div>
                 <div class="product">
@@ -175,11 +177,14 @@
         </section>
     </main>
 
-    <!-- Footer -->
+   
     <footer>
         <p>&copy; 2024 Jabu Cigs | All Rights Reserved</p>
     </footer>
 
 </body>
 </html>
+
+
+
           
