@@ -1,4 +1,70 @@
 <form action="thanks.html"> 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form with Background</title>
+  <style>
+    
+    body {
+      background-image: url(''); /* Replace with your image URL */
+      background-size: cover;
+      background-position: center;
+      font-family: Arial, sans-serif;
+      color: white;
+      padding: 20px;
+    }
+
+    
+    form {
+      background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+      padding: 30px;
+      border-radius: 10px;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+   
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      background-color: rgba(255, 255, 255, 0.8);
+    }
+
+    input[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+
+    label {
+      font-weight: bold;
+      margin-top: 10px;
+      display: inline-block;
+    }
+
+    
+    input[type="checkbox"] {
+      margin-right: 10px;
+    }
+
+    h1 {
+      text-align: center;
+      color: white;
+      font-size: 2em;
+    }
+  </style>
+</head>
+<body>  
   First name:<br> <input type="text" name="firstname" value="Mickey"><br>
   Last name:<br> <input type="text" name="lastname" value="Mouse"><br><br>
   <input type="text" name="username" value="neo" size="10"><br>
@@ -20,4 +86,4 @@ VP Sales: <input type="checkbox" >
   
   <input type="submit" value="Submit">
 
-</form>
+  </form>
