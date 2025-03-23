@@ -7,15 +7,23 @@
     <link rel="stylesheet" href="styles.css">
     
     <style>
-        /* General Styles */
-        body {
-            font-family: Arial, sans-serif;
+        /* Reset Styles */
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Full-Height Layout */
+        html, body {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            font-family: Arial, sans-serif;
             text-align: center;
+            color: white;
             background: url('cig wallpaper.jpg') no-repeat center center fixed;
             background-size: cover;
-            color: white;
         }
 
         /* Header */
@@ -45,23 +53,27 @@
             color: #f8c471;
         }
 
-        /* Content Section */
-        .content {
+        /* Main Content - Pushes Footer Down */
+        main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
             max-width: 800px;
-            margin: 50px auto;
+            margin: auto;
             background: rgba(0, 0, 0, 0.6);
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
         }
 
-        /* Footer */
+        /* Footer at Bottom */
         footer {
             background: rgba(0, 0, 0, 0.8);
             padding: 10px;
             font-size: 14px;
-            position: relative;
-            bottom: 0;
+            text-align: center;
             width: 100%;
         }
     </style>
@@ -77,25 +89,22 @@
     <!-- Navigation -->
     <nav>
         <a href="index.html">Home</a>
-        <a href="product.html">product</a>
+        <a href="product.html">Product</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
-
     </nav>
 
     <!-- Main Content -->
-    <main class="content">
+    <main>
         <h2>Premium Quality, Timeless Tradition</h2>
         <p>At <strong>Jabu Cigs</strong>, we are committed to delivering premium-quality cigarettes crafted from the finest tobacco leaves. Our passion for excellence and dedication to customer satisfaction set us apart.</p>
-        <p>We blend tradition with innovation to offer a **superior smoking experience**—ensuring smoothness, rich flavor, and exceptional quality.</p>
-        <p>Welcome to **Jabu Cigs** – where sophistication meets indulgence.</p>
-        
-        
+        <p>We blend tradition with innovation to offer a <strong>superior smoking experience</strong>—ensuring smoothness, rich flavor, and exceptional quality.</p>
+        <p>Welcome to <strong>Jabu Cigs</strong> – where sophistication meets indulgence.</p>
     </main>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2024 Jabu Cigs | </p>
+        <p>&copy; 2024 Jabu Cigs | All Rights Reserved</p>
     </footer>
 
 </body>
