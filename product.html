@@ -1,133 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home | JABU CIGS</title>
+    <title>Product | JABU CIGS</title>
     <link rel="stylesheet" href="style.css">
     <style>
-      /* Set a fixed background */
-      body {
-        background: url('model holding cig.jpg') no-repeat center center fixed;
-        background-size: cover;
-        margin: 0;
-        font-family: Arial, sans-serif;
-      }
+        /* Reset Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-      /* Styling for header */
-      header {
-        text-align: center;
-        padding: 20px;
-        background: rgba(0, 0, 0, 0.7);
-        color: white;
-        font-size: 24px;
-        font-weight: bold;
-      }
+        /* Full-Height Layout */
+        html, body {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            color: white;
+            background: url('model holding cig.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
 
-      /* Separate Navigation Bar */
-      nav {
-        text-align: center;
-        background: black;
-        padding: 15px;
-      }
+        /* Header */
+        header {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
 
-      nav a {
-        color: white;
-        text-decoration: none;
-        margin: 0 20px;
-        font-size: 18px;
-        font-weight: bold;
-      }
+        /* Navigation */
+        nav {
+            background: black;
+            padding: 15px;
+        }
 
-      /* Product section */
-      .product-page {
-        text-align: center;
-        padding: 20px;
-        color: white;
-      }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
 
-      /* Product grid */
-      .product-grid {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 20px;
-        padding: 20px;
-      }
+        nav a:hover {
+            text-decoration: underline;
+            color: #f8c471;
+        }
 
-      .product {
-        width: 220px;
-        text-align: center;
-      }
+        /* Main Content - Pushes Footer Down */
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
 
-      .product img {
-        width: 100%;
-        height: 250px;
-        object-fit: cover;
-        border-radius: 10px;
-        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
-      }
+        .product-page h1, .product-page h2 {
+            margin-bottom: 15px;
+        }
 
-      /* Product Name Below Image */
-      .product-name {
-        margin-top: 10px;
-        font-size: 16px;
-        font-weight: bold;
-        color: white;
-      }
+        /* Product Grid */
+        .product-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+            max-width: 900px;
+        }
+
+        .product {
+            width: 220px;
+            text-align: center;
+        }
+
+        .product img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .product-name {
+            margin-top: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+        }
+
+        /* Footer at Bottom */
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 10px;
+            font-size: 14px;
+            text-align: center;
+            width: 100%;
+        }
     </style>
-  </head>
-  <body>
+</head>
+<body>
+
+    <!-- Header -->
     <header>
-      PREMIUM QUALITY CIGARETTES
+        <h1>PREMIUM QUALITY CIGARETTES</h1>
     </header>
 
+    <!-- Navigation -->
     <nav>
-      <a href="index.html">Home</a>
-      <a href="product.html">Product</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
+        <a href="index.html">Home</a>
+        <a href="product.html">Product</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
     </nav>
 
+    <!-- Main Content -->
     <main>
-      <section class="product-page">
-        <h1>OUR PRODUCT</h1>
-        <h2>TOBACCO CIGARETTES</h2>
-        <div class="product-grid">
-          <div class="product">
-            <img src="nike cig.jpeg" alt="Nike Cigarettes">
-            <p class="nike cigarettes">Nike Cigarettes</p>
-          </div>
-          <div class="product">
-            <img src="waltz.jpeg" alt="Waltz cigarettes">
-            <p class="waltz clear cigarettes">Waltz cigarettes</p>
-          </div>
-          <div class="product">
-            <img src="Inverroche Limestone Rum.jpeg" alt="ILR Cigarettes">
-            <p class="wood land cigarettes">wood land cigarettes</p>
-          </div>
-          <div class="product">
-            <img src="hupman.jpg" alt="Hupman cigarettes">
-            <p class="hupman premium cigarettes">Hupman</p>
-          </div>
-          <div class="product">
-            <img src="brown bear herbs.jpg" alt="Brown Bear Herbs">
-            <p class="brown bear herbal cigarettes">Brown Bear Herbs</p>
-          </div>
-          <div class="product">
-            <img src="american spirit black" alt="American Spirit Black">
-            <p class="american spirit black premium cigarettes">American Spirit Black</p>
-          </div>
-          <div class="product">
-            <img src="marlboro ash tray.jpeg" alt="marlboro ash tray">
-            <p class="marlboro designer ash tray">marlboro ash tray</p>
-          </div>
-          <div class="product">
-            <img src="marlboro drawer.jpeg" alt="Marlboro Drawer">
-            <p class="marlboro designer drawer">Marlboro Drawer</p>
-          </div>
-        </div>
-      </section>
+        <section class="product-page">
+            <h1>OUR PRODUCTS</h1>
+            <h2>TOBACCO CIGARETTES</h2>
+            <div class="product-grid">
+                <div class="product">
+                    <img src="nike cig.jpeg" alt="Nike Cigarettes">
+                    <p class="product-name">Nike Cigarettes</p>
+                </div>
+                <div class="product">
+                    <img src="waltz.jpeg" alt="Waltz cigarettes">
+                    <p class="product-name">Waltz Cigarettes</p>
+                </div>
+                <div class="product">
+                    <img src="Inverroche Limestone Rum.jpeg" alt="ILR Cigarettes">
+                    <p class="product-name">Wood Land Cigarettes</p>
+                </div>
+                <div class="product">
+                    <img src="hupman.jpg" alt="Hupman cigarettes">
+                    <p class="product-name">Hupman</p>
+                </div>
+                <div class="product">
+                    <img src="brown bear herbs.jpg" alt="Brown Bear Herbs">
+                    <p class="product-name">Brown Bear Herbs</p>
+                </div>
+                <div class="product">
+                    <img src="american spirit black.jpg" alt="American Spirit Black">
+                    <p class="product-name">American Spirit Black</p>
+                </div>
+                <div class="product">
+                    <img src="marlboro ash tray.jpeg" alt="Marlboro Ash Tray">
+                    <p class="product-name">Marlboro Ash Tray</p>
+                </div>
+                <div class="product">
+                    <img src="marlboro drawer.jpeg" alt="Marlboro Drawer">
+                    <p class="product-name">Marlboro Drawer</p>
+                </div>
+            </div>
+        </section>
     </main>
-  </body>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Jabu Cigs | All Rights Reserved</p>
+    </footer>
+
+</body>
 </html>
