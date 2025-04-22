@@ -116,59 +116,62 @@
   <div class="spacer"></div>
 
   <!-- Fullscreen Hero Section -->
-  <section class="hero-section">
-    <h2>Premium Quality, Timeless Tradition</h2>
-    <p>
-      At <strong>GrimmDraw</strong>, we redefine indulgence with a curated selection of premium nicotine experiences.
-      From rich, hand-crafted cigarettes to cutting-edge vape innovations and refined nicotine blends, our offerings are
-      designed for those who appreciate sophistication with an edge.
-    </p>
-    <p>
-      Each product embodies bold character, meticulous quality, and a taste for the unapologetically distinct.
-    </p>
-    <p>
-      Welcome to <strong>GrimmDraw</strong> – where sophistication meets indulgence.
-    </p>
-  </section>
+ <section class="hero-section">
+  <h2>Premium Quality, Timeless Tradition</h2>
+  <p>
+    At <strong>GrimmDraw</strong>, we redefine indulgence with a curated selection of premium nicotine experiences.
+    From rich, hand-crafted cigarettes to cutting-edge vape innovations and refined nicotine blends, our offerings are
+    designed for those who appreciate sophistication with an edge.
+  </p>
+  <p>
+    Each product embodies bold character, meticulous quality, and a taste for the unapologetically distinct.
+  </p>
+  <p>
+    Welcome to <strong>GrimmDraw</strong> – where sophistication meets indulgence.
+  </p>
+</section>
 
-  <!-- Scrollable Story/Mission/Vision Section -->
-  <section class="scroll-section">
-    <h2>Our Story</h2>
-    <p>
-      GrimmDraw was born out of a desire to challenge the norms of traditional smoking culture. What began as a niche
-      collection of boutique cigarette blends quickly evolved into a bold, full-spectrum lifestyle brand. Today, we
-      serve connoisseurs across the globe with products that honor both history and progress.
-    </p>
+<!-- Separator -->
+<div class="spacer" style="height: 80px;"></div>
 
-    <h2>Our Mission</h2>
-    <p>
-      To provide premium, innovative, and stylish nicotine experiences while maintaining a strong commitment to quality,
-      satisfaction, and creative expression.
-    </p>
+<!-- Story, Mission, Vision Section -->
+<section class="scroll-section">
+  <h2>Our Story</h2>
+  <p>
+    GrimmDraw was born out of a desire to challenge the norms of traditional smoking culture. What began as a niche
+    collection of boutique cigarette blends quickly evolved into a bold, full-spectrum lifestyle brand. Today, we
+    serve connoisseurs across the globe with products that honor both history and progress.
+  </p>
 
-    <h2>Our Vision</h2>
-    <p>
-      To be the leading name in alternative nicotine culture—celebrated for originality, quality, and a bold voice in a
-      crowded market.
-    </p>
-  </section>
+  <h2>Our Mission</h2>
+  <p>
+    To provide premium, innovative, and stylish nicotine experiences while maintaining a strong commitment to quality,
+    satisfaction, and creative expression.
+  </p>
 
+  <h2>Our Vision</h2>
+  <p>
+    To be the leading name in alternative nicotine culture—celebrated for originality, quality, and a bold voice in a
+    crowded market.
+  </p>
+</section>
+  
   <footer>
     <p>&copy; 2025 GrimmDraw | All Rights Reserved</p>
   </footer>
 
-  <script>
-    window.addEventListener("scroll", () => {
-      const scrollY = window.scrollY;
-      const body = document.body;
+ <script>
+  window.addEventListener("scroll", () => {
+    const scrollY = window.scrollY;
+    const body = document.body;
 
-      if (scrollY > 300) {
-        body.style.backgroundImage = "url('smoking in dark.jpg')";
-      } else {
-        body.style.backgroundImage = "url('cig wallpaper.jpg')";
-      }
-    });
-  </script>
-
+    if (scrollY > window.innerHeight * 0.7) {
+      body.style.backgroundImage = "url('smoking in dark.jpg')";
+    } else {
+      body.style.backgroundImage = "url('cig wallpaper.jpg')";
+    }
+  });
+</script>
+  
 </body>
 </html>
