@@ -29,20 +29,21 @@
       font-size: 24px;
       font-weight: bold;
     }
-
-    nav {
+    
+nav {
   background: black;
   padding: 15px 20px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: center;
+  position: relative;
   flex-wrap: wrap;
+  
 }
 
 .nav-left {
   display: flex;
   justify-content: center;
-  flex: 1;
   gap: 25px;
 }
 
@@ -59,10 +60,13 @@
 }
 
 .nav-right {
+  position: absolute;
+  right: 20px;
   display: flex;
   align-items: center;
   gap: 10px;
-}
+}   
+   
     .search-input {
       padding: 8px 14px;
       font-size: 16px;
