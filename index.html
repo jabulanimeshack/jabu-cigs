@@ -179,9 +179,18 @@ nav {
         top: 40%;
       }
     }
+  bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+  display: none;
+}
   </style>
 </head>
-
 <body>
 
   <header>
@@ -198,19 +207,25 @@ nav {
     </div>
 
     <div class="nav-right">
-  <input type="text" placeholder="Search..." class="search-input" id="searchInput">
-  <button onclick="goToProductPage()" class="search-button">Search</button>
-  <a href="login.html" class="login-link">Login</a>
-  <a href="signup.html" class="signup-link">Sign Up</a>
-</div>
-    
+      <input type="text" placeholder="Search..." class="search-input" id="searchInput">
+      <button onclick="goToProductPage()" class="search-button">Search</button>
+      <a href="login.html" class="login-link">Login</a>
+      <a href="signup.html" class="signup-link">Sign Up</a>
+    </div>
   </nav>
 
-  <div class="background-container">
+  <!-- Background Images -->
+  <div class="background-container" id="backgroundImages">
     <div class="bg-image bg1"></div>
     <div class="bg-image bg2"></div>
     <div class="bg-image bg3"></div>
   </div>
+
+  <!-- Background Video (Hidden initially) -->
+  <video id="bgVideo" class="bg-video" autoplay muted loop playsinline>
+    <source src="smoking b roll.mov" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
 
   <main>
     <h2>EXPERIENCE PREMIUM QUALITY</h2>
@@ -221,5 +236,29 @@ nav {
     <p>&copy; 2025 GrimmDraw | All Rights Reserved</p>
   </footer>
 
+  <!-- JavaScript for scroll-to-video -->
+  <script>
+    const bgVideo = document.getElementById('bgVideo');
+    const bgImages = document.getElementById('backgroundImages');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        bgImages.style.display = 'none';
+        bgVideo.style.display = 'block';
+      } else {
+        bgImages.style.display = 'flex';
+        bgVideo.style.display = 'none';
+      }
+    });
+
+    function goToProductPage() {
+      const searchTerm = document.getElementById('searchInput').value;
+      if (searchTerm) {
+        window.location.href = `product.html?search=${encodeURIComponent(searchTerm)}`;
+      }
+    }
+  </script>
+
 </body>
+
 </html>
