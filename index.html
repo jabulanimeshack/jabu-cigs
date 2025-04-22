@@ -1,129 +1,215 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GrimmDraw</title>
 
-    <style>
-       
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-     body {
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            color: white;
-            background: black;
-            overflow: hidden;
-        }
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      color: white;
+      background: black;
+      overflow-x: hidden;
+    }
 
-       header {
-    background: rgba(0, 0, 0, 0.7);
-    padding: 20px;
-    font-size: 24px;
-    font-weight: bold;
-}
-    
-        nav {
-            background: black;
-            padding: 15px;
-            display: flex;
-            justify-content: center;
-        }
+    header {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      font-size: 24px;
+      font-weight: bold;
+    }
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 20px;
-            font-size: 18px;
-            font-weight: bold;
-        }
+    nav {
+      background: black;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
 
-        nav a:hover {
-            text-decoration: underline;
-            color: #f8c471;
-        }
+    .nav-left,
+    .nav-right {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+    }
 
-        .background-container {
-            display: flex;
-            width: 100%;
-            flex-grow: 1; 
-        }
+    .nav-left a {
+      color: white;
+      text-decoration: none;
+      margin-right: 25px;
+      font-size: 18px;
+      font-weight: bold;
+    }
 
-        .bg-image {
-            flex: 1;
-            height: 100vh;
-            background-size: cover;
-            background-position: center;
-        }
+    .nav-left a:hover {
+      text-decoration: underline;
+      color: #f8c471;
+    }
 
-        .bg1 { background-image: url('girl smoking.jpg'); }
-        .bg2 { background-image: url('guy holding cig.jpg'); }
-        .bg3 { background-image: url('couple smoking.jpg'); }
+    .search-input {
+      padding: 8px 14px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: none;
+      margin-right: 10px;
+      width: 200px;
+    }
 
-    
-        main {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(0, 0, 0, 0.6);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
-        }
+    .login-link,
+    .signup-link {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 8px 16px;
+      background-color: #444;
+      border-radius: 6px;
+      margin-left: 10px;
+      transition: background-color 0.3s ease;
+    }
 
-        footer {
-            background: rgba(0, 0, 0, 0.8);
-            padding: 10px;
-            font-size: 14px;
-            text-align: center;
-            width: 100%;
-            position: fixed;
-            bottom: 0;
-        }
-    </style>
+    .login-link:hover,
+    .signup-link:hover {
+      background-color: #f8c471;
+      color: black;
+    }
+
+    .background-container {
+      display: flex;
+      flex-grow: 1;
+      width: 100%;
+    }
+
+    .bg-image {
+      flex: 1;
+      height: 100vh;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .bg1 { background-image: url('girl smoking.jpg'); }
+    .bg2 { background-image: url('guy holding cig.jpg'); }
+    .bg3 { background-image: url('couple smoking.jpg'); }
+
+    main {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0, 0, 0, 0.6);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+      max-width: 90%;
+    }
+
+    footer {
+      background: rgba(0, 0, 0, 0.8);
+      padding: 10px;
+      font-size: 14px;
+      text-align: center;
+      width: 100%;
+      position: fixed;
+      bottom: 0;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-left, .nav-right {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        margin-top: 10px;
+      }
+
+      .nav-left a {
+        margin: 5px 0;
+      }
+
+      .nav-right {
+        margin-top: 15px;
+      }
+
+      .search-input {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+
+      .login-link,
+      .signup-link {
+        width: 100%;
+        text-align: center;
+        margin: 5px 0;
+      }
+
+      .background-container {
+        flex-direction: column;
+      }
+
+      .bg-image {
+        height: 50vh;
+      }
+
+      main {
+        top: 40%;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
- 
-    <header>
-        <h1>GrimmDraw</h1>
-    </header>
+  <header>
+    <h1>GrimmDraw</h1>
+  </header>
 
-    
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="product.html">Product</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-        <a href="feedback.html">feedback</a>
-
- <div class="nav-right">
-    <input type="text" placeholder="Search..." class="search-input">
-    <a href="login.html" class="login-link">Login</a>
-  </div>   
-    
-    </nav>
-
-
-    <div class="background-container">
-        <div class="bg-image bg1"></div>
-        <div class="bg-image bg2"></div>
-        <div class="bg-image bg3"></div>
+  <nav>
+    <div class="nav-left">
+      <a href="index.html">Home</a>
+      <a href="product.html">Product</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="feedback.html">Feedback</a>
     </div>
 
-    <main>
-        <h2>EXPERIENCE PREMIUM QUALITY</h2>
-        <p>Discover our range of top-tier cigarettes, crafted for a smooth and refined smoking experience.</p>
-    </main>
+    <div class="nav-right">
+      <input type="text" placeholder="Search..." class="search-input">
+      <a href="login.html" class="login-link">Login</a>
+      <a href="signup.html" class="signup-link">Sign Up</a>
+    </div>
+  </nav>
 
-    <footer>
-        <p>&copy; 2025 GrimmDraw | All Rights Reserved</p>
-    </footer>
+  <div class="background-container">
+    <div class="bg-image bg1"></div>
+    <div class="bg-image bg2"></div>
+    <div class="bg-image bg3"></div>
+  </div>
+
+  <main>
+    <h2>EXPERIENCE PREMIUM QUALITY</h2>
+    <p>Discover our range of top-tier cigarettes, crafted for a smooth and refined smoking experience.</p>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 GrimmDraw | All Rights Reserved</p>
+  </footer>
 
 </body>
 </html>
