@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>About Us | GrimmDraw</title>
-  <link rel="stylesheet" href="styles.css" />
 
   <style>
     * {
@@ -19,11 +18,14 @@
       text-align: center;
       color: white;
       transition: background-image 1s ease-in-out;
+      background: url('cig wallpaper.jpg') no-repeat center center fixed;
+      background-size: cover;
+      overflow-x: hidden;
     }
 
     body {
-      background: url('cig wallpaper.jpg') no-repeat center center fixed;
-      background-size: cover;
+      display: flex;
+      flex-direction: column;
     }
 
     header {
@@ -36,6 +38,9 @@
     nav {
       background: black;
       padding: 15px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
     }
 
     nav a {
@@ -51,19 +56,31 @@
       color: #f8c471;
     }
 
-    main {
-      flex: 1;
+    .hero-section {
+      height: 100vh;
       display: flex;
-      align-items: center;
-      justify-content: center;
       flex-direction: column;
-      max-width: 800px;
-      margin: auto;
+      justify-content: center;
+      align-items: center;
       background: rgba(0, 0, 0, 0.6);
-      padding: 20px;
+      padding: 40px;
+      max-width: 900px;
+      margin: 0 auto;
       border-radius: 10px;
       box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
-      margin-top: 50px;
+    }
+
+    .content-section {
+      max-width: 900px;
+      margin: 60px auto;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
+    }
+
+    .content-section h2 {
+      margin: 30px 0 10px;
     }
 
     footer {
@@ -72,6 +89,7 @@
       font-size: 14px;
       text-align: center;
       width: 100%;
+      margin-top: auto;
     }
   </style>
 </head>
@@ -90,18 +108,41 @@
     <a href="feedback.html">Feedback</a>
   </nav>
 
-  <main>
+  <!-- Fullscreen Hero Section -->
+  <section class="hero-section">
     <h2>Premium Quality, Timeless Tradition</h2>
     <p>
-      At <strong>GrimmDraw</strong>, we redefine indulgence with a curated selection of premium nicotine experiences. From rich, hand-crafted cigarettes to cutting-edge vape innovations and refined nicotine blends, our offerings are designed for those who appreciate sophistication with an edge. Each product embodies bold character, meticulous quality, and a taste for the unapologetically distinct. This is not just a brand—it’s a statement.
+      At <strong>GrimmDraw</strong>, we redefine indulgence with a curated selection of premium nicotine experiences. From rich, hand-crafted cigarettes to cutting-edge vape innovations and refined nicotine blends, our offerings are designed for those who appreciate sophistication with an edge.
     </p>
     <p>
-      We blend tradition with innovation to offer a <strong>superior smoking experience</strong>—ensuring smoothness, rich flavor, and exceptional quality.
+      Each product embodies bold character, meticulous quality, and a taste for the unapologetically distinct.
     </p>
     <p>
       Welcome to <strong>GrimmDraw</strong> – where sophistication meets indulgence.
     </p>
-  </main>
+  </section>
+
+  <!-- Scrollable Content Section -->
+  <section class="content-section">
+    <h2>Our Story</h2>
+    <p>
+      GrimmDraw was born out of a desire to challenge the norms of traditional smoking culture. What began as a niche
+      collection of boutique cigarette blends quickly evolved into a bold, full-spectrum lifestyle brand. Today, we
+      serve connoisseurs across the globe with products that honor both history and progress.
+    </p>
+
+    <h2>Our Mission</h2>
+    <p>
+      To provide premium, innovative, and stylish nicotine experiences while maintaining a strong commitment to quality,
+      satisfaction, and creative expression.
+    </p>
+
+    <h2>Our Vision</h2>
+    <p>
+      To be the leading name in alternative nicotine culture—celebrated for originality, quality, and a bold voice in a
+      crowded market.
+    </p>
+  </section>
 
   <footer>
     <p>&copy; 2025 GrimmDraw | All Rights Reserved</p>
@@ -112,7 +153,6 @@
       const scrollY = window.scrollY;
       const body = document.body;
 
-      // You can adjust the scroll position trigger (e.g. 300)
       if (scrollY > 300) {
         body.style.backgroundImage = "url('smoking in dark.jpg')";
       } else {
@@ -120,62 +160,6 @@
       }
     });
   </script>
-
-<main>
-  <h2>Premium Quality, Timeless Tradition</h2>
-  <p>
-    At <strong>GrimmDraw</strong>, we redefine indulgence with a curated selection of premium nicotine experiences.
-    From rich, hand-crafted cigarettes to cutting-edge vape innovations and refined nicotine blends, our offerings
-    are designed for those who appreciate sophistication with an edge. Each product embodies bold character,
-    meticulous quality, and a taste for the unapologetically distinct. This is not just a brand—it’s a statement.
-  </p>
-  <p>
-    We blend tradition with innovation to offer a <strong>superior smoking experience</strong>—ensuring smoothness,
-    rich flavor, and exceptional quality.
-  </p>
-  <p>
-    Welcome to <strong>GrimmDraw</strong> – where sophistication meets indulgence.
-  </p>
-</main>
-
-<!-- New Lower Section -->
-<section style="margin: 50px auto; max-width: 800px; background: rgba(0,0,0,0.6); padding: 30px; border-radius: 10px;">
-  <h2 style="margin-bottom: 20px;">Our Story</h2>
-  <p>
-    GrimmDraw was born out of a desire to challenge the norms of traditional smoking culture. What began as a niche
-    collection of boutique cigarette blends quickly evolved into a bold, full-spectrum lifestyle brand. Today, we
-    serve connoisseurs across the globe with products that honor both history and progress.
-  </p>
-  <br />
-  <h2 style="margin-top: 40px; margin-bottom: 20px;">Our Mission</h2>
-  <p>
-    To provide premium, innovative, and stylish nicotine experiences while maintaining a strong commitment to quality,
-    satisfaction, and creative expression.
-  </p>
-  <br />
-  <h2 style="margin-top: 40px; margin-bottom: 20px;">Our Vision</h2>
-  <p>
-    To be the leading name in alternative nicotine culture—celebrated for originality, quality, and a bold voice in a
-    crowded market.
-  </p>
-</section>
-
-<footer>
-  <p>&copy; 2025 GrimmDraw | All Rights Reserved</p>
-</footer>
-
-<script>
-  window.addEventListener("scroll", () => {
-    const scrollY = window.scrollY;
-    const body = document.body;
-
-    if (scrollY > 300) {
-      body.style.backgroundImage = "url('smoking in dark.jpg')";
-    } else {
-      body.style.backgroundImage = "url('cig wallpaper.jpg')";
-    }
-  });
-</script>
 
 </body>
 </html>
