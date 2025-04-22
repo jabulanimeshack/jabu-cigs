@@ -241,7 +241,7 @@ nav {
   <!-- Background Video (Hidden initially) -->
   <video id="bgVideo" class="bg-video" autoplay muted loop playsinline>
     <source src="smoking b roll.mov" type="video/mp4" />
-    Your browser does not support the video tag.
+    
   </video>
 
   <main>
@@ -255,27 +255,20 @@ nav {
 
   <!-- JavaScript for scroll-to-video -->
   <script>
-    const bgVideo = document.getElementById('bgVideo');
-    const bgImages = document.getElementById('backgroundImages');
+  const bgVideo = document.getElementById('bgVideo');
+  const bgImages = document.getElementById('backgroundImages');
 
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 100) {
-        bgImages.style.display = 'none';
-        bgVideo.style.display = 'block';
-      } else {
-        bgImages.style.display = 'flex';
-        bgVideo.style.display = 'none';
-      }
-    });
-
-    function goToProductPage() {
-      const searchTerm = document.getElementById('searchInput').value;
-      if (searchTerm) {
-        window.location.href = `product.html?search=${encodeURIComponent(searchTerm)}`;
-      }
-    }
-  </script>
-
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 100) {
+      bgVideo.classList.add('active');
+      bgImages.classList.add('hidden');
+    } else {
+      bgVideo.classList.remove('active');
+      bgImages.classList.remove('hidden');
+  
+  }
+</script>
+  
 </body>
 
 </html>
