@@ -1,172 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Product | GrimmDraw</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Products | GrimmDraw</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        html, body {
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            color: white;
-            background: url('model holding cig.jpg') no-repeat center center fixed;
-            background-size: cover;
-        }
+    html, body {
+      font-family: Arial, sans-serif;
+      color: white;
+      background: url('model holding cig.jpg') no-repeat center center fixed;
+      background-size: cover;
+    }
 
-        header {
-            background: rgba(0, 0, 0, 0.7);
-            padding: 20px;
-            font-size: 24px;
-            font-weight: bold;
-        }
+    header {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      font-size: 24px;
+      font-weight: bold;
+      text-align: center;
+    }
 
-        nav {
-            background: black;
-            padding: 15px;
-            display: flex;
-            justify-content: center;
-        }
+    nav {
+      background: black;
+      padding: 15px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 20px;
-            font-size: 18px;
-            font-weight: bold;
-        }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
 
-        nav a:hover {
-            text-decoration: underline;
-            color: #f8c471;
-        }
+    nav a:hover {
+      text-decoration: underline;
+      color: #f8c471;
+    }
 
-        main {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
+    main {
+      padding: 40px 20px;
+      text-align: center;
+    }
 
-        .product-page h1, .product-page h2 {
-            margin-bottom: 15px;
-        }
+    .category {
+      margin-bottom: 80px;
+    }
 
-        .product-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.6);
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
-            max-width: 900px;
-        }
+    .category h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      text-shadow: 1px 1px 3px black;
+    }
 
-        .product {
-            width: 220px;
-            text-align: center;
-        }
+    .product-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+      max-width: 1100px;
+      margin: 0 auto;
+    }
 
-        .product img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 10px;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
-        }
+    .product {
+      width: 220px;
+    }
 
-        .product-name {
-            margin-top: 10px;
-            font-size: 16px;
-            font-weight: bold;
-            color: white;
-        }
+    .product img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+    }
 
-        footer {
-            background: rgba(0, 0, 0, 0.8);
-            padding: 10px;
-            font-size: 14px;
-            text-align: center;
-            width: 100%;
-            position: fixed;
-            bottom: 0;
-        }
-    </style>
+    .product-name {
+      margin-top: 10px;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    footer {
+      background: rgba(0, 0, 0, 0.8);
+      padding: 10px;
+      font-size: 14px;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
 
-    <header>
-        <h1>GrimmDraw</h1>
-    </header>
+  <header>
+    <h1>GrimmDraw</h1>
+  </header>
 
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="product.html">Product</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-        <a href="feedback.html">Feedback</a>
-    </nav>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="product.html">Product</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="feedback.html">Feedback</a>
+  </nav>
 
-    <main>
-        <section class="product-page">
-            <h1>OUR PRODUCTS</h1>
-            <h2>TOBACCO CIGARETTES</h2>
-            <div class="product-grid">
-                <div class="product">
-                    <img src="nike cig.jpeg" alt="Nike Cigarettes">
-                    <p class="product-name">Nike Cigarettes</p>
-                </div>
-                <div class="product">
-                    <img src="waltz.jpeg" alt="Waltz Cigarettes">
-                    <p class="product-name">Waltz Cigarettes</p>
-                </div>
-                <div class="product">
-                    <img src="Inverroche Limestone Rum.jpeg" alt="Wood Land Cigarettes">
-                    <p class="product-name">Wood Land Cigarettes</p>
-                </div>
-                <div class="product">
-                    <img src="hupman.jpg" alt="Hupman Cigarettes">
-                    <p class="product-name">Hupman</p>
-                </div>
-                <div class="product">
-                    <img src="brown bear herbs.jpg" alt="Brown Bear Herbs">
-                    <p class="product-name">Brown Bear Herbs</p>
-                </div>
-                <div class="product">
-                    <img src="american spirit black.jpg" alt="American Spirit Black">
-                    <p class="product-name">American Spirit Black</p>
-                </div>
-                <div class="product">
-                    <img src="marlboro ash tray.jpeg" alt="Marlboro Ash Tray">
-                    <p class="product-name">Marlboro Ash Tray</p>
-                </div>
-                <div class="product">
-                    <img src="marlboro drawer.jpeg" alt="Marlboro Drawer">
-                    <p class="product-name">Marlboro Drawer</p>
-                </div>
-            </div>
-        </section>
-    </main>
+  <main>
 
-    <footer>
-        <p>&copy; 2025 GrimmDraw | All Rights Reserved</p>
-    </footer>
+    <!-- Tobacco Section -->
+    <section class="category" id="tobacco">
+      <h2>Tobacco</h2>
+      <div class="product-grid">
+        <div class="product"><img src="seven stars cig.JPG" alt=""><p class="SEVEN STARS CIGARETTES">Tobacco 1</p></div>
+        <div class="product"><img src="red apple cig.JPG" alt=""><p class="RED APPLE CIGATETTES">Tobacco 2</p></div>
+        <div class="product"><img src="nike cig.jpeg" alt=""><p class="CUSTOM NIKE CIGARETTES">Tobacco 3</p></div>
+        <div class="product"><img src="lucky strike cig.JPG" alt=""><p class="LUCKY STRIKE CIGARETTES">Tobacco 4</p></div>
+        <div class="product"><img src="hupman.jpg" alt=""><p class="HUPMAN CIGARETTES">Tobacco 5</p></div>
+        <div class="product"><img src="waltz.jpeg" alt=""><p class="WALTZ CIGARETTES">Tobacco 6</p></div>
+        <div class="product"><img src="inverroche Limestone Rum.jpeg" alt=""><p class="ILR CIGARETTES">Tobacco 7</p></div>
+        <div class="product"><img src="brown bear herbs.jpg" alt=""><p class="BROWN BEAR CIGARETTES">Tobacco 8</p></div>
+        <div class="product"><img src="newport mentol.jpeg" alt=""><p class="NEWPORT CIGARETTES">Tobacco 9</p></div>
+      </div>
+    </section>
+
+    <!-- Nicotine Pouches Section -->
+    <section class="category" id="nicotine">
+      <h2>Nicotine Pouches</h2>
+      <div class="product-grid">
+        <div class="product"><img src="zyn chill.WEBP" alt=""><p class="ZYN CHILLS">Pouch 1</p></div>
+        <div class="product"><img src="zyn citrus.WEBP" alt=""><p class="ZYN CITRUS">Pouch 2</p></div>
+        <div class="product"><img src="zyn wintergreen.WEBP" alt=""><p class="ZYN WINTERGREEN">Pouch 3</p></div>
+       
+      </div>
+    </section>
+
+    <!-- Lighters Section -->
+    <section class="category" id="lighters">
+      <h2>Lighters</h2>
+      <div class="product-grid">
+        <div class="product"><img src="taylor swift lighter.JPG" alt=""><p class="TAYLOR SWIFT CUSTOM LIGHTER">Lighter 1</p></div>
+        <div class="product"><img src="the shining lighter.JPG" alt=""><p class="THE SHINING LIGHTER">Lighter 2</p></div>
+        <div class="product"><img src="rip bt lighter.JPG" alt=""><p class="RIP BETTER DAYS LIGHTER">Lighter 3</p></div>
+        <div class="product"><img src="fuck it lighter.JPG" alt=""><p class="F*CK IT LIGHTER">Lighter 4</p></div>
+        <div class="product"><img src="escape lighter.JPG" alt=""><p class="ESCAPE LIGHTER">Lighter 5</p></div>
+        <div class="product"><img src="BAD lighter.JPG" alt=""><p class="CUSTOM BAD LIGHTER">Lighter 6</p></div>
+        <div class="product"><img src="wavey lighter.JPG" alt=""><p class="CUSTOM WAVEY LIGHTER">Lighter 7</p></div>
+        <div class="product"><img src="edward lighter.JPG" alt=""><p class="EDWARD SCISSOR HANDS LIGHTER">Lighter 8</p></div>
+        <div class="product"><img src="80s lighter.JPG" alt=""><p class="CUSTOM 80s LIGHTER">Lighter 9</p></div>
+      </div>
+    </section>
+
+    <!-- Vapes Section -->
+    <section class="category" id="vapes">
+      <h2>Vapes</h2>
+      <div class="product-grid">
+        <div class="product"><img src="vozol CB juice.JPG" alt=""><p class="VOZOL CARIBBEAN JUICE 20K">Vape 1</p></div>
+        <div class="product"><img src="vozol bluecherry.WEBP" alt=""><p class="VOZOL BLUECHERRY 20K">Vape 2</p></div>
+        <div class="product"><img src="vozol strawberry.WEBP" alt=""><p class="VOZOL STRAWBERRY 20K">Vape 3</p></div>
+        <div class="product"><img src="baang lichee.JPG" alt=""><p class="BAANG LICHEE 2.4K">Vape 4</p></div>
+        <div class="product"><img src="baang mixed fruit.JPG" alt=""><p class="BAANG MIXED FRUIT 2.4K">Vape 5</p></div>
+        <div class="product"><img src="baang peach ice.JPG" alt=""><p class="BAANG PEACH ICE 2.4K">Vape 6</p></div>
+        <div class="product"><img src="ivg 2400 ice pop.JPG" alt=""><p class="IVG 2400 ICE POP">Vape 7</p></div>
+        <div class="product"><img src="ivg 2400 strawberry.JPG" alt=""><p class="IVG 2400 STRAWBERRY">Vape 8</p></div>
+        <div class="product"><img src="ivg 2400 tropical.JPG" alt=""><p class="IVG 2400 TROPICAL">Vape 9</p></div>
+      </div>
+    </section>
+
+    <!-- Other Products Section -->
+    <section class="category" id="other">
+      <h2>Other Products</h2>
+      <div class="product-grid">
+        <div class="product"><img src="marlboro table.jpeg" alt=""><p class="CUSTOM MARLBORO TABLE">Other 1</p></div>
+        <div class="product"><img src="marlboro ash tray.jpeg" alt=""><p class="CUSTOM MARLBORO ASH TRAY">Other 2</p></div>
+        <div class="product"><img src="marlboro drawer.jpeg" alt=""><p class="CUSTOM MARALBORO DRAWER">Other 3</p></div>
+        <div class="product"><img src="only for hot person ash tray.JPG" alt=""><p class="OFHP ASH TRAY">Other 4</p></div>
+        <div class="product"><img src="puff puff pass ash tray.JPG" alt=""><p class="PPP ASH TRAY">Other 5</p></div>
+        <div class="product"><img src="other6.jpg" alt=""><p class="product-name">Other 6</p></div>
+        <div class="product"><img src="other7.jpg" alt=""><p class="product-name">Other 7</p></div>
+        <div class="product"><img src="other8.jpg" alt=""><p class="product-name">Other 8</p></div>
+        <div class="product"><img src="other9.jpg" alt=""><p class="product-name">Other 9</p></div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2025 GrimmDraw | All Rights Reserved</p>
+  </footer>
 
 </body>
 </html>
-
-
-
-          
