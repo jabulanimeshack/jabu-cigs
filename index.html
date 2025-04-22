@@ -31,34 +31,38 @@
     }
 
     nav {
-      background: black;
-      padding: 15px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-    }
+  background: black;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
 
-    .nav-left,
-    .nav-right {
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-    }
+.nav-left {
+  display: flex;
+  justify-content: center;
+  flex: 1;
+  gap: 25px;
+}
 
-    .nav-left a {
-      color: white;
-      text-decoration: none;
-      margin-right: 25px;
-      font-size: 18px;
-      font-weight: bold;
-    }
+.nav-left a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+}
 
-    .nav-left a:hover {
-      text-decoration: underline;
-      color: #f8c471;
-    }
+.nav-left a:hover {
+  text-decoration: underline;
+  color: #f8c471;
+}
 
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
     .search-input {
       padding: 8px 14px;
       font-size: 16px;
@@ -190,10 +194,12 @@
     </div>
 
     <div class="nav-right">
-      <input type="text" placeholder="Search..." class="search-input">
-      <a href="login.html" class="login-link">Login</a>
-      <a href="signup.html" class="signup-link">Sign Up</a>
-    </div>
+  <input type="text" placeholder="Search..." class="search-input" id="searchInput">
+  <button onclick="goToProductPage()" class="search-button">Search</button>
+  <a href="login.html" class="login-link">Login</a>
+  <a href="signup.html" class="signup-link">Sign Up</a>
+</div>
+    
   </nav>
 
   <div class="background-container">
