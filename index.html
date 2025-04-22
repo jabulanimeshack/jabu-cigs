@@ -179,7 +179,7 @@ nav {
         top: 40%;
       }
     }
-  bg-video {
+  .bg-video {
   position: fixed;
   top: 0;
   left: 0;
@@ -187,7 +187,24 @@ nav {
   height: 100vh;
   object-fit: cover;
   z-index: -1;
-  display: none;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1s ease-in-out;
+}
+
+.bg-video.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#backgroundImages {
+  transition: opacity 1s ease-in-out;
+}
+
+#backgroundImages.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
 }
   </style>
 </head>
