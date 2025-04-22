@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-<style>
-     
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product | GrimmDraw</title>
+    <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-       
         html, body {
             height: 100%;
             display: flex;
@@ -20,26 +22,25 @@
             background-size: cover;
         }
 
-       
         .header-nav {
             display: flex;
             flex-direction: column;
         }
 
-      
         header {
             background: rgba(0, 0, 0, 0.7);
             padding: 20px;
             font-size: 24px;
             font-weight: bold;
+            margin: 0; /* Ensure no margin below */
         }
 
-        
         nav {
             background: black;
             padding: 15px;
             display: flex;
             justify-content: center;
+            margin: 0; /* No spacing between header and nav */
         }
 
         nav a {
@@ -55,7 +56,6 @@
             color: #f8c471;
         }
 
-      
         main {
             flex: 1;
             display: flex;
@@ -69,7 +69,6 @@
             margin-bottom: 15px;
         }
 
-       
         .product-grid {
             display: flex;
             flex-wrap: wrap;
@@ -102,7 +101,6 @@
             color: white;
         }
 
-        
         footer {
             background: rgba(0, 0, 0, 0.8);
             padding: 10px;
@@ -116,7 +114,6 @@
 </head>
 <body>
 
-
     <div class="header-nav">
         <header>
             <h1>GrimmDraw — Where Vice Meets Virtue</h1>
@@ -127,11 +124,10 @@
             <a href="product.html">Product</a>
             <a href="about.html">About</a>
             <a href="contact.html">Contact</a>
-            <a href="feedback.html">feedback</a>      
+            <a href="feedback.html">Feedback</a>      
         </nav>
     </div>
 
-   
     <main>
         <section class="product-page">
             <h1>OUR PRODUCTS</h1>
@@ -142,15 +138,15 @@
                     <p class="product-name">Nike Cigarettes</p>
                 </div>
                 <div class="product">
-                    <img src="waltz.jpeg" alt="Waltz cigarettes">
+                    <img src="waltz.jpeg" alt="Waltz Cigarettes">
                     <p class="product-name">Waltz Cigarettes</p>
                 </div>
                 <div class="product">
-                    <img src="Inverroche Limestone Rum.jpeg" alt="ILR Cigarettes">
+                    <img src="Inverroche Limestone Rum.jpeg" alt="Wood Land Cigarettes">
                     <p class="product-name">Wood Land Cigarettes</p>
                 </div>
                 <div class="product">
-                    <img src="hupman.jpg" alt="Hupman cigarettes">
+                    <img src="hupman.jpg" alt="Hupman Cigarettes">
                     <p class="product-name">Hupman</p>
                 </div>
                 <div class="product">
@@ -158,7 +154,7 @@
                     <p class="product-name">Brown Bear Herbs</p>
                 </div>
                 <div class="product">
-                    <img src="american spirit black.jpg" alt="american Spirit Black">
+                    <img src="american spirit black.jpg" alt="American Spirit Black">
                     <p class="product-name">American Spirit Black</p>
                 </div>
                 <div class="product">
@@ -173,7 +169,6 @@
         </section>
     </main>
 
-   
     <footer>
         <p>&copy; 2025 GrimmDraw | All Rights Reserved</p>
     </footer>
