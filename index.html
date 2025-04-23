@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>GrimmDraw</title>
-
   <style>
     * {
       margin: 0;
@@ -13,7 +12,6 @@
     }
 
     body {
-      min-height: 200vh; /* to allow scroll */
       font-family: Arial, sans-serif;
       color: white;
       background: black;
@@ -34,37 +32,27 @@
       background: black;
       padding: 15px 20px;
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      justify-content: center;
-      position: relative;
       flex-wrap: wrap;
       z-index: 2;
+      position: relative;
     }
 
-    .nav-left {
+    .nav-left, .nav-right {
       display: flex;
-      justify-content: center;
-      gap: 25px;
+      align-items: center;
+      gap: 20px;
     }
 
-    .nav-left a {
+    .nav-left a, .login-link, .signup-link {
       color: white;
       text-decoration: none;
-      font-size: 18px;
       font-weight: bold;
     }
 
-    .nav-left a:hover {
-      text-decoration: underline;
+    .nav-left a:hover, .login-link:hover, .signup-link:hover {
       color: #f8c471;
-    }
-
-    .nav-right {
-      position: absolute;
-      right: 20px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
     }
 
     .search-input {
@@ -72,22 +60,16 @@
       font-size: 16px;
       border-radius: 5px;
       border: none;
-      width: 200px;
     }
 
-    .login-link,
-    .signup-link {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
+    .login-link, .signup-link {
       padding: 8px 16px;
       background-color: #444;
       border-radius: 6px;
       transition: background-color 0.3s ease;
     }
 
-    .login-link:hover,
-    .signup-link:hover {
+    .login-link:hover, .signup-link:hover {
       background-color: #f8c471;
       color: black;
     }
@@ -97,8 +79,6 @@
       width: 100%;
       height: 100vh;
       transition: opacity 1s ease-in-out;
-      z-index: 1;
-      position: relative;
     }
 
     .bg-image {
@@ -111,8 +91,9 @@
     .bg2 { background-image: url('guy holding cig.jpg'); }
     .bg3 { background-image: url('couple smoking.jpg'); }
 
-    .background-container.fade-out {
-      opacity: 0.3;
+    #backgroundImages.hidden {
+      opacity: 0;
+      pointer-events: none;
     }
 
     .bg-video {
@@ -122,28 +103,29 @@
       width: 100%;
       height: 100vh;
       object-fit: cover;
-      z-index: 0;
+      z-index: -1;
       opacity: 0;
-      transition: opacity 1s ease-in-out;
       pointer-events: none;
+      transition: opacity 1s ease-in-out;
     }
 
     .bg-video.active {
       opacity: 1;
+      pointer-events: auto;
     }
 
     main {
-      position: relative;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0, 0, 0, 0.6);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+      max-width: 90%;
       z-index: 2;
       text-align: center;
-      margin-top: -50vh;
-      background: rgba(0, 0, 0, 0.6);
-      padding: 30px 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
-      max-width: 90%;
-      margin-left: auto;
-      margin-right: auto;
     }
 
     footer {
@@ -152,9 +134,9 @@
       font-size: 14px;
       text-align: center;
       width: 100%;
-      position: relative;
+      position: fixed;
+      bottom: 0;
       z-index: 2;
-      margin-top: 50px;
     }
 
     @media (max-width: 768px) {
@@ -165,9 +147,7 @@
 
       .nav-left, .nav-right {
         flex-direction: column;
-        align-items: flex-start;
         width: 100%;
-        margin-top: 10px;
       }
 
       .search-input {
@@ -175,11 +155,9 @@
         margin-bottom: 10px;
       }
 
-      .login-link,
-      .signup-link {
+      .login-link, .signup-link {
         width: 100%;
         text-align: center;
-        margin: 5px 0;
       }
 
       .background-container {
@@ -188,6 +166,10 @@
 
       .bg-image {
         height: 50vh;
+      }
+
+      main {
+        top: 40%;
       }
     }
   </style>
@@ -208,7 +190,7 @@
     </div>
 
     <div class="nav-right">
-      <input type="text" placeholder="Search..." class="search-input" id="searchInput">
+      <input type="text" placeholder="Search..." class="search-input">
       <a href="login.html" class="login-link">Login</a>
       <a href="signup.html" class="signup-link">Sign Up</a>
     </div>
@@ -226,16 +208,18 @@
     <source src="smoking b roll.mov" type="video/mp4" />
   </video>
 
+  <!-- Premium Section -->
   <main>
     <h2>EXPERIENCE PREMIUM QUALITY</h2>
     <p>Discover our range of top-tier cigarettes, crafted for a smooth and refined smoking experience.</p>
   </main>
 
+  <!-- Footer -->
   <footer>
     <p>&copy; 2025 GrimmDraw | All Rights Reserved</p>
   </footer>
 
-  <!-- Scroll Script -->
+  <!-- Scroll Transition Script -->
   <script>
     const bgVideo = document.getElementById('bgVideo');
     const bgImages = document.getElementById('backgroundImages');
@@ -243,13 +227,13 @@
     window.addEventListener('scroll', () => {
       if (window.scrollY > 100) {
         bgVideo.classList.add('active');
-        bgImages.classList.add('fade-out');
+        bgImages.classList.add('hidden');
       } else {
         bgVideo.classList.remove('active');
-        bgImages.classList.remove('fade-out');
+        bgImages.classList.remove('hidden');
       }
     });
   </script>
-
 </body>
 </html>
+
