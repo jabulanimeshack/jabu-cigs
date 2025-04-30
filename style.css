@@ -90,15 +90,16 @@ header {
 }
 
 nav {
-  background: rgba(0, 0, 0, 0.6); /* semi-transparent black */
-  padding: 15px;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 15px 0; /* top/bottom only */
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  width: 100%;
+  margin: 0;
   z-index: 1;
-  backdrop-filter: blur(5px); /* optional blur for a nice effect */
+  backdrop-filter: blur(5px);
 }
-
 nav a {
   color: white;
   text-decoration: none;
@@ -114,11 +115,10 @@ nav a:hover {
 
 footer {
   background: rgba(0, 0, 0, 0.8);
-  padding: 10px;
+  padding: 10px 0; /* top/bottom only */
   font-size: 14px;
   text-align: center;
   width: 100%;
-  margin-top: auto;
-  z-index: 1;
+  margin: 0;
 }
     </style>
