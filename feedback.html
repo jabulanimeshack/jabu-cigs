@@ -1,15 +1,10 @@
-<form>
-
-  <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Form with Background</title> 
-  <style>
-
-    <head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>feedback</title>
+  <title>Feedback | GrimmDraw</title>
+
   <style>
     * {
       margin: 0;
@@ -18,16 +13,18 @@
     }
 
     html, body {
+      height: 100%;
       font-family: Arial, sans-serif;
       color: white;
     }
-    
+
     header {
       background: rgba(0, 0, 0, 0.7);
       padding: 20px;
       font-size: 24px;
       font-weight: bold;
       text-align: center;
+      z-index: 1;
     }
 
     nav {
@@ -36,6 +33,7 @@
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
+      z-index: 1;
     }
 
     nav a {
@@ -50,6 +48,7 @@
       text-decoration: underline;
       color: #f8c471;
     }
+
     body {
       background-image: url('laying down smoking.jpg'); 
       background-size: cover;
@@ -59,7 +58,6 @@
       padding: 20px;
     }
 
-    
     form {
       background-color: rgba(0, 0, 0, 0.5); 
       padding: 30px;
@@ -68,7 +66,6 @@
       margin: 0 auto;
     }
 
-   
     input[type="text"] {
       width: 100%;
       padding: 10px;
@@ -97,18 +94,11 @@
       display: inline-block;
     }
 
-    
     input[type="checkbox"] {
       margin-right: 10px;
     }
 
-    h1 {
-      text-align: center;
-      color: white;
-      font-size: 2em;
-    }
-
-footer {
+    footer {
       background: rgba(0, 0, 0, 0.8);
       padding: 10px;
       font-size: 14px;
@@ -116,50 +106,62 @@ footer {
       width: 100%;
       margin-top: auto;
       z-index: 1;
-
-   }  
-</style>
+    }
+  </style>
 </head>
-<body>  
-  First name:<br> <input type="text" name="firstname" value="Mickey"><br>
-  Last name:<br> <input type="text" name="lastname" value="Mouse"><br><br>
-  <input type="text" name="username" value="neo" size="10"><br>
 
-<input type="text" name="email"> <br>
+<body>
+  <header>
+    <h1>GrimmDraw</h1>
+  </header>
 
-<input type="text" name="telephone" size="8"><br>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="product.html">Product</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="feedback.html">Feedback</a>
+    <a href="cart.html">Cart</a>
+  </nav>
 
-  <label for="accounts">Account Executive: </label><input type="checkbox" 
-  id="accounts" name="accounts" ><br>
+  <main>
+    <form>
+      <h1>Feedback Form</h1>
+      First Name: <br> 
+      <input type="text" name="firstname" value="Mickey"><br>
+      Last Name: <br> 
+      <input type="text" name="lastname" value="Mouse"><br><br>
 
-Business Executive: <input type="checkbox" id="job">
+      Email: <br> 
+      <input type="text" name="email"><br><br>
 
-Inside Sales: <input type="checkbox" >
+      Telephone: <br> 
+      <input type="text" name="telephone" size="8"><br><br>
 
-Sales Management: <input type="checkbox" >
+      <label for="accounts">Account Executive: </label>
+      <input type="checkbox" id="accounts" name="accounts"><br>
 
-VP Sales: <input type="checkbox" >
-    First name:<br> 
-  <input type="text" name="firstname"><br>
-  Last name:<br>
-  <input type="text" name="lastname"><br>
-  <input type="radio" name="gender" value="male" checked> Male<br>
-  <input type="radio" name="gender" value="female"> Female<br> 
-  <input type="radio" name="gender" value="other"> Other 
+      Business Executive: 
+      <input type="checkbox" id="job"><br>
 
-<footer>
+      Inside Sales: 
+      <input type="checkbox"><br>
+
+      Sales Management: 
+      <input type="checkbox"><br>
+
+      VP Sales: 
+      <input type="checkbox"><br>
+
+      <br><br>
+
+      <input type="submit" value="Submit">
+    </form>
+  </main>
+
+  <footer>
     <p>&copy; 2025 GrimmDraw | All Rights Reserved</p>
   </footer>
+
 </body>
-
-   <nav>
-        <a href="index.html">Home</a>
-        <a href="product.html">Product</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-        <a href="feedback.html">feedback</a>    
-<a href="cart.html">cart</a>   
-   
-   </nav>  
-
-</form>
+</html>
