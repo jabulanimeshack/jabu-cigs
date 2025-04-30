@@ -2,41 +2,194 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cart Page</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gray-100">
-  <div class="max-w-5xl mx-auto p-6">
-    <h1 class="text-3xl font-bold mb-6">Shopping Cart</h1>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cart | GrimmDraw</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-    <div class="bg-white shadow rounded-lg p-4">
-      <!-- Cart Item -->
-      <div class="flex items-center justify-between border-b py-4">
-        <div class="flex items-center gap-4">
-          <img src="https://via.placeholder.com/60" alt="Product Image" class="w-16 h-16 object-cover rounded" />
-          <div>
-            <h2 class="text-lg font-semibold">Product Name</h2>
-            <p class="text-gray-500">Category or Description</p>
-          </div>
-        </div>
-        <div class="flex items-center gap-4">
-          <input type="number" value="1" min="1" class="w-16 border rounded px-2 py-1 text-center" />
-          <p class="text-lg font-medium">$12.99</p>
-          <button class="text-red-500 hover:underline">Remove</button>
+    html, body {
+      font-family: Arial, sans-serif;
+      color: white;
+      /* 🔽 Set your wallpaper background image here */
+      background: url('wallpaper.jpg') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    header {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      font-size: 24px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    nav {
+      background: black;
+      padding: 15px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+      color: #f8c471;
+    }
+
+    /* Cart Styles */
+    .cart-container {
+      max-width: 900px;
+      margin: 50px auto;
+      background: rgba(0, 0, 0, 0.75);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    }
+
+    .cart-title {
+      font-size: 32px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 0;
+      border-bottom: 1px solid #444;
+    }
+
+    .cart-item img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 6px;
+      margin-right: 15px;
+    }
+
+    .item-details {
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+    }
+
+    .item-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .item-name {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .item-desc {
+      font-size: 14px;
+      color: #ccc;
+    }
+
+    .item-actions {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .item-actions input {
+      width: 50px;
+      padding: 5px;
+      text-align: center;
+      border: none;
+      background: #222;
+      color: white;
+      border-radius: 4px;
+    }
+
+    .item-actions button {
+      background: none;
+      border: none;
+      color: #f44336;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .cart-summary {
+      text-align: right;
+      margin-top: 20px;
+      font-size: 20px;
+    }
+
+    .checkout-btn {
+      background: #f8c471;
+      color: black;
+      border: none;
+      padding: 12px 25px;
+      font-weight: bold;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 15px;
+      transition: background 0.3s ease;
+    }
+
+    .checkout-btn:hover {
+      background: #e0ac57;
+    }
+  </style>
+</head>
+<body>
+
+  <header>GrimmDraw</header>
+
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Tobacco</a>
+    <a href="#">Nicotine Pouches</a>
+    <a href="#">Lighters</a>
+    <a href="#">Vapes</a>
+    <a href="#">Cart</a>
+  </nav>
+
+  <main class="cart-container">
+    <div class="cart-title">Your Shopping Cart</div>
+
+    <!-- Example Cart Item -->
+    <div class="cart-item">
+      <div class="item-details">
+        <img src="https://via.placeholder.com/60" alt="Product Image">
+        <div class="item-info">
+          <span class="item-name">Product Name</span>
+          <span class="item-desc">Short description</span>
         </div>
       </div>
-
-      <!-- Repeat the cart item block for each product -->
-
-      <!-- Summary Section -->
-      <div class="mt-6 text-right">
-        <p class="text-xl font-semibold">Total: $12.99</p>
-        <button class="mt-4 bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">
-          Proceed to Checkout
-        </button>
+      <div class="item-actions">
+        <input type="number" value="1" min="1">
+        <span>$12.99</span>
+        <button>Remove</button>
       </div>
     </div>
-  </div>
+
+    <!-- Additional cart-item blocks go here -->
+
+    <div class="cart-summary">
+      Total: $12.99
+      <br>
+      <button class="checkout-btn">Proceed to Checkout</button>
+    </div>
+  </main>
+
 </body>
 </html>
