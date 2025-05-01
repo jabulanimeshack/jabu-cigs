@@ -54,6 +54,10 @@
 
     .category {
       margin-bottom: 80px;
+      padding: 30px;
+      background-color: rgba(0, 0, 0, 0.6);
+      border-radius: 10px;
+      box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.2);
     }
 
     .category h2 {
@@ -162,10 +166,29 @@
 
   <main>
     <!-- PRODUCT CATEGORIES -->
-    <!-- We'll auto-insert all product items here using JS -->
-    <section class="category" id="all-products">
-      <h2>All Products</h2>
-      <div class="product-grid" id="product-grid"></div>
+    <section class="category" id="tobacco">
+      <h2>Tobacco</h2>
+      <div class="product-grid" id="tobacco-grid"></div>
+    </section>
+
+    <section class="category" id="nicotine-pouches">
+      <h2>Nicotine Pouches</h2>
+      <div class="product-grid" id="nicotine-pouches-grid"></div>
+    </section>
+
+    <section class="category" id="lighters">
+      <h2>Lighters</h2>
+      <div class="product-grid" id="lighters-grid"></div>
+    </section>
+
+    <section class="category" id="vapes">
+      <h2>Vapes</h2>
+      <div class="product-grid" id="vapes-grid"></div>
+    </section>
+
+    <section class="category" id="other-items">
+      <h2>Other Items</h2>
+      <div class="product-grid" id="other-items-grid"></div>
     </section>
   </main>
 
@@ -174,67 +197,82 @@
   </footer>
 
   <script>
-    const products = [
- <!-- Tobacco Section -->     
-      { img: "seven stars cig.JPG", name: "SEVEN STARS CIGARETTES" },
-      { img: "red apple cig.JPG", name: "RED APPLE CIGARETTES" },
-      { img: "nike cig.jpeg", name: "CUSTOM NIKE CIGARETTES" },
-      { img: "lucky strike cig.JPG", name: "LUCKY STRIKE CIGARETTES" },
-      { img: "hupman.jpg", name: "HUPMAN CIGARETTES" },
-      { img: "waltz.jpeg", name: "WALTZ CIGARETTES" },
-      { img: "marlboro.JPG", name: "VINTAGE MARLBORO CIGARETTES" },
-      { img: "brown bear herbs.jpg", name: "BROWN BEAR CIGARETTES" },
-      { img: "newport mentol.jpeg", name: "NEWPORT CIGARETTES" },
+    const products = {
+      tobacco: [
+        { img: "seven stars cig.JPG", name: "SEVEN STARS CIGARETTES" },
+        { img: "red apple cig.JPG", name: "RED APPLE CIGARETTES" },
+        { img: "nike cig.jpeg", name: "CUSTOM NIKE CIGARETTES" },
+        { img: "lucky strike cig.JPG", name: "LUCKY STRIKE CIGARETTES" },
+        { img: "hupman.jpg", name: "HUPMAN CIGARETTES" },
+        { img: "waltz.jpeg", name: "WALTZ CIGARETTES" },
+        { img: "marlboro.JPG", name: "VINTAGE MARLBORO CIGARETTES" },
+        { img: "brown bear herbs.jpg", name: "BROWN BEAR CIGARETTES" },
+        { img: "newport mentol.jpeg", name: "NEWPORT CIGARETTES" }
+      ],
+      nicotinePouches: [
+        { img: "zyn chill.WEBP", name: "ZYN CHILLS" },
+        { img: "zyn citrus.WEBP", name: "ZYN CITRUS" },
+        { img: "zyn wintergreen.WEBP", name: "ZYN WINTERGREEN" }
+      ],
+      lighters: [
+        { img: "taylor swift lighter.JPG", name: "TAYLOR SWIFT CUSTOM LIGHTER" },
+        { img: "the shining lighter.JPG", name: "THE SHINING LIGHTER" },
+        { img: "rip bt lighter.JPG", name: "RIP BETTER DAYS LIGHTER" },
+        { img: "fuck it lighter.JPG", name: "F*CK IT LIGHTER" },
+        { img: "escape lighter.JPG", name: "ESCAPE LIGHTER" },
+        { img: "BAD lighter.JPG", name: "CUSTOM BAD LIGHTER" },
+        { img: "wavey lighter.JPG", name: "CUSTOM WAVEY LIGHTER" },
+        { img: "edward lighter.JPG", name: "EDWARD SCISSOR HANDS LIGHTER" },
+        { img: "80s lighter.JPG", name: "CUSTOM 80S LIGHTER" }
+      ],
+      vapes: [
+        { img: "vozol CB juice.JPG", name: "VOZOL CARIBBEAN JUICE 20K" },
+        { img: "vozol bluecherry.WEBP", name: "VOZOL BLUECHERRY 20K" },
+        { img: "vozol strawberry.WEBP", name: "VOZOL STRAWBERRY 20K" },
+        { img: "baang lichee.JPG", name: "BAANG LICHEE 2.4K" },
+        { img: "baang mixed fruit.JPG", name: "BAANG MIXED FRUIT 2.4K" },
+        { img: "baang peach ice.JPG", name: "BAANG PEACH ICE 2.4K" },
+        { img: "ivg 2400 maroon.webp", name: "IVG 2400 KIWI" },
+        { img: "ivg 2400 strawberry.JPG", name: "IVG 2400 STRAWBERRY" },
+        { img: "ivg 2400 tropical.JPG", name: "IVG 2400 TROPICAL" }
+      ],
+      otherItems: [
+        { img: "burn baby burn ash tray.JPG", name: "BBB ASH TRAY" },
+        { img: "marlboro ash tray.jpeg", name: "CUSTOM MARLBORO ASH TRAY" },
+        { img: "marlboro drawer.jpeg", name: "CUSTOM MARLBORO DRAWER" },
+        { img: "only for hot person ash tray.JPG", name: "OFHP ASH TRAY" },
+        { img: "puff puff pass ash tray.JPG", name: "PPP ASH TRAY" }
+      ]
+    };
 
-      <!--nicotine pouches-->
-      { img: "zyn chill.WEBP", name: "ZYN CHILLS" },
-      { img: "zyn citrus.WEBP", name: "ZYN CITRUS" },
-      { img: "zyn wintergreen.WEBP", name: "ZYN WINTERGREEN" },
+    const gridSections = {
+      tobacco: document.getElementById("tobacco-grid"),
+      nicotinePouches: document.getElementById("nicotine-pouches-grid"),
+      lighters: document.getElementById("lighters-grid"),
+      vapes: document.getElementById("vapes-grid"),
+      otherItems: document.getElementById("other-items-grid")
+    };
 
-     <!--lighters-->
-      { img: "taylor swift lighter.JPG", name: "TAYLOR SWIFT CUSTOM LIGHTER" },
-      { img: "the shining lighter.JPG", name: "THE SHINING LIGHTER" },
-      { img: "rip bt lighter.JPG", name: "RIP BETTER DAYS LIGHTER" },
-      { img: "fuck it lighter.JPG", name: "F*CK IT LIGHTER" },
-      { img: "escape lighter.JPG", name: "ESCAPE LIGHTER" },
-      { img: "BAD lighter.JPG", name: "CUSTOM BAD LIGHTER" },
-      { img: "wavey lighter.JPG", name: "CUSTOM WAVEY LIGHTER" },
-      { img: "edward lighter.JPG", name: "EDWARD SCISSOR HANDS LIGHTER" },
-      { img: "80s lighter.JPG", name: "CUSTOM 80S LIGHTER" },
-
-      <!--vapes-->
-      { img: "vozol CB juice.JPG", name: "VOZOL CARIBBEAN JUICE 20K" },
-      { img: "vozol bluecherry.WEBP", name: "VOZOL BLUECHERRY 20K" },
-      { img: "vozol strawberry.WEBP", name: "VOZOL STRAWBERRY 20K" },
-      { img: "baang lichee.JPG", name: "BAANG LICHEE 2.4K" },
-      { img: "baang mixed fruit.JPG", name: "BAANG MIXED FRUIT 2.4K" },
-      { img: "baang peach ice.JPG", name: "BAANG PEACH ICE 2.4K" },
-      { img: "ivg 2400 maroon.webp", name: "IVG 2400 KIWI" },
-      { img: "ivg 2400 strawberry.JPG", name: "IVG 2400 STRAWBERRY" },
-      { img: "ivg 2400 tropical.JPG", name: "IVG 2400 TROPICAL" },
-
-   <!--our other items-->
-      { img: "burn baby burn ash tray.JPG", name: "BBB ASH TRAY" },
-      { img: "marlboro ash tray.jpeg", name: "CUSTOM MARLBORO ASH TRAY" },
-      { img: "marlboro drawer.jpeg", name: "CUSTOM MARLBORO DRAWER" },
-      { img: "only for hot person ash tray.JPG", name: "OFHP ASH TRAY" },
-      { img: "puff puff pass ash tray.JPG", name: "PPP ASH TRAY" }
-    ];
-
-    const grid = document.getElementById("product-grid");
     let cartCount = 0;
 
-    products.forEach(product => {
-      const div = document.createElement("div");
-      div.className = "product";
-      div.innerHTML = `
-        <img src="${product.img}" alt="${product.name}">
-        <div class="product-info">
-          <p>${product.name}</p>
-          <button class="add-to-cart">Add to Cart</button>
-        </div>
-      `;
-      grid.appendChild(div);
+    function createProductSection(category, productsArray) {
+      const grid = gridSections[category];
+      productsArray.forEach(product => {
+        const div = document.createElement("div");
+        div.className = "product";
+        div.innerHTML = `
+          <img src="${product.img}" alt="${product.name}">
+          <div class="product-info">
+            <p>${product.name}</p>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+        `;
+        grid.appendChild(div);
+      });
+    }
+
+    Object.keys(products).forEach(category => {
+      createProductSection(category, products[category]);
     });
 
     document.addEventListener("click", function(e) {
