@@ -5,8 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Products | GrimmDraw</title>
   <style>
-
-<link rel="stylesheet" href="style.css" />
     * {
       margin: 0;
       padding: 0;
@@ -79,6 +77,15 @@
 
     .product {
       width: 220px;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .product:hover {
+      transform: scale(0.95);
     }
 
     .product img {
@@ -86,13 +93,43 @@
       height: 250px;
       object-fit: cover;
       border-radius: 10px;
-      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease;
     }
 
-    .product-name {
-      margin-top: 10px;
-      font-size: 16px;
+    .product-info {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.75);
+      color: white;
+      padding: 10px;
+      font-size: 14px;
+      opacity: 0;
+      transform: translateY(100%);
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+
+    .product:hover .product-info {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .add-to-cart {
+      margin-top: 8px;
+      padding: 6px 12px;
+      background-color: #f8c471;
+      color: black;
+      border: none;
+      border-radius: 5px;
       font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .add-to-cart:hover {
+      background-color: #f0b849;
     }
 
     footer {
@@ -101,63 +138,6 @@
       font-size: 14px;
       text-align: center;
     }
-.product {
-  width: 220px;
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
-  border-radius: 10px;
-  transition: transform 0.3s ease;
-}
-
-.product:hover {
-  transform: scale(0.95);
-}
-
-.product img {
-  width: 100%;
-  height: 250px;
-  object-fit: cover;
-  border-radius: 10px;
-  transition: transform 0.3s ease;
-}
-
-.product-info {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(0, 0, 0, 0.75);
-  color: white;
-  padding: 10px;
-  font-size: 14px;
-  opacity: 0;
-  transform: translateY(100%);
-  transition: all 0.3s ease;
-  text-align: center;
-}
-
-.product:hover .product-info {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-  .add-to-cart {
-  margin-top: 8px;
-  padding: 6px 12px;
-  background-color: #f8c471;
-  color: black;
-  border: none;
-  border-radius: 5px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.add-to-cart:hover {
-  background-color: #f0b849;
-}
-  
   </style>
 </head>
 <body>
@@ -167,109 +147,103 @@
   </header>
 
   <nav>
-  <div style="display: flex; justify-content: center; align-items: center; flex: 1; gap: 20px; flex-wrap: wrap;">
-    <a href="index.html">Home</a>
-    <a href="product.html">Product</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-    <a href="feedback.html">Feedback</a>
-<a href="cart.html">cart</a>
-  
-  </div>
-  <div style="color: white; font-weight: bold; margin-left: auto; padding-right: 20px;">
-    🛒 Cart: <span id="cart-count">0</span>
-  </div>
-</nav>
-  
+    <div style="display: flex; justify-content: center; align-items: center; flex: 1; gap: 20px; flex-wrap: wrap;">
+      <a href="index.html">Home</a>
+      <a href="product.html">Product</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="feedback.html">Feedback</a>
+      <a href="cart.html">Cart</a>
+    </div>
+    <div style="color: white; font-weight: bold; margin-left: auto; padding-right: 20px;">
+      🛒 Cart: <span id="cart-count">0</span>
+    </div>
+  </nav>
+
   <main>
-
-    <!-- Tobacco Section -->
-    <section class="category" id="tobacco">
-      <h2>Tobacco</h2>
-      <div class="product-grid">
-        <div class="product"><img src="seven stars cig.JPG" alt=""><p class="SEVEN STARS CIGARETTES">SEVEN STARS CIGARETTES</p></div>
-        <div class="product"><img src="red apple cig.JPG" alt=""><p class="RED APPLE CIGATETTES">RED APPLE CIGARETTES</p></div>
-        <div class="product"><img src="nike cig.jpeg" alt=""><p class="CUSTOM NIKE CIGARETTES">CUSTOM NIKE CIGARETTES</p></div>
-        <div class="product"><img src="lucky strike cig.JPG" alt=""><p class="LUCKY STRIKE CIGARETTES">LUCKY STRIKE CIGARETTES</p></div>
-        <div class="product"><img src="hupman.jpg" alt=""><p class="HUPMAN CIGARETTES">HUPMAN CIGARETTES</p></div>
-        <div class="product"><img src="waltz.jpeg" alt=""><p class="WALTZ CIGARETTES">WALTS CIGARETTES</p></div>
-        <div class="product"><img src="marlboro.JPG" alt=""><p class=" VINTAGE MARLBORO CIGARETTES">VINTAGE MARLBORO CIGARETTES</p></div>
-        <div class="product"><img src="brown bear herbs.jpg" alt=""><p class="BROWN BEAR CIGARETTES">BROWN BEAR CIGARETTES</p></div>
-        <div class="product"><img src="newport mentol.jpeg" alt=""><p class="NEWPORT CIGARETTES">NEWPORT CIGARETTES</p></div>
-      </div>
+    <!-- PRODUCT CATEGORIES -->
+    <!-- We'll auto-insert all product items here using JS -->
+    <section class="category" id="all-products">
+      <h2>All Products</h2>
+      <div class="product-grid" id="product-grid"></div>
     </section>
-
-    <!-- Nicotine Pouches Section -->
-    <section class="category" id="nicotine">
-      <h2>Nicotine Pouches</h2>
-      <div class="product-grid">
-        <div class="product"><img src="zyn chill.WEBP" alt=""><p class="ZYN CHILLS">ZYN CHILLS</p></div>
-        <div class="product"><img src="zyn citrus.WEBP" alt=""><p class="ZYN CITRUS">ZYN CITRUS</p></div>
-        <div class="product"><img src="zyn wintergreen.WEBP" alt=""><p class="ZYN WINTERGREEN">ZYN WINTERGREEN</p></div>
-       
-      </div>
-    </section>
-
-    <!-- Lighters Section -->
-    <section class="category" id="lighters">
-      <h2>Lighters</h2>
-      <div class="product-grid">
-        <div class="product"><img src="taylor swift lighter.JPG" alt=""><p class="TAYLOR SWIFT CUSTOM LIGHTER">TAYLOR SWIFT CUSTOM LIGHTER</p></div>
-        <div class="product"><img src="the shining lighter.JPG" alt=""><p class="THE SHINING LIGHTER">THE SHINING LIGHTER</p></div>
-        <div class="product"><img src="rip bt lighter.JPG" alt=""><p class="RIP BETTER DAYS LIGHTER">RIP BETTER DAYS LIGHTER</p></div>
-        <div class="product"><img src="fuck it lighter.JPG" alt=""><p class="F*CK IT LIGHTER">F*CK IT LIGHTER</p></div>
-        <div class="product"><img src="escape lighter.JPG" alt=""><p class="ESCAPE LIGHTER">ESCAPE LIGHTER</p></div>
-        <div class="product"><img src="BAD lighter.JPG" alt=""><p class="CUSTOM BAD LIGHTER">CUSTOM BAD LIGHTER</p></div>
-        <div class="product"><img src="wavey lighter.JPG" alt=""><p class="CUSTOM WAVEY LIGHTER">CUSTOM WAVEY LIGHTER</p></div>
-        <div class="product"><img src="edward lighter.JPG" alt=""><p class="EDWARD SCISSOR HANDS LIGHTER">EDWARD SCICCOR HANDS LIGHTER</p></div>
-        <div class="product"><img src="80s lighter.JPG" alt=""><p class="CUSTOM 80s LIGHTER">CUSTOM 80S LIGHTER</p></div>
-      </div>
-    </section>
-
-    <!-- Vapes Section -->
-    <section class="category" id="vapes">
-      <h2>Vapes</h2>
-      <div class="product-grid">
-        <div class="product"><img src="vozol CB juice.JPG" alt=""><p class="VOZOL CARIBBEAN JUICE 20K">VOZOL CARIBBBEAN JUICE 20K</p></div>
-        <div class="product"><img src="vozol bluecherry.WEBP" alt=""><p class="VOZOL BLUECHERRY 20K">VOZOL BLUECHERRY 20K</p></div>
-        <div class="product"><img src="vozol strawberry.WEBP" alt=""><p class="VOZOL STRAWBERRY 20K">VOZOL STRAWBERRY 20K</p></div>
-        <div class="product"><img src="baang lichee.JPG" alt=""><p class="BAANG LICHEE 2.4K">BAANG LICHEE 2.4K</p></div>
-        <div class="product"><img src="baang mixed fruit.JPG" alt=""><p class="BAANG MIXED FRUIT 2.4K">BAANG MIXED FRUIT 2.4K</p></div>
-        <div class="product"><img src="baang peach ice.JPG" alt=""><p class="BAANG PEACH ICE 2.4K">BAANG PEACH ICE 2.4K</p></div>
-        <div class="product"><img src="ivg 2400 maroon.webp" alt=""><p class="IVG 2400 KIWI">IVG 2400 KIWI</p></div>
-        <div class="product"><img src="ivg 2400 strawberry.JPG" alt=""><p class="IVG 2400 STRAWBERRY">IVG 2400 STRAWBERRY</p></div>
-        <div class="product"><img src="ivg 2400 tropical.JPG" alt=""><p class="IVG 2400 TROPICAL">IVG 2400 TROPICAL</p></div>
-      </div>
-    </section>
-
-    <!-- Other Products Section -->
-    <section class="category" id="other">
-      <h2>Other Products</h2>
-      <div class="product-grid">
-        <div class="product"><img src="burn baby burn ash tray.JPG" alt=""><p class="BBB ASH TRAY">BBB ASG TRAY</p></div>
-        <div class="product"><img src="marlboro ash tray.jpeg" alt=""><p class="CUSTOM MARLBORO ASH TRAY">CUSTOM MARLBORO ASH TRAY</p></div>
-        <div class="product"><img src="marlboro drawer.jpeg" alt=""><p class="CUSTOM MARALBORO DRAWER">CUSTOM MARLBORO DRAWER</p></div>
-        <div class="product"><img src="only for hot person ash tray.JPG" alt=""><p class="OFHP ASH TRAY">OFHP ASH TRAY</p></div>
-        <div class="product"><img src="puff puff pass ash tray.JPG" alt=""><p class="PPP ASH TRAY">PPP ASH TRAY</p></div>
-        
-      </div>
-    </section>
-
   </main>
 
   <footer>
     <p>&copy; 2025 GrimmDraw | All Rights Reserved</p>
   </footer>
-<script>
-  let cartCount = 0;
 
-  document.querySelectorAll('.add-to-cart').forEach(button => {
-    button.addEventListener('click', () => {
-      cartCount++;
-      document.getElementById('cart-count').innerText = cartCount;
+  <script>
+    const products = [
+      // Tobacco
+      { img: "seven stars cig.JPG", name: "SEVEN STARS CIGARETTES" },
+      { img: "red apple cig.JPG", name: "RED APPLE CIGARETTES" },
+      { img: "nike cig.jpeg", name: "CUSTOM NIKE CIGARETTES" },
+      { img: "lucky strike cig.JPG", name: "LUCKY STRIKE CIGARETTES" },
+      { img: "hupman.jpg", name: "HUPMAN CIGARETTES" },
+      { img: "waltz.jpeg", name: "WALTZ CIGARETTES" },
+      { img: "marlboro.JPG", name: "VINTAGE MARLBORO CIGARETTES" },
+      { img: "brown bear herbs.jpg", name: "BROWN BEAR CIGARETTES" },
+      { img: "newport mentol.jpeg", name: "NEWPORT CIGARETTES" },
+
+      // Nicotine Pouches
+      { img: "zyn chill.WEBP", name: "ZYN CHILLS" },
+      { img: "zyn citrus.WEBP", name: "ZYN CITRUS" },
+      { img: "zyn wintergreen.WEBP", name: "ZYN WINTERGREEN" },
+
+      // Lighters
+      { img: "taylor swift lighter.JPG", name: "TAYLOR SWIFT CUSTOM LIGHTER" },
+      { img: "the shining lighter.JPG", name: "THE SHINING LIGHTER" },
+      { img: "rip bt lighter.JPG", name: "RIP BETTER DAYS LIGHTER" },
+      { img: "fuck it lighter.JPG", name: "F*CK IT LIGHTER" },
+      { img: "escape lighter.JPG", name: "ESCAPE LIGHTER" },
+      { img: "BAD lighter.JPG", name: "CUSTOM BAD LIGHTER" },
+      { img: "wavey lighter.JPG", name: "CUSTOM WAVEY LIGHTER" },
+      { img: "edward lighter.JPG", name: "EDWARD SCISSOR HANDS LIGHTER" },
+      { img: "80s lighter.JPG", name: "CUSTOM 80S LIGHTER" },
+
+      // Vapes
+      { img: "vozol CB juice.JPG", name: "VOZOL CARIBBEAN JUICE 20K" },
+      { img: "vozol bluecherry.WEBP", name: "VOZOL BLUECHERRY 20K" },
+      { img: "vozol strawberry.WEBP", name: "VOZOL STRAWBERRY 20K" },
+      { img: "baang lichee.JPG", name: "BAANG LICHEE 2.4K" },
+      { img: "baang mixed fruit.JPG", name: "BAANG MIXED FRUIT 2.4K" },
+      { img: "baang peach ice.JPG", name: "BAANG PEACH ICE 2.4K" },
+      { img: "ivg 2400 maroon.webp", name: "IVG 2400 KIWI" },
+      { img: "ivg 2400 strawberry.JPG", name: "IVG 2400 STRAWBERRY" },
+      { img: "ivg 2400 tropical.JPG", name: "IVG 2400 TROPICAL" },
+
+      // Other
+      { img: "burn baby burn ash tray.JPG", name: "BBB ASH TRAY" },
+      { img: "marlboro ash tray.jpeg", name: "CUSTOM MARLBORO ASH TRAY" },
+      { img: "marlboro drawer.jpeg", name: "CUSTOM MARLBORO DRAWER" },
+      { img: "only for hot person ash tray.JPG", name: "OFHP ASH TRAY" },
+      { img: "puff puff pass ash tray.JPG", name: "PPP ASH TRAY" }
+    ];
+
+    const grid = document.getElementById("product-grid");
+    let cartCount = 0;
+
+    products.forEach(product => {
+      const div = document.createElement("div");
+      div.className = "product";
+      div.innerHTML = `
+        <img src="${product.img}" alt="${product.name}">
+        <div class="product-info">
+          <p>${product.name}</p>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      `;
+      grid.appendChild(div);
     });
-  });
-</script>
-  
+
+    document.addEventListener("click", function(e) {
+      if (e.target.classList.contains("add-to-cart")) {
+        cartCount++;
+        document.getElementById("cart-count").innerText = cartCount;
+      }
+    });
+  </script>
+
 </body>
 </html>
