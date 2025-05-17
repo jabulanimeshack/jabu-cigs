@@ -4,10 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>About Us | GrimmDraw</title>
-
-  <!-- Correct link to external stylesheet -->
-  <link rel="stylesheet" href="style.css" />
-
   <style>
     * {
       margin: 0;
@@ -22,7 +18,7 @@
       background: url('cig wallpaper.jpg') no-repeat center center fixed;
       background-size: cover;
       scroll-behavior: smooth;
-      overflow-x: hidden; 
+      overflow-x: hidden;
     }
 
     .bg-fade {
@@ -51,12 +47,48 @@
       text-align: center;
     }
 
+    nav {
+      background: black;
+      padding: 15px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex: 1;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .nav-links a:hover {
+      text-decoration: underline;
+      color: #f8c471;
+    }
+
+    .nav-right {
+      color: white;
+      font-weight: bold;
+      margin-left: auto;
+      padding-right: 20px;
+    }
+
     .spacer {
       height: 40px;
     }
 
     .hero-section, .scroll-section {
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -86,9 +118,8 @@
       padding: 10px;
       font-size: 14px;
       text-align: center;
+      position: relative;
       width: 100%;
-      margin-top: auto;
-      z-index: 1;
     }
   </style>
 </head>
@@ -101,7 +132,6 @@
     <h1>About GrimmDraw</h1>
   </header>
 
-  <!-- Updated NAV -->
   <nav>
     <div class="nav-links">
       <a href="index.html">Home</a>
@@ -168,16 +198,13 @@
       const triggerPoint = ourStory.offsetTop - window.innerHeight / 2;
 
       if (scrollY > triggerPoint) {
-        // Scroll down: show second section, hide first
         heroSection.classList.add("section-hidden");
         ourStory.classList.remove("section-hidden");
       } else {
-        // Scroll up: show first section, hide second
         heroSection.classList.remove("section-hidden");
         ourStory.classList.add("section-hidden");
       }
 
-      // Background fade effect
       const scrollTrigger = window.innerHeight * 0.7;
       fadeBg.classList.toggle("active", scrollY > scrollTrigger);
     });
