@@ -1,15 +1,15 @@
 
-/* style.css */
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-html, body {
+body {
   font-family: Arial, sans-serif;
   color: white;
+  background: black;
+  overflow-x: hidden;
 }
 
 header {
@@ -18,39 +18,80 @@ header {
   font-size: 24px;
   font-weight: bold;
   text-align: center;
-  z-index: 1;
+  position: relative;
+  z-index: 2;
 }
 
 nav {
-  background: rgba(0, 0, 0, 0.6);
-  padding: 15px 0; /* top/bottom only */
+  background: black;
+  padding: 15px 20px;
+  text-align: center;
+  z-index: 2;
+  position: relative;
+}
+
+.nav-links {
   display: flex;
   justify-content: center;
+  gap: 25px;
   flex-wrap: wrap;
-  width: 100%;
-  margin: 0;
-  z-index: 1;
-  backdrop-filter: blur(5px);
 }
-nav a {
+
+.nav-links a {
   color: white;
   text-decoration: none;
-  margin: 0 20px;
   font-size: 18px;
   font-weight: bold;
 }
 
-nav a:hover {
+.nav-links a:hover {
   text-decoration: underline;
   color: #f8c471;
 }
 
-footer {
-  background: rgba(0, 0, 0, 0.8);
-  padding: 10px 0; /* top/bottom only */
-  font-size: 14px;
-  text-align: center;
-  width: 100%;
-  margin: 0;
+.nav-right {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
-    </style>
+
+.search-input {
+  padding: 8px 14px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: none;
+}
+
+.login-link, .signup-link {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 8px 16px;
+  background-color: #444;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.login-link:hover, .signup-link:hover {
+  background-color: #f8c471;
+  color: black;
+}
+
+@media (max-width: 768px) {
+  .nav-links, .nav-right {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .search-input {
+    width: 100%;
+  }
+
+  .login-link, .signup-link {
+    width: 100%;
+    text-align: center;
+  }
+}
