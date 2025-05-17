@@ -5,8 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>About Us | GrimmDraw</title>
 
+  <!-- Correct link to external stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+
   <style>
-    <link rel="stylesheet" href="style.css" />
     * {
       margin: 0;
       padding: 0;
@@ -23,7 +25,6 @@
       overflow-x: hidden; 
     }
 
-    /* Background overlay for fade effect */
     .bg-fade {
       position: fixed;
       top: 0;
@@ -42,12 +43,7 @@
       opacity: 1;
     }
 
-    body {
-      display: flex;
-      flex-direction: column;
-    }
-
-     header {
+    header {
       background: rgba(0, 0, 0, 0.7);
       padding: 20px;
       font-size: 24px;
@@ -55,31 +51,11 @@
       text-align: center;
     }
 
-    nav {
-      background: black;
-      padding: 15px;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 20px;
-      font-size: 18px;
-      font-weight: bold;
-    }
-
-    nav a:hover {
-      text-decoration: underline;
-      color: #f8c471;
-    }
     .spacer {
       height: 40px;
     }
 
-    .hero-section {
+    .hero-section, .scroll-section {
       height: 100vh;
       display: flex;
       flex-direction: column;
@@ -91,25 +67,14 @@
       max-width: 900px;
       border-radius: 10px;
       box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
-      z-index: 1;
-    }
-
-    .scroll-section {
-      padding: 60px 20px;
-      max-width: 900px;
-      margin: 0 auto 60px auto;
-      background: rgba(0, 0, 0, 0.6);
-      border-radius: 10px;
-      box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
-      z-index: 1;
-      opacity: 0; /* Hide initially */
-      transform: translateY(50px); /* Initial position off-screen */
-      transition: opacity 1s ease-out, transform 1s ease-out;
-    }
-
-    .scroll-section.visible {
       opacity: 1;
-      transform: translateY(0); /* Move to normal position */
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .section-hidden {
+      opacity: 0;
+      transform: translateY(50px);
+      pointer-events: none;
     }
 
     .scroll-section h2 {
@@ -136,18 +101,24 @@
     <h1>About GrimmDraw</h1>
   </header>
 
+  <!-- Updated NAV -->
   <nav>
-    <a href="index.html">Home</a>
-    <a href="product.html">Product</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-    <a href="feedback.html">Feedback</a>
-    <a href="cart.html">Cart</a>  
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="product.html">Product</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="feedback.html">Feedback</a>
+      <a href="cart.html">Cart</a>
+    </div>
+    <div class="nav-right">
+      🛒 Cart: <span id="cart-count">0</span>
+    </div>
   </nav>
 
   <div class="spacer"></div>
 
-  <section class="hero-section">
+  <section class="hero-section" id="heroSection">
     <h2>Premium Quality, Timeless Tradition</h2>
     <p>
       At <strong>GrimmDraw</strong>, we redefine indulgence with a curated selection of premium nicotine experiences.
@@ -162,10 +133,7 @@
     </p>
   </section>
 
-  <div class="spacer" style="height: 80px;"></div>
-
-  <!-- Initially hidden section -->
-  <section class="scroll-section" id="our-story">
+  <section class="scroll-section section-hidden" id="ourStory">
     <h2>Our Story</h2>
     <p>
       GrimmDraw was born out of a desire to challenge the norms of traditional smoking culture. What began as a niche
@@ -192,25 +160,26 @@
 
   <script>
     const fadeBg = document.getElementById("fadeBg");
-    const ourStorySection = document.getElementById("our-story");
+    const heroSection = document.getElementById("heroSection");
+    const ourStory = document.getElementById("ourStory");
 
     window.addEventListener("scroll", () => {
       const scrollY = window.scrollY;
-      const triggerPoint = ourStorySection.offsetTop - window.innerHeight + 100; // When you scroll 100px before the section
+      const triggerPoint = ourStory.offsetTop - window.innerHeight / 2;
 
       if (scrollY > triggerPoint) {
-        ourStorySection.classList.add("visible");
+        // Scroll down: show second section, hide first
+        heroSection.classList.add("section-hidden");
+        ourStory.classList.remove("section-hidden");
       } else {
-        ourStorySection.classList.remove("visible");
+        // Scroll up: show first section, hide second
+        heroSection.classList.remove("section-hidden");
+        ourStory.classList.add("section-hidden");
       }
 
       // Background fade effect
       const scrollTrigger = window.innerHeight * 0.7;
-      if (scrollY > scrollTrigger) {
-        fadeBg.classList.add("active");
-      } else {
-        fadeBg.classList.remove("active");
-      }
+      fadeBg.classList.toggle("active", scrollY > scrollTrigger);
     });
   </script>
 </body>
