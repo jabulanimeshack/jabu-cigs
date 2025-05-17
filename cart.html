@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Cart | GrimmDraw</title>
 
-  <link rel="stylesheet" href="style.css" />
+  
   <style>
     * {
       margin: 0;
@@ -184,20 +184,15 @@
   </nav>
 
   <main class="cart-container">
-    <div class="cart-title">Your Shopping Cart</div>
+<div class="cart-title">Your Shopping Cart</div>
+<div id="cart-items"></div>
+<div class="cart-summary">
+  Total: $<span id="total-price">0.00</span>
+  <br>
+  <button class="checkout-btn">Proceed to Checkout</button>
+</div>    <div class="cart-title">Your Shopping Cart</div>
 
-    <!-- Example Cart Item -->
-    <div class="cart-item">
-      <div class="item-details">
-        <img src="https://via.placeholder.com/60" alt="Product Image">
-        <div class="item-info">
-          <span class="item-name">Product Name</span>
-          <span class="item-desc">Short description</span>
-        </div>
-      </div>
-      <div class="item-actions">
-        <input type="number" value="1" min="1">
-        <span>$12.99</span>
+    
         <button>Remove</button>
       </div>
     </div>
@@ -210,6 +205,62 @@
       <button class="checkout-btn">Proceed to Checkout</button>
     </div>
   </main>
+<script>
+  function loadCart() {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const container = document.getElementById("cart-items");
+    const totalDisplay = document.getElementById("total-price");
+    let total = 0;
 
+    cart.forEach((item, index) => {
+      const itemTotal = item.quantity * parseFloat(item.price);
+      total += itemTotal;
+
+      const div = document.createElement("div");
+      div.className = "cart-item";
+      div.innerHTML = `
+        <div class="item-details">
+          <img src="${item.img}" alt="${item.name}">
+          <div class="item-info">
+            <span class="item-name">${item.name}</span>
+            <span class="item-desc">Quantity: ${item.quantity}</span>
+          </div>
+        </div>
+        <div class="item-actions">
+          <input type="number" value="${item.quantity}" min="1" data-index="${index}">
+          <span>$${itemTotal.toFixed(2)}</span>
+          <button data-index="${index}">Remove</button>
+        </div>
+      `;
+      container.appendChild(div);
+    });
+
+    totalDisplay.innerText = total.toFixed(2);
+    document.getElementById("cart-count").innerText = cart.reduce((sum, item) => sum + item.quantity, 0);
+  }
+
+  // Handle quantity changes and removal
+  document.addEventListener("input", function(e) {
+    if (e.target.type === "number") {
+      const index = e.target.getAttribute("data-index");
+      const cart = JSON.parse(localStorage.getItem("cart"));
+      cart[index].quantity = parseInt(e.target.value);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      location.reload(); // Simple reload to refresh totals
+    }
+  });
+
+  document.addEventListener("click", function(e) {
+    if (e.target.tagName === "BUTTON" && e.target.hasAttribute("data-index")) {
+      const index = e.target.getAttribute("data-index");
+      const cart = JSON.parse(localStorage.getItem("cart"));
+      cart.splice(index, 1);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      location.reload();
+    }
+  });
+
+  window.addEventListener("DOMContentLoaded", loadCart);
+</script>
 </body>
 </html>
