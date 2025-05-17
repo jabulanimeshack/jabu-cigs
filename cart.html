@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Cart | GrimmDraw</title>
 
-  
   <style>
     * {
       margin: 0;
@@ -18,6 +17,9 @@
       color: white;
       background: url('shopping trolly.jpg') no-repeat center center fixed;
       background-size: cover;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
     header {
@@ -71,6 +73,7 @@
       padding: 30px;
       border-radius: 10px;
       box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+      flex: 1;
     }
 
     .cart-title {
@@ -163,6 +166,25 @@
     .checkout-btn:hover {
       background: #e0ac57;
     }
+
+    .checkout-message {
+      color: #90ee90;
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 15px;
+      text-align: center;
+      display: none;
+    }
+
+    /* Sticky footer */
+    footer {
+      background: black;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      font-size: 16px;
+      margin-top: auto;
+    }
   </style>
 </head>
 <body>
@@ -184,83 +206,99 @@
   </nav>
 
   <main class="cart-container">
-<div class="cart-title">Your Shopping Cart</div>
-<div id="cart-items"></div>
-<div class="cart-summary">
-  Total: $<span id="total-price">0.00</span>
-  <br>
-  <button class="checkout-btn">Proceed to Checkout</button>
-</div>    <div class="cart-title">Your Shopping Cart</div>
-
-    
-        <button>Remove</button>
-      </div>
-    </div>
-
-    <!-- Additional cart-item blocks go here -->
-
+    <div class="cart-title">Your Shopping Cart</div>
+    <div id="cart-items"></div>
     <div class="cart-summary">
-      Total: $12.99
+      Total: $<span id="total-price">0.00</span>
       <br>
-      <button class="checkout-btn">Proceed to Checkout</button>
+      <button class="checkout-btn" onclick="checkout()">Proceed to Checkout</button>
+      <div class="checkout-message" id="checkout-message">✅ Thank you! Your order has been placed.</div>
     </div>
   </main>
-<script>
-  function loadCart() {
-    const cart = JSON.parse(localStorage.getItem("cart")) || [];
-    const container = document.getElementById("cart-items");
-    const totalDisplay = document.getElementById("total-price");
-    let total = 0;
 
-    cart.forEach((item, index) => {
-      const itemTotal = item.quantity * parseFloat(item.price);
-      total += itemTotal;
+  <footer>
+    &copy; 2025 GrimmDraw. All rights reserved.
+  </footer>
 
-      const div = document.createElement("div");
-      div.className = "cart-item";
-      div.innerHTML = `
-        <div class="item-details">
-          <img src="${item.img}" alt="${item.name}">
-          <div class="item-info">
-            <span class="item-name">${item.name}</span>
-            <span class="item-desc">Quantity: ${item.quantity}</span>
+  <script>
+    function loadCart() {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const container = document.getElementById("cart-items");
+      const totalDisplay = document.getElementById("total-price");
+      let total = 0;
+
+      cart.forEach((item, index) => {
+        const itemTotal = item.quantity * parseFloat(item.price);
+        total += itemTotal;
+
+        const div = document.createElement("div");
+        div.className = "cart-item";
+        div.innerHTML = `
+          <div class="item-details">
+            <img src="${item.img}" alt="${item.name}">
+            <div class="item-info">
+              <span class="item-name">${item.name}</span>
+              <span class="item-desc">Quantity: ${item.quantity}</span>
+            </div>
           </div>
-        </div>
-        <div class="item-actions">
-          <input type="number" value="${item.quantity}" min="1" data-index="${index}">
-          <span>$${itemTotal.toFixed(2)}</span>
-          <button data-index="${index}">Remove</button>
-        </div>
-      `;
-      container.appendChild(div);
+          <div class="item-actions">
+            <input type="number" value="${item.quantity}" min="1" data-index="${index}">
+            <span>$${itemTotal.toFixed(2)}</span>
+            <button data-index="${index}">Remove</button>
+          </div>
+        `;
+        container.appendChild(div);
+      });
+
+      totalDisplay.innerText = total.toFixed(2);
+      document.getElementById("cart-count").innerText = cart.reduce((sum, item) => sum + item.quantity, 0);
+    }
+
+    function checkout() {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      if (cart.length === 0) {
+        alert("Your cart is empty!");
+        return;
+      }
+
+      // Show success message
+      document.getElementById("checkout-message").style.display = "block";
+
+      // Optionally clear the cart
+      localStorage.removeItem("cart");
+
+      // Reset cart count
+      document.getElementById("cart-count").innerText = "0";
+
+      // Clear displayed items after a short delay
+      setTimeout(() => {
+        document.getElementById("cart-items").innerHTML = "";
+        document.getElementById("total-price").innerText = "0.00";
+      }, 1000);
+    }
+
+    document.addEventListener("input", function(e) {
+      if (e.target.type === "number") {
+        const index = e.target.getAttribute("data-index");
+        const cart = JSON.parse(localStorage.getItem("cart"));
+        cart[index].quantity = parseInt(e.target.value);
+        localStorage.setItem("cart", JSON.stringify(cart));
+        location.reload();
+      }
     });
 
-    totalDisplay.innerText = total.toFixed(2);
-    document.getElementById("cart-count").innerText = cart.reduce((sum, item) => sum + item.quantity, 0);
-  }
+    document.addEventListener("click", function(e) {
+      if (e.target.tagName === "BUTTON" && e.target.hasAttribute("data-index")) {
+        const index = e.target.getAttribute("data-index");
+        const cart = JSON.parse(localStorage.getItem("cart"));
+        cart.splice(index, 1);
+        localStorage.setItem("cart", JSON.stringify(cart));
+        location.reload();
+      }
+    });
 
-  // Handle quantity changes and removal
-  document.addEventListener("input", function(e) {
-    if (e.target.type === "number") {
-      const index = e.target.getAttribute("data-index");
-      const cart = JSON.parse(localStorage.getItem("cart"));
-      cart[index].quantity = parseInt(e.target.value);
-      localStorage.setItem("cart", JSON.stringify(cart));
-      location.reload(); // Simple reload to refresh totals
-    }
-  });
+    window.addEventListener("DOMContentLoaded", loadCart);
+  </script>
 
-  document.addEventListener("click", function(e) {
-    if (e.target.tagName === "BUTTON" && e.target.hasAttribute("data-index")) {
-      const index = e.target.getAttribute("data-index");
-      const cart = JSON.parse(localStorage.getItem("cart"));
-      cart.splice(index, 1);
-      localStorage.setItem("cart", JSON.stringify(cart));
-      location.reload();
-    }
-  });
-
-  window.addEventListener("DOMContentLoaded", loadCart);
-</script>
 </body>
 </html>
