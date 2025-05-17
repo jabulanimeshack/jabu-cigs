@@ -16,6 +16,15 @@
       height: 100%;
       font-family: Arial, sans-serif;
       color: white;
+      background-image: url('laying down smoking.jpg'); 
+      background-size: cover;
+      background-position: center;
+    }
+
+    body {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
     }
 
     header {
@@ -24,38 +33,52 @@
       font-size: 24px;
       font-weight: bold;
       text-align: center;
-      z-index: 1;
+      flex-shrink: 0;
     }
 
     nav {
       background: black;
       padding: 15px;
       display: flex;
-      justify-content: center;
       flex-wrap: wrap;
-      z-index: 1;
+      justify-content: center;
+      align-items: center;
+      flex-shrink: 0;
     }
 
-    nav a {
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      flex: 1;
+    }
+
+    .nav-links a {
       color: white;
       text-decoration: none;
-      margin: 0 20px;
       font-size: 18px;
       font-weight: bold;
     }
 
-    nav a:hover {
+    .nav-links a:hover {
       text-decoration: underline;
       color: #f8c471;
     }
 
-    body {
-      background-image: url('laying down smoking.jpg'); 
-      background-size: cover;
-      background-position: center;
-      font-family: Arial, sans-serif;
+    .nav-right {
       color: white;
-      padding: 20px;
+      font-weight: bold;
+      margin-left: auto;
+      padding-right: 20px;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     form {
@@ -63,7 +86,7 @@
       padding: 30px;
       border-radius: 10px;
       max-width: 400px;
-      margin: 0 auto;
+      width: 100%;
     }
 
     input[type="text"] {
@@ -104,8 +127,7 @@
       font-size: 14px;
       text-align: center;
       width: 100%;
-      margin-top: auto;
-      z-index: 1;
+      flex-shrink: 0;
     }
   </style>
 </head>
@@ -116,12 +138,17 @@
   </header>
 
   <nav>
-    <a href="index.html">Home</a>
-    <a href="product.html">Product</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-    <a href="feedback.html">Feedback</a>
-    <a href="cart.html">Cart</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="product.html">Product</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="feedback.html">Feedback</a>
+      <a href="cart.html">Cart</a>
+    </div>
+    <div class="nav-right">
+      🛒 Cart: <span id="cart-count">0</span>
+    </div>
   </nav>
 
   <main>
@@ -154,7 +181,6 @@
       <input type="checkbox"><br>
 
       <br><br>
-
       <input type="submit" value="Submit">
     </form>
   </main>
@@ -162,6 +188,5 @@
   <footer>
     <p>&copy; 2025 GrimmDraw | All Rights Reserved</p>
   </footer>
-
 </body>
 </html>
