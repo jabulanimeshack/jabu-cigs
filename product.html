@@ -197,6 +197,40 @@
   </footer>
 
   <script>
+
+document.addEventListener("click", function(e) {
+  if (e.target.classList.contains("add-to-cart")) {
+    const productCard = e.target.closest(".product");
+    const img = productCard.querySelector("img").src;
+    const name = productCard.querySelector("p").innerText;
+    const price = (Math.random() * 20 + 5).toFixed(2); // You can assign real prices if available
+
+    const cartItem = { img, name, price, quantity: 1 };
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    const existingItem = cart.find(item => item.name === name);
+    if (existingItem) {
+      existingItem.quantity++;
+    } else {
+      cart.push(cartItem);
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    // Update cart count
+    const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+    document.getElementById("cart-count").innerText = totalCount;
+  }
+});
+
+// On page load, update cart count
+window.addEventListener("DOMContentLoaded", () => {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+  document.getElementById("cart-count").innerText = totalCount;
+});
+
     const products = {
       tobacco: [
         { img: "seven stars cig.JPG", name: "SEVEN STARS CIGARETTES" },
