@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Cart | GrimmDraw</title>
 
-  <link rel="stylesheet" href="style.css" />  <style>
-    
-     {
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
@@ -16,7 +16,6 @@
     html, body {
       font-family: Arial, sans-serif;
       color: white;
-      /* 🔽 Set your wallpaper background image here */
       background: url('shopping trolly.jpg') no-repeat center center fixed;
       background-size: cover;
     }
@@ -37,20 +36,34 @@
       flex-wrap: wrap;
     }
 
-    nav a {
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex: 1;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
       color: white;
       text-decoration: none;
-      margin: 0 20px;
       font-size: 18px;
       font-weight: bold;
     }
 
-    nav a:hover {
+    .nav-links a:hover {
       text-decoration: underline;
       color: #f8c471;
     }
 
-    /* Cart Styles */
+    .nav-right {
+      color: white;
+      font-weight: bold;
+      margin-left: auto;
+      padding-right: 20px;
+    }
+
     .cart-container {
       max-width: 900px;
       margin: 50px auto;
@@ -157,12 +170,18 @@
   <header>GrimmDraw</header>
 
   <nav>
-    <a href="index.html">Home</a>
-    <a href="product.html">Product</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-    <a href="feedback.html">Feedback</a>  
-<a href="cart.html">cart</a> </nav>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="product.html">Product</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="feedback.html">Feedback</a>
+      <a href="cart.html">Cart</a>
+    </div>
+    <div class="nav-right">
+      🛒 Cart: <span id="cart-count">0</span>
+    </div>
+  </nav>
 
   <main class="cart-container">
     <div class="cart-title">Your Shopping Cart</div>
