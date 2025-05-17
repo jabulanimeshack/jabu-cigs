@@ -22,9 +22,9 @@
     }
 
     body {
-      padding: 20px;
       display: flex;
       flex-direction: column;
+      min-height: 100vh;
     }
 
     header {
@@ -34,16 +34,16 @@
       font-weight: bold;
       text-align: center;
       flex-shrink: 0;
+      width: 100%;
     }
 
     nav {
       background: black;
       padding: 15px;
       display: flex;
-      flex-wrap: wrap;
       justify-content: center;
-      align-items: center;
-      flex-shrink: 0;
+      flex-wrap: wrap;
+      width: 100%;
     }
 
     .nav-links {
@@ -79,6 +79,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      padding: 20px;
     }
 
     form {
@@ -87,6 +88,7 @@
       border-radius: 10px;
       max-width: 400px;
       width: 100%;
+      position: relative;
     }
 
     input[type="text"] {
@@ -121,6 +123,14 @@
       margin-right: 10px;
     }
 
+    .success-message {
+      color: #4CAF50;
+      font-weight: bold;
+      margin-top: 15px;
+      text-align: center;
+      display: none;
+    }
+
     footer {
       background: rgba(0, 0, 0, 0.8);
       padding: 10px;
@@ -152,18 +162,18 @@
   </nav>
 
   <main>
-    <form>
+    <form id="feedbackForm">
       <h1>Feedback Form</h1>
       First Name: <br> 
-      <input type="text" name="firstname" value="Mickey"><br>
+      <input type="text" name="firstname" id="firstname" required><br>
       Last Name: <br> 
-      <input type="text" name="lastname" value="Mouse"><br><br>
+      <input type="text" name="lastname" id="lastname" required><br><br>
 
       Email: <br> 
-      <input type="text" name="email"><br><br>
+      <input type="text" name="email" id="email" required><br><br>
 
       Telephone: <br> 
-      <input type="text" name="telephone" size="8"><br><br>
+      <input type="text" name="telephone" id="telephone"><br><br>
 
       <label for="accounts">Account Executive: </label>
       <input type="checkbox" id="accounts" name="accounts"><br>
@@ -178,15 +188,32 @@
       <input type="checkbox"><br>
 
       VP Sales: 
-      <input type="checkbox"><br>
+      <input type="checkbox"><br><br>
 
-      <br><br>
       <input type="submit" value="Submit">
+      <p class="success-message" id="successMessage">Thank you for your feedback!</p>
     </form>
   </main>
 
   <footer>
     <p>&copy; 2025 GrimmDraw | All Rights Reserved</p>
   </footer>
+
+  <script>
+    document.getElementById("feedbackForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const first = document.getElementById("firstname").value.trim();
+      const last = document.getElementById("lastname").value.trim();
+      const email = document.getElementById("email").value.trim();
+
+      if (first && last && email) {
+        document.getElementById("successMessage").style.display = "block";
+        this.reset();
+      } else {
+        alert("Please fill out all required fields.");
+      }
+    });
+  </script>
 </body>
 </html>
