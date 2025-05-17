@@ -1,97 +1,70 @@
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: Arial, sans-serif;
-  color: white;
-  background: black;
-  overflow-x: hidden;
-}
-
-header {
-  background: rgba(0, 0, 0, 0.7);
-  padding: 20px;
-  font-size: 24px;
-  font-weight: bold;
-  text-align: center;
-  position: relative;
-  z-index: 2;
-}
-
 nav {
   background: black;
-  padding: 15px 20px;
-  text-align: center;
-  z-index: 2;
-  position: relative;
-}
-
-.nav-links {
+  padding: 15px;
   display: flex;
   justify-content: center;
-  gap: 25px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+{
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
   flex-wrap: wrap;
 }
 
-.nav-links a {
+ {
   color: white;
   text-decoration: none;
   font-size: 18px;
   font-weight: bold;
+  padding: 6px 12px;
+  transition: color 0.3s ease, background-color 0.3s ease;
 }
 
-.nav-links a:hover {
-  text-decoration: underline;
+:hover {
   color: #f8c471;
+  text-decoration: underline;
 }
 
-.nav-right {
-  margin-top: 10px;
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.search-input {
-  padding: 8px 14px;
-  font-size: 16px;
-  border-radius: 5px;
-  border: none;
-}
-
-.login-link, .signup-link {
+ {
   color: white;
-  text-decoration: none;
   font-weight: bold;
   padding: 8px 16px;
-  background-color: #444;
-  border-radius: 6px;
-  transition: background-color 0.3s ease;
+  white-space: nowrap;
 }
 
-.login-link:hover, .signup-link:hover {
-  background-color: #f8c471;
-  color: black;
-}
 
 @media (max-width: 768px) {
-  .nav-links, .nav-right {
+  nav {
     flex-direction: column;
-    align-items: center;
+  }
+
+  .nav-links {
+    flex-direction: column;
     gap: 10px;
   }
 
-  .search-input {
-    width: 100%;
-  }
-
-  .login-link, .signup-link {
-    width: 100%;
+  .nav-right {
+    margin-top: 10px;
     text-align: center;
   }
 }
+
+<nav>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="product.html">Product</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="feedback.html">Feedback</a>
+    <a href="cart.html">Cart</a>
+  </div>
+  <div class="nav-right">
+    🛒 Cart: <span id="cart-count">0</span>
+  </div>
+</nav>
