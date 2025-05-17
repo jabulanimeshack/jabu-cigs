@@ -13,12 +13,34 @@
 
     html, body {
       height: 100%;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
       font-family: Arial, sans-serif;
       color: white;
       background: url('cig wallpaper.jpg') no-repeat center center fixed;
       background-size: cover;
       scroll-behavior: smooth;
       overflow-x: hidden;
+    }
+
+    body > header,
+    body > nav,
+    body > footer {
+      flex-shrink: 0;
+    }
+
+    .main-content {
+      flex: 1 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px;
+      width: 100%;
     }
 
     .bg-fade {
@@ -88,25 +110,28 @@
     }
 
     .hero-section, .scroll-section {
-      min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       background: rgba(0, 0, 0, 0.6);
       padding: 40px;
-      margin: 0 auto;
-      max-width: 900px;
+      margin: 0 auto 40px auto;
       border-radius: 10px;
       box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
       opacity: 1;
       transition: opacity 0.8s ease, transform 0.8s ease;
+      width: 100%;
+      max-width: 900px;
+      min-height: 100vh;
+      box-sizing: border-box;
     }
 
-    .section-hidden {
+    .scroll-section.section-hidden {
       opacity: 0;
       transform: translateY(50px);
       pointer-events: none;
+      min-height: auto;
     }
 
     .scroll-section h2 {
@@ -118,8 +143,8 @@
       padding: 10px;
       font-size: 14px;
       text-align: center;
-      position: relative;
       width: 100%;
+      flex-shrink: 0;
     }
   </style>
 </head>
@@ -146,43 +171,45 @@
     </div>
   </nav>
 
-  <div class="spacer"></div>
+  <div class="main-content">
+    <div class="spacer"></div>
 
-  <section class="hero-section" id="heroSection">
-    <h2>Premium Quality, Timeless Tradition</h2>
-    <p>
-      At <strong>GrimmDraw</strong>, we redefine indulgence with a curated selection of premium nicotine experiences.
-      From rich, hand-crafted cigarettes to cutting-edge vape innovations and refined nicotine blends, our offerings are
-      designed for those who appreciate sophistication with an edge.
-    </p>
-    <p>
-      Each product embodies bold character, meticulous quality, and a taste for the unapologetically distinct.
-    </p>
-    <p>
-      Welcome to <strong>GrimmDraw</strong> – where sophistication meets indulgence.
-    </p>
-  </section>
+    <section class="hero-section" id="heroSection">
+      <h2>Premium Quality, Timeless Tradition</h2>
+      <p>
+        At <strong>GrimmDraw</strong>, we redefine indulgence with a curated selection of premium nicotine experiences.
+        From rich, hand-crafted cigarettes to cutting-edge vape innovations and refined nicotine blends, our offerings are
+        designed for those who appreciate sophistication with an edge.
+      </p>
+      <p>
+        Each product embodies bold character, meticulous quality, and a taste for the unapologetically distinct.
+      </p>
+      <p>
+        Welcome to <strong>GrimmDraw</strong> – where sophistication meets indulgence.
+      </p>
+    </section>
 
-  <section class="scroll-section section-hidden" id="ourStory">
-    <h2>Our Story</h2>
-    <p>
-      GrimmDraw was born out of a desire to challenge the norms of traditional smoking culture. What began as a niche
-      collection of boutique cigarette blends quickly evolved into a bold, full-spectrum lifestyle brand. Today, we
-      serve connoisseurs across the globe with products that honor both history and progress.
-    </p>
+    <section class="scroll-section section-hidden" id="ourStory">
+      <h2>Our Story</h2>
+      <p>
+        GrimmDraw was born out of a desire to challenge the norms of traditional smoking culture. What began as a niche
+        collection of boutique cigarette blends quickly evolved into a bold, full-spectrum lifestyle brand. Today, we
+        serve connoisseurs across the globe with products that honor both history and progress.
+      </p>
 
-    <h2>Our Mission</h2>
-    <p>
-      To provide premium, innovative, and stylish nicotine experiences while maintaining a strong commitment to quality,
-      satisfaction, and creative expression.
-    </p>
+      <h2>Our Mission</h2>
+      <p>
+        To provide premium, innovative, and stylish nicotine experiences while maintaining a strong commitment to quality,
+        satisfaction, and creative expression.
+      </p>
 
-    <h2>Our Vision</h2>
-    <p>
-      To be the leading name in alternative nicotine culture—celebrated for originality, quality, and a bold voice in a
-      crowded market.
-    </p>
-  </section>
+      <h2>Our Vision</h2>
+      <p>
+        To be the leading name in alternative nicotine culture—celebrated for originality, quality, and a bold voice in a
+        crowded market.
+      </p>
+    </section>
+  </div>
 
   <footer>
     <p>&copy; 2025 GrimmDraw | All Rights Reserved</p>
