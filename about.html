@@ -1,16 +1,14 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>About Us | GrimmDraw</title>
   <style>
+    /* Reset and base styles */
     * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+      margin: 0; padding: 0; box-sizing: border-box;
     }
-
     html, body {
       height: 100%;
       font-family: Arial, sans-serif;
@@ -20,57 +18,41 @@
       background: none;
     }
 
-    .bg-original, .bg-smoke {
+    /* Background wallpapers fixed */
+    .bg-original, .bg-scroll {
       position: fixed;
       top: 0; left: 0;
-      width: 100%;
-      height: 100%;
+      width: 100%; height: 100%;
       background-position: center center;
       background-repeat: no-repeat;
       background-size: cover;
-      transition: opacity 1.2s ease-in-out;
-      will-change: opacity;
+      transition: opacity 1s ease-in-out;
       pointer-events: none;
       z-index: -3;
     }
-
     .bg-original {
       background-image: url('cig wallpaper.jpg');
       opacity: 1;
       z-index: -3;
     }
-
-    .bg-smoke {
+    .bg-scroll {
       background-image: url('smoking in dark.jpg');
       opacity: 0;
       z-index: -2;
     }
 
-    .bg-fade {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 1s ease-in-out;
-      z-index: -1;
-    }
-
-    .bg-fade.active {
-      opacity: 1;
-    }
-
+    /* Header styles */
     header {
       background: rgba(0, 0, 0, 0.7);
       padding: 20px;
       font-size: 2rem;
       font-weight: bold;
       text-align: center;
+      position: relative;
+      z-index: 10;
     }
 
+    /* Navigation styles */
     nav {
       background: black;
       padding: 15px;
@@ -78,94 +60,73 @@
       justify-content: center;
       flex-wrap: wrap;
       width: 100%;
+      position: relative;
+      z-index: 10;
     }
-
     .nav-links {
       display: flex;
       justify-content: center;
       align-items: center;
-      flex: 1;
-      gap: 20px;
       flex-wrap: wrap;
+      gap: 20px;
     }
-
     .nav-links a {
       color: white;
       text-decoration: none;
       font-size: 1.1rem;
       font-weight: bold;
+      white-space: nowrap;
     }
-
     .nav-links a:hover {
-      text-decoration: underline;
       color: #f8c471;
+      text-decoration: underline;
     }
 
+    /* Main content */
     .main-content {
-      width: 100%;
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 40px 20px;
-    }
-
-    .section {
-      background: rgba(0, 0, 0, 0.65);
-      padding: 40px;
-      margin-bottom: 50px;
+      max-width: 900px;
+      margin: 50px auto 80px;
+      padding: 0 20px;
+      background: rgba(0,0,0,0.6);
       border-radius: 10px;
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
-
-      /* Make sections visible by default but hidden by transform */
-      opacity: 0;
-      transform: translateY(50px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-      will-change: opacity, transform;
+      box-shadow: 0 0 20px rgba(255,255,255,0.2);
     }
 
-    .section.active {
-      opacity: 1;
-      transform: translateY(0);
+    section {
+      padding: 30px 20px;
+      margin-bottom: 40px;
     }
 
-    .section h2 {
-      margin-bottom: 20px;
+    section h2 {
       font-size: 2rem;
-    }
-
-    .section p, .section ul {
       margin-bottom: 15px;
+    }
+    section p {
       font-size: 1.1rem;
-      line-height: 1.5;
+      line-height: 1.6;
+      margin-bottom: 15px;
     }
 
-    .section ul {
-      list-style-type: disc;
-      padding-left: 20px;
-    }
-
-    .media-wrapper {
-      margin-top: 20px;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 0 15px rgba(255,255,255,0.3);
+    .founder-image {
       max-width: 100%;
-    }
-
-    .media-wrapper img,
-    .media-wrapper video {
-      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(255,255,255,0.3);
       display: block;
+      margin-top: 20px;
     }
 
+    /* Footer */
     footer {
       background: rgba(0, 0, 0, 0.8);
-      padding: 10px;
+      padding: 15px;
       font-size: 0.9rem;
       text-align: center;
-      width: 100%;
-      flex-shrink: 0;
+      color: #ccc;
+      position: relative;
+      z-index: 10;
     }
 
+    /* Responsive */
     @media (max-width: 768px) {
       header {
         font-size: 1.5rem;
@@ -176,41 +137,26 @@
       }
       .nav-links a {
         font-size: 1rem;
-        padding: 8px 6px;
+        padding: 6px 8px;
       }
       .main-content {
-        padding: 30px 15px;
+        margin: 30px 15px 60px;
+        padding: 20px;
       }
-      .section {
-        padding: 25px 20px;
-        margin-bottom: 35px;
-      }
-      .section h2 {
+      section h2 {
         font-size: 1.5rem;
-        margin-bottom: 15px;
       }
-      .section p, .section ul {
+      section p {
         font-size: 1rem;
-      }
-    }
-
-    @media (max-width: 480px) {
-      nav {
-        justify-content: center;
-      }
-      .nav-links {
-        gap: 12px;
-      }
-      .nav-links a {
-        font-size: 0.9rem;
       }
     }
   </style>
 </head>
 <body>
+
+  <!-- Background wallpapers -->
   <div class="bg-original"></div>
-  <div class="bg-smoke"></div>
-  <div class="bg-fade" id="fadeBg"></div>
+  <div class="bg-scroll"></div>
 
   <header>
     <h1>About GrimmDraw</h1>
@@ -227,111 +173,65 @@
     </div>
   </nav>
 
-  <div class="main-content">
-    <section class="section" id="heroSection">
-      <h2>Premium Quality, Timeless Tradition</h2>
+  <main class="main-content">
+    <section id="origins">
+      <h2>Our Origins</h2>
       <p>
-        At <strong>GrimmDraw</strong>, we redefine indulgence with a curated selection of premium nicotine experiences.
-        From rich, hand-crafted cigarettes to cutting-edge vape innovations and refined nicotine blends, our offerings are
-        designed for those who appreciate sophistication with an edge.
+        GrimmDraw began as a humble dream fueled by passion and dedication to the art of nicotine craftsmanship. Founded by a visionary with an unwavering commitment to quality, the company honors the rich traditions of smoking culture while embracing innovation for modern tastes.
       </p>
-      <p>Each product embodies bold character, meticulous quality, and a taste for the unapologetically distinct.</p>
-      <p>Welcome to <strong>GrimmDraw</strong> – where sophistication meets indulgence.</p>
+      <p>
+        Our founder believed in crafting products that don’t just satisfy but create an experience – one of elegance, character, and refinement.
+      </p>
+      <img src="jabu.JPG" alt="GrimmDraw Founder" class="founder-image" />
     </section>
+  </main>
 
-    <section class="section" id="ourStory">
-      <h2>Our Story</h2>
-      <p>GrimmDraw was born from a passion to challenge the conventional. Our roots lie in a deep respect for the ritual and culture of smoking, balanced with a vision for innovation.</p>
-      <p>What began as boutique handcrafted blends evolved into a global lifestyle brand serving discerning users worldwide.</p>
-      <div class="media-wrapper">
-        <img src="jabu.JPG" alt="Historical photo of GrimmDraw founder" />
-      </div>
-    </section>
-
-    <section class="section" id="offerings">
-      <h2>What We Offer</h2>
-      <p>We offer a diverse range of carefully curated products:</p>
-      <ul>
-        <li>Signature hand-rolled cigarettes</li>
-        <li>Flavor-rich nicotine pouches</li>
-        <li>Elegant, modern vape solutions</li>
-        <li>Premium lighters and accessories</li>
-      </ul>
-
-      <div class="media-wrapper">
-        <video autoplay muted loop playsinline>
-          <source src="vape_promo.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      </div>
-    </section>
-
-    <section class="section" id="health">
-      <h2>Health, Quality & Satisfaction</h2>
-      <p>While we encourage responsible use, our products are developed with top-tier materials and modern standards.</p>
-      <p>Each item undergoes strict quality checks to ensure safety and satisfaction.</p>
-      <p>We promote mindful indulgence and offer smokeless options for those seeking cleaner alternatives.</p>
-
-      <div class="media-wrapper">
-        <img src="reliable.png" alt="Quality assurance and clean vaping" />
-      </div>
-    </section>
-  </div>
-
-<footer>
+  <footer>
     <p>&copy; 2025 GrimmDraw | All Rights Reserved</p>
     <div class="social-links">
-      <a href="https://www.instagram.com/accounts/login/" target="_blank">
+      <a href="https://www.instagram.com/accounts/login/" target="_blank" rel="noopener noreferrer">
         <img src="https://cdn-icons-png.flaticon.com/24/2111/2111463.png" alt="Instagram" />
       </a>
-      <a href="https://twitter.com/login" target="_blank">
+      <a href="https://twitter.com/login" target="_blank" rel="noopener noreferrer">
         <img src="https://cdn-icons-png.flaticon.com/24/3670/3670151.png" alt="Twitter" />
       </a>
-      <a href="https://accounts.snapchat.com/accounts/login" target="_blank">
+      <a href="https://accounts.snapchat.com/accounts/login" target="_blank" rel="noopener noreferrer">
         <img src="https://cdn-icons-png.flaticon.com/24/3670/3670053.png" alt="Snapchat" />
       </a>
-      <a href="https://www.tiktok.com/login" target="_blank">
+      <a href="https://www.tiktok.com/login" target="_blank" rel="noopener noreferrer">
         <img src="https://cdn-icons-png.flaticon.com/24/3046/3046121.png" alt="TikTok" />
       </a>
-      <a href="https://accounts.google.com/ServiceLogin?service=youtube" target="_blank">
+      <a href="https://accounts.google.com/ServiceLogin?service=youtube" target="_blank" rel="noopener noreferrer">
         <img src="https://cdn-icons-png.flaticon.com/24/3670/3670147.png" alt="YouTube" />
       </a>
-      <a href="https://www.facebook.com/login" target="_blank">
+      <a href="https://www.facebook.com/login" target="_blank" rel="noopener noreferrer">
         <img src="https://cdn-icons-png.flaticon.com/24/145/145802.png" alt="Facebook" />
       </a>
     </div>
   </footer>
 
- <script>
-  const fadeBg = document.getElementById("fadeBg");
-  const bgOriginal = document.querySelector(".bg-original");
-  const bgSmoke = document.querySelector(".bg-smoke");
-  const sections = document.querySelectorAll(".section");
+  <script>
+    const bgOriginal = document.querySelector('.bg-original');
+    const bgScroll = document.querySelector('.bg-scroll');
 
-  let lastScrollY = window.scrollY;
+    let lastScrollY = window.scrollY;
 
-  window.addEventListener("scroll", () => {
-    const currentScrollY = window.scrollY;
+    window.addEventListener('scroll', () => {
+      const currentScrollY = window.scrollY;
 
-    // Fade in smoke background when scrolling down past 150px
-    if (currentScrollY > 150) {
-      bgSmoke.style.opacity = "1";
-      fadeBg.classList.add("active");
-    } else {
-      bgSmoke.style.opacity = "0";
-      fadeBg.classList.remove("active");
-    }
-
-    // Scroll-triggered section animations
-    sections.forEach(section => {
-      const rect = section.getBoundingClientRect();
-      if (rect.top < window.innerHeight * 0.8) {
-        section.classList.add("active");
+      if (currentScrollY > lastScrollY) {
+        // Scrolling down: show the scroll wallpaper, hide original
+        bgOriginal.style.opacity = '0';
+        bgScroll.style.opacity = '1';
+      } else {
+        // Scrolling up: revert to original wallpaper
+        bgOriginal.style.opacity = '1';
+        bgScroll.style.opacity = '0';
       }
-    });
 
-    lastScrollY = currentScrollY;
-  });
-</script>
+      lastScrollY = currentScrollY;
+    });
+  </script>
+
 </body>
 </html>
