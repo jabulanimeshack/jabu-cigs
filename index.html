@@ -30,78 +30,84 @@
 
     nav {
       background: black;
-      padding: 15px 20px;
-      display: flex;               /* updated */
-      justify-content: center;     /* updated */
-      flex-wrap: wrap;             /* updated */
-      align-items: center;         /* updated */
-      gap: 10px;                   /* updated */
-      position: relative;
+      padding: 10px 20px; /* reduced vertical padding */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
       z-index: 2;
+      position: relative;
     }
 
     .nav-links {
       display: flex;
-      justify-content: center;
-      align-items: center;         /* updated */
       gap: 20px;
-      flex-wrap: wrap;
-      margin-bottom: 0;            /* updated */
+      justify-content: center;
+      width: 100%;
+      max-width: 900px;
     }
 
     .nav-links a {
       color: white;
       text-decoration: none;
-      font-size: 18px;
       font-weight: bold;
+      font-size: 18px;
     }
 
     .nav-links a:hover {
-      text-decoration: underline;
       color: #f8c471;
+      text-decoration: underline;
     }
 
-    .nav-right {
+    .nav-sub {
       display: flex;
+      gap: 10px;
       justify-content: center;
       align-items: center;
-      gap: 10px;
-      flex-wrap: nowrap;           /* updated */
-      margin-top: 0;               /* updated */
+      width: 100%;
+      max-width: 900px;
+      flex-wrap: wrap;
     }
 
     .search-input {
-      padding: 8px 14px;
+      flex: 1 1 200px;
+      padding: 8px 12px;
       font-size: 16px;
       border-radius: 5px;
       border: none;
+      min-width: 150px;
     }
 
     .search-button {
       padding: 8px 16px;
-      font-size: 16px;
       background-color: #f8c471;
       border: none;
       border-radius: 5px;
-      cursor: pointer;
       font-weight: bold;
+      cursor: pointer;
+      white-space: nowrap;
     }
 
     .search-button:hover {
       background-color: #e6b35c;
     }
 
-    .login-link, .signup-link {
+    .login-link,
+    .signup-link,
+    .cart-link {
       color: white;
-      text-decoration: none;
-      font-weight: bold;
-      padding: 8px 16px;
       background-color: #444;
+      padding: 8px 14px;
       border-radius: 6px;
+      font-weight: bold;
+      text-decoration: none;
+      white-space: nowrap;
       transition: background-color 0.3s ease;
     }
 
-    .login-link:hover, .signup-link:hover {
+    .login-link:hover,
+    .signup-link:hover,
+    .cart-link:hover {
       background-color: #f8c471;
       color: black;
     }
@@ -212,31 +218,20 @@
     }
 
     @media (max-width: 768px) {
-      .nav-links, .nav-right {
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
+      nav {
+        padding: 10px 10px;
       }
-
+      .nav-links {
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+      .nav-sub {
+        flex-wrap: wrap;
+        gap: 8px;
+      }
       .search-input {
-        width: 100%;
-      }
-
-      .login-link, .signup-link {
-        width: 100%;
-        text-align: center;
-      }
-
-      .background-container {
-        flex-direction: column;
-      }
-
-      .bg-image {
-        height: 50vh;
-      }
-
-      main {
-        top: 40%;
+        flex-basis: 100%;
+        min-width: unset;
       }
     }
   </style>
@@ -254,13 +249,13 @@
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
       <a href="feedback.html">Feedback</a>
-      <a href="cart.html">🛒 Cart: <span id="cart-count">0</span></a>
     </div>
-    <div class="nav-right">
-      <input type="text" placeholder="Search..." class="search-input" id="searchInput">
+    <div class="nav-sub">
+      <input type="text" placeholder="Search..." class="search-input" id="searchInput" />
       <button class="search-button" onclick="performSearch()">Search</button>
       <a href="login.html" class="login-link">Login</a>
       <a href="signup.html" class="signup-link">Sign Up</a>
+      <a href="cart.html" class="cart-link">🛒 Cart: <span id="cart-count">0</span></a>
     </div>
   </nav>
 
@@ -315,5 +310,6 @@
       }
     }
   </script>
+
 </body>
 </html>
