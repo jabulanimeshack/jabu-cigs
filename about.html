@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -15,24 +15,36 @@
       height: 100%;
       font-family: Arial, sans-serif;
       color: white;
-      background: url('cig wallpaper.jpg') no-repeat center center fixed;
-      background-size: cover;
-      scroll-behavior: smooth;
       overflow-x: hidden;
+      scroll-behavior: smooth;
+      background: none; /* background handled by fixed divs */
     }
 
-    /* Parallax container for fixed background */
-    .parallax-bg {
+    /* Layered fixed backgrounds */
+    .bg-original, .bg-smoke {
       position: fixed;
-      top: 0;
-      left: 0;
+      top: 0; left: 0;
       width: 100%;
       height: 100%;
-      background: url('smoking in dark.jpg') no-repeat center center fixed;
+      background-position: center center;
+      background-repeat: no-repeat;
       background-size: cover;
+      transition: opacity 1.2s ease-in-out;
+      will-change: opacity;
+      pointer-events: none;
+      z-index: -3;
+    }
+
+    .bg-original {
+      background-image: url('cig wallpaper.jpg');
+      opacity: 1;
+      z-index: -3;
+    }
+
+    .bg-smoke {
+      background-image: url('smoking in dark.jpg');
+      opacity: 0;
       z-index: -2;
-      transform: translateZ(0);
-      will-change: transform;
     }
 
     /* Fading overlay */
@@ -219,7 +231,9 @@
   </style>
 </head>
 <body>
-  <div class="parallax-bg"></div>
+  <!-- Background layers -->
+  <div class="bg-original"></div>
+  <div class="bg-smoke"></div>
   <div class="bg-fade" id="fadeBg"></div>
 
   <header>
@@ -294,30 +308,38 @@
 
   <script>
     const fadeBg = document.getElementById("fadeBg");
-    const parallaxBg = document.querySelector('.parallax-bg');
+    const bgOriginal = document.querySelector(".bg-original");
+    const bgSmoke = document.querySelector(".bg-smoke");
     const sections = document.querySelectorAll(".section");
 
     const handleScroll = () => {
       const scrollY = window.scrollY;
       const windowHeight = window.innerHeight;
-      const triggerPoint = windowHeight * 0.8;
+      const triggerPoint = windowHeight * 0.7;
 
-      // Parallax effect for background (moves slower than scroll)
-      parallaxBg.style.transform = `translateY(${scrollY * 0.3}px)`;
+      // Background fade overlay activation
+      fadeBg.classList.toggle("active", scrollY > triggerPoint);
+
+      // Crossfade backgrounds based on scroll
+      if (scrollY > triggerPoint) {
+        bgOriginal.style.opacity = 0;
+        bgSmoke.style.opacity = 1;
+      } else {
+        bgOriginal.style.opacity = 1;
+        bgSmoke.style.opacity = 0;
+      }
 
       // Activate sections when in viewport
+      const activateTrigger = windowHeight * 0.8;
       sections.forEach(section => {
         const rect = section.getBoundingClientRect();
 
-        if (rect.top < triggerPoint && rect.bottom > 100) {
+        if (rect.top < activateTrigger && rect.bottom > 100) {
           section.classList.add("active");
         } else {
           section.classList.remove("active");
         }
       });
-
-      // Background fade overlay activation
-      fadeBg.classList.toggle("active", scrollY > windowHeight * 0.7);
     };
 
     window.addEventListener("scroll", handleScroll);
