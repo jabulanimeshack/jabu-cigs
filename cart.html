@@ -28,6 +28,8 @@
       font-size: 24px;
       font-weight: bold;
       text-align: center;
+      flex-shrink: 0;
+      width: 100%;
     }
 
     nav {
@@ -36,15 +38,16 @@
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
+      width: 100%;
     }
 
     .nav-links {
       display: flex;
       justify-content: center;
       align-items: center;
-      flex: 1;
       gap: 20px;
       flex-wrap: wrap;
+      flex: 1;
     }
 
     .nav-links a {
@@ -59,14 +62,7 @@
       color: #f8c471;
     }
 
-    .nav-right {
-      color: white;
-      font-weight: bold;
-      margin-left: auto;
-      padding-right: 20px;
-    }
-
-    .cart-container {
+    main.cart-container {
       max-width: 900px;
       margin: 50px auto;
       background: rgba(0, 0, 0, 0.75);
@@ -74,6 +70,7 @@
       border-radius: 10px;
       box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
       flex: 1;
+      width: 90%;
     }
 
     .cart-title {
@@ -176,20 +173,21 @@
       display: none;
     }
 
-    /* Sticky footer */
     footer {
-      background: black;
-      color: white;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 10px;
+      font-size: 14px;
       text-align: center;
-      padding: 15px;
-      font-size: 16px;
-      margin-top: auto;
+      width: 100%;
+      flex-shrink: 0;
     }
   </style>
 </head>
 <body>
 
-  <header>GrimmDraw</header>
+  <header>
+    <h1>GrimmDraw</h1>
+  </header>
 
   <nav>
     <div class="nav-links">
@@ -198,10 +196,7 @@
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
       <a href="feedback.html">Feedback</a>
-      <a href="cart.html">Cart</a>
-    </div>
-    <div class="nav-right">
-      🛒 Cart: <span id="cart-count">0</span>
+      <a href="cart.html">🛒 Cart: <span id="cart-count">0</span></a>
     </div>
   </nav>
 
@@ -217,7 +212,7 @@
   </main>
 
   <footer>
-    &copy; 2025 GrimmDraw. All rights reserved.
+    <p>&copy; 2025 GrimmDraw | All Rights Reserved</p>
   </footer>
 
   <script>
@@ -261,16 +256,10 @@
         return;
       }
 
-      // Show success message
       document.getElementById("checkout-message").style.display = "block";
-
-      // Optionally clear the cart
       localStorage.removeItem("cart");
-
-      // Reset cart count
       document.getElementById("cart-count").innerText = "0";
 
-      // Clear displayed items after a short delay
       setTimeout(() => {
         document.getElementById("cart-items").innerHTML = "";
         document.getElementById("total-price").innerText = "0.00";
