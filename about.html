@@ -21,6 +21,78 @@
       overflow-x: hidden;
     }
 
+    header, nav, footer {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      text-align: center;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: #f8c471;
+    }
+
+    .main-content {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 100px;
+      padding: 40px 20px;
+    }
+
+    .section {
+      width: 100%;
+      max-width: 900px;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .section.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .section > * {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.6s ease-out forwards;
+    }
+
+    .section.active > *:nth-child(1) { animation-delay: 0.2s; }
+    .section.active > *:nth-child(2) { animation-delay: 0.4s; }
+    .section.active > *:nth-child(3) { animation-delay: 0.6s; }
+    .section.active > *:nth-child(4) { animation-delay: 0.8s; }
+    .section.active > *:nth-child(5) { animation-delay: 1s; }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    footer {
+      font-size: 14px;
+    }
+
     .bg-fade {
       position: fixed;
       top: 0;
@@ -38,192 +110,72 @@
     .bg-fade.active {
       opacity: 1;
     }
-
-    header {
-      background: rgba(0, 0, 0, 0.7);
-      padding: 20px;
-      font-size: 24px;
-      font-weight: bold;
-      text-align: center;
-    }
-
-    nav {
-      background: black;
-      padding: 15px;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .nav-links {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    .nav-links a {
-      color: white;
-      text-decoration: none;
-      font-size: 18px;
-      font-weight: bold;
-    }
-
-    .nav-links a:hover {
-      text-decoration: underline;
-      color: #f8c471;
-    }
-
-    .main-content {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 50px 20px;
-      gap: 60px;
-    }
-
-    .section {
-      width: 100%;
-      max-width: 900px;
-      background: rgba(0, 0, 0, 0.6);
-      padding: 40px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.6s ease;
-      pointer-events: none;
-    }
-
-    .section.active {
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: auto;
-    }
-
-    .section > * {
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeUp 0.6s forwards ease-out;
-    }
-
-    .section.active > *:nth-child(1) { animation-delay: 0.1s; }
-    .section.active > *:nth-child(2) { animation-delay: 0.3s; }
-    .section.active > *:nth-child(3) { animation-delay: 0.5s; }
-    .section.active > *:nth-child(4) { animation-delay: 0.7s; }
-    .section.active > *:nth-child(5) { animation-delay: 0.9s; }
-    .section.active > *:nth-child(6) { animation-delay: 1.1s; }
-
-    @keyframes fadeUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    footer {
-      background: rgba(0, 0, 0, 0.8);
-      padding: 10px;
-      font-size: 14px;
-      text-align: center;
-      width: 100%;
-    }
-
-    ul {
-      margin-top: 10px;
-    }
   </style>
 </head>
 
 <body>
   <div class="bg-fade" id="fadeBg"></div>
 
-  <header>
-    <h1>About GrimmDraw</h1>
-  </header>
+  <header><h1>About GrimmDraw</h1></header>
 
   <nav>
-    <div class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="product.html">Product</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-      <a href="feedback.html">Feedback</a>
-      <a href="cart.html">🛒 Cart: <span id="cart-count">0</span></a>
-    </div>
+    <a href="index.html">Home</a>
+    <a href="product.html">Product</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="feedback.html">Feedback</a>
+    <a href="cart.html">🛒 Cart: <span id="cart-count">0</span></a>
   </nav>
 
   <div class="main-content">
-    <section class="section" id="heroSection">
+    <section class="section" id="intro">
       <h2>Premium Quality, Timeless Tradition</h2>
       <p>
-        At <strong>GrimmDraw</strong>, we redefine indulgence with a curated selection of premium nicotine experiences.
-        From rich, hand-crafted cigarettes to cutting-edge vape innovations and refined nicotine blends, our offerings are
-        designed for those who appreciate sophistication with an edge.
+        At <strong>GrimmDraw</strong>, we redefine indulgence with a curated selection of premium nicotine experiences—
+        from hand-crafted cigarettes to cutting-edge vapes and refined pouches.
       </p>
-      <p>
-        Each product embodies bold character, meticulous quality, and a taste for the unapologetically distinct.
-      </p>
-      <p>
-        Welcome to <strong>GrimmDraw</strong> – where sophistication meets indulgence.
-      </p>
+      <p>Each product embodies bold character, meticulous quality, and unapologetic distinction.</p>
     </section>
 
-    <section class="section" id="ourStory">
-      <h2>Our Story</h2>
+    <section class="section" id="origin">
+      <h2>Our Origins</h2>
       <p>
-        GrimmDraw was born from the underground scene—a fusion of art, rebellion, and the raw beauty of nostalgia. 
-        Our founders were passionate creators who saw tobacco and nicotine not just as products, but as cultural statements.
-        From sketching on matchbooks to hand-packing vintage-styled cigarettes, GrimmDraw emerged as a tribute to bold self-expression.
+        GrimmDraw began as a small boutique supplier of specialty smokes, aiming to break convention in a saturated market.
+        What started with select tobacco blends has expanded into a dynamic brand for nicotine connoisseurs.
       </p>
-      <p>
-        What started as a niche local brand soon captured the imagination of those craving something more than mass-produced monotony.
-        Today, GrimmDraw thrives as a lifestyle rooted in rebellion, art, and premium craftsmanship.
-      </p>
+      <p>Built on a foundation of rebellion and refinement, GrimmDraw fuses heritage and modernity.</p>
     </section>
 
-    <section class="section" id="whatWeOffer">
+    <section class="section" id="offerings">
       <h2>What We Offer</h2>
       <p>
-        At GrimmDraw, we curate a wide spectrum of alternative nicotine products:
+        We provide a spectrum of lifestyle products including:
+        <ul>
+          <li>Signature Cigarette Blends</li>
+          <li>Premium Vapes & Cartridges</li>
+          <li>Nicotine Pouches & Scented Wraps</li>
+          <li>Branded Accessories & Limited Drops</li>
+        </ul>
       </p>
-      <ul style="padding-left: 20px; list-style-type: square;">
-        <li><strong>Custom Cigarettes</strong> – Handpicked blends and rare aesthetics that evoke a retro soul.</li>
-        <li><strong>Nicotine Pouches</strong> – Discreet, flavorful, and smokeless options for modern users.</li>
-        <li><strong>Designer Lighters</strong> – Each piece is a collectible, designed to match your vibe.</li>
-        <li><strong>Premium Vapes</strong> – Sleek, smooth-hitting devices with bold flavors and powerful performance.</li>
-        <li><strong>Exclusive Accessories</strong> – Ash trays, drawers, and decor items that elevate your ritual.</li>
-      </ul>
+      <p>Every item reflects our commitment to design, satisfaction, and bold taste.</p>
     </section>
 
     <section class="section" id="health">
-      <h2>Health & Harm Reduction</h2>
+      <h2>Health Awareness</h2>
       <p>
-        We recognize the health risks associated with nicotine and tobacco use. GrimmDraw does not market to minors and
-        supports responsible, informed usage by consenting adults. Our goal is not to glamorize addiction, but to offer
-        a mindful, aesthetic-forward experience for those who choose to indulge.
+        While we champion style and expression, GrimmDraw encourages informed enjoyment.
+        Our products are intended for adult users only and should be consumed responsibly.
       </p>
       <p>
-        Many of our customers are switching from traditional combustible cigarettes to less harmful alternatives like
-        nicotine pouches or controlled vaping. While no nicotine product is risk-free, some methods of delivery
-        may pose fewer long-term health risks than others. We advocate for transparency, education, and freedom of choice.
-      </p>
-    </section>
-
-    <section class="section" id="mission">
-      <h2>Our Mission</h2>
-      <p>
-        To provide premium, innovative, and stylish nicotine experiences while maintaining a strong commitment to quality,
-        satisfaction, and creative expression.
+        We support transparency and responsible messaging in nicotine consumption and align with health regulations.
       </p>
     </section>
 
     <section class="section" id="vision">
       <h2>Our Vision</h2>
       <p>
-        To be the leading name in alternative nicotine culture—celebrated for originality, quality, and a bold voice in a
-        crowded market.
+        We strive to be the iconic name in alternative nicotine culture—celebrated for originality,
+        bold storytelling, and unmistakable quality in a competitive landscape.
       </p>
     </section>
   </div>
@@ -236,22 +188,27 @@
     const fadeBg = document.getElementById("fadeBg");
     const sections = document.querySelectorAll(".section");
 
-    window.addEventListener("scroll", () => {
+    function handleScroll() {
       const scrollY = window.scrollY;
-      const windowHeight = window.innerHeight;
+      const windowH = window.innerHeight;
 
-      // Toggle background
-      fadeBg.classList.toggle("active", scrollY > windowHeight * 0.7);
+      sections.forEach((section, index) => {
+        const sectionTop = section.getBoundingClientRect().top;
 
-      sections.forEach(section => {
-        const rect = section.getBoundingClientRect();
-        if (rect.top < windowHeight * 0.8 && rect.bottom > windowHeight * 0.2) {
+        if (sectionTop < windowH * 0.75) {
           section.classList.add("active");
         } else {
           section.classList.remove("active");
         }
       });
-    });
+
+      // Background fade trigger
+      const triggerFade = document.getElementById("offerings").getBoundingClientRect().top < windowH * 0.5;
+      fadeBg.classList.toggle("active", triggerFade);
+    }
+
+    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("load", handleScroll);
   </script>
 </body>
 </html>
