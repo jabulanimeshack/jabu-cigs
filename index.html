@@ -11,11 +11,11 @@
       box-sizing: border-box;
     }
 
-    html, body {
-      height: 100%;
+    body {
       font-family: Arial, sans-serif;
       color: white;
       background: black;
+      overflow-x: hidden;
     }
 
     header {
@@ -24,27 +24,24 @@
       font-size: 24px;
       font-weight: bold;
       text-align: center;
-      width: 100%;
+      position: relative;
       z-index: 2;
     }
 
     nav {
       background: black;
-      padding: 15px;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      width: 100%;
+      padding: 15px 20px;
+      text-align: center;
       z-index: 2;
+      position: relative;
     }
 
     .nav-links {
       display: flex;
       justify-content: center;
-      align-items: center;
       gap: 20px;
       flex-wrap: wrap;
-      flex: 1;
+      margin-bottom: 10px;
     }
 
     .nav-links a {
@@ -60,11 +57,12 @@
     }
 
     .nav-right {
-      margin-top: 10px;
       display: flex;
+      justify-content: center;
+      align-items: center;
       gap: 10px;
       flex-wrap: wrap;
-      justify-content: center;
+      margin-top: 10px;
     }
 
     .search-input {
@@ -77,12 +75,15 @@
     .search-button {
       padding: 8px 16px;
       font-size: 16px;
-      font-weight: bold;
       background-color: #f8c471;
-      color: black;
       border: none;
       border-radius: 5px;
       cursor: pointer;
+      font-weight: bold;
+    }
+
+    .search-button:hover {
+      background-color: #e6b35c;
     }
 
     .login-link, .signup-link {
@@ -105,8 +106,7 @@
       width: 100%;
       height: 100vh;
       transition: opacity 1s ease-in-out;
-      position: relative;
-      z-index: 1;
+      margin-top: 70px;
     }
 
     .bg-image {
@@ -131,7 +131,7 @@
       width: 100%;
       height: 100vh;
       object-fit: cover;
-      z-index: 0;
+      z-index: -1;
       opacity: 0;
       pointer-events: none;
       transition: opacity 1s ease-in-out;
@@ -156,10 +156,23 @@
       text-align: center;
       opacity: 0;
       transition: opacity 1s ease-in-out;
+      animation: none;
     }
 
     .video-caption.active {
       opacity: 1;
+      animation: fadeSlideIn 1.2s ease-out forwards;
+    }
+
+    @keyframes fadeSlideIn {
+      0% {
+        opacity: 0;
+        transform: translate(-50%, -30%);
+      }
+      100% {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+      }
     }
 
     main {
@@ -239,14 +252,14 @@
       <a href="cart.html">🛒 Cart: <span id="cart-count">0</span></a>
     </div>
     <div class="nav-right">
-      <input type="text" id="searchInput" placeholder="Search..." class="search-input">
-      <button class="search-button" onclick="searchProduct()">Search</button>
+      <input type="text" placeholder="Search..." class="search-input" id="searchInput">
+      <button class="search-button" onclick="performSearch()">Search</button>
       <a href="login.html" class="login-link">Login</a>
       <a href="signup.html" class="signup-link">Sign Up</a>
     </div>
   </nav>
 
-  <div class="background-container" id="backgroundImages">
+  <div id="backgroundImages" class="background-container">
     <div class="bg-image bg1"></div>
     <div class="bg-image bg2"></div>
     <div class="bg-image bg3"></div>
@@ -289,10 +302,11 @@
       }
     });
 
-    function searchProduct() {
-      const query = document.getElementById("searchInput").value.trim();
-      if (query) {
-        window.location.href = `product.html?search=${encodeURIComponent(query)}`;
+    function performSearch() {
+      const query = document.getElementById('searchInput').value.trim();
+      if (query !== '') {
+        const searchUrl = `product.html?search=${encodeURIComponent(query)}`;
+        window.location.href = searchUrl;
       }
     }
   </script>
