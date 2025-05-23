@@ -16,6 +16,13 @@
       color: white;
       background: black;
       overflow-x: hidden;
+      /* Add extra height to force scroll */
+    }
+    
+    body::after {
+      content: "";
+      display: block;
+      height: 150vh; /* makes the page tall enough to scroll */
     }
 
     header {
@@ -188,15 +195,14 @@
     }
 
     main {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      position: relative; /* changed from absolute */
+      margin: 50px auto; /* add margin for spacing */
       background: rgba(0, 0, 0, 0.6);
       padding: 20px;
       border-radius: 10px;
       box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
       max-width: 90%;
+      max-width: 600px;
       z-index: 2;
       text-align: center;
       transition: opacity 0.5s ease;
@@ -290,6 +296,7 @@
     const videoCaption = document.getElementById('videoCaption');
 
     window.addEventListener('scroll', () => {
+      console.log('scrollY:', window.scrollY); // debug log
       if (window.scrollY > 100) {
         bgVideo.classList.add('active');
         bgImages.classList.add('hidden');
