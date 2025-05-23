@@ -16,13 +16,12 @@
       color: white;
       background: black;
       overflow-x: hidden;
-      /* Add extra height to force scroll */
     }
     
     body::after {
       content: "";
       display: block;
-      height: 150vh; /* makes the page tall enough to scroll */
+      height: 150vh;
     }
 
     header {
@@ -37,11 +36,11 @@
 
     nav {
       background: black;
-      padding: 10px 20px 2px 20px; /* tighter bottom padding */
+      padding: 10px 20px 2px 20px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 4px; /* less gap */
+      gap: 4px;
       z-index: 2;
       position: relative;
       margin-bottom: 0;
@@ -123,7 +122,7 @@
     .background-container {
       display: flex;
       width: 100%;
-      height: calc(100vh - 120px); /* smaller height for tighter spacing */
+      height: calc(100vh - 120px);
       transition: opacity 1s ease-in-out;
       margin-top: 0;
     }
@@ -195,8 +194,8 @@
     }
 
     main {
-      position: relative; /* changed from absolute */
-      margin: 50px auto; /* add margin for spacing */
+      position: relative;
+      margin: 50px auto;
       background: rgba(0, 0, 0, 0.6);
       padding: 20px;
       border-radius: 10px;
@@ -240,6 +239,47 @@
         flex-basis: 100%;
         min-width: unset;
       }
+    }
+
+    /* Age verification modal */
+    #ageVerificationModal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background-color: rgba(0,0,0,0.95);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    #ageVerificationModal h2 {
+      font-size: 32px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    #ageVerificationModal button {
+      padding: 12px 24px;
+      margin: 10px;
+      font-size: 18px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    #ageVerificationModal .yes {
+      background-color: #f8c471;
+      color: black;
+    }
+
+    #ageVerificationModal .no {
+      background-color: #e74c3c;
+      color: white;
     }
   </style>
 </head>
@@ -289,6 +329,15 @@
     <p>&copy; 2025 GrimmDraw | All Rights Reserved</p>
   </footer>
 
+  <!-- Age Verification Modal -->
+  <div id="ageVerificationModal">
+    <h2>Are you 21 years of age or older?</h2>
+    <div>
+      <button class="yes" onclick="verifyAge(true)">Yes</button>
+      <button class="no" onclick="verifyAge(false)">No</button>
+    </div>
+  </div>
+
   <script>
     const bgVideo = document.getElementById('bgVideo');
     const bgImages = document.getElementById('backgroundImages');
@@ -296,7 +345,6 @@
     const videoCaption = document.getElementById('videoCaption');
 
     window.addEventListener('scroll', () => {
-      console.log('scrollY:', window.scrollY); // debug log
       if (window.scrollY > 100) {
         bgVideo.classList.add('active');
         bgImages.classList.add('hidden');
@@ -317,6 +365,23 @@
         window.location.href = searchUrl;
       }
     }
+
+    function verifyAge(isOfAge) {
+      if (isOfAge) {
+        document.getElementById('ageVerificationModal').style.display = 'none';
+        sessionStorage.setItem('ageVerified', 'true');
+      } else {
+        window.location.href = 'https://pmc.ncbi.nlm.nih.gov/articles/PMC4363846/';
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      if (sessionStorage.getItem('ageVerified') !== 'true') {
+        document.getElementById('ageVerificationModal').style.display = 'flex';
+      } else {
+        document.getElementById('ageVerificationModal').style.display = 'none';
+      }
+    });
   </script>
 
 </body>
