@@ -85,11 +85,15 @@
       color: black;
     }
 
-    .background-container {
+    #backgroundImages {
       display: flex;
       width: 100%;
       height: 100vh;
       transition: opacity 1s ease-in-out;
+      z-index: 0;
+      position: fixed;
+      top: 0;
+      left: 0;
     }
 
     .bg-image {
@@ -172,12 +176,12 @@
         text-align: center;
       }
 
-      .background-container {
+      #backgroundImages {
         flex-direction: column;
       }
 
       .bg-image {
-        height: 50vh;
+        height: 33.3vh;
       }
 
       main {
@@ -199,8 +203,7 @@
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
       <a href="feedback.html">Feedback</a>
-<a href="cart.html">🛒 Cart: <span id="cart-count">0</span></a>
-    
+      <a href="cart.html">🛒 Cart: <span id="cart-count">0</span></a>
     </div>
     <div class="nav-right">
       <input type="text" placeholder="Search..." class="search-input">
@@ -209,22 +212,28 @@
     </div>
   </nav>
 
+  <!-- Background images container -->
+  <div id="backgroundImages">
+    <div class="bg-image bg1"></div>
+    <div class="bg-image bg2"></div>
+    <div class="bg-image bg3"></div>
+  </div>
+
+  <!-- Background video -->
   <video id="bgVideo" class="bg-video" autoplay muted loop playsinline>
     <source src="smoking b roll.mov" type="video/mp4" />
   </video>
 
-
+  <!-- Main content -->
   <main id="premiumSection">
     <h2>EXPERIENCE PREMIUM QUALITY</h2>
     <p>Discover our range of top-tier cigarettes, crafted for a smooth and refined smoking experience.</p>
   </main>
 
- 
   <footer>
     <p>&copy; 2025 GrimmDraw | All Rights Reserved</p>
   </footer>
 
- 
   <script>
     const bgVideo = document.getElementById('bgVideo');
     const bgImages = document.getElementById('backgroundImages');
@@ -235,14 +244,14 @@
         bgVideo.classList.add('active');
         bgImages.classList.add('hidden');
         premiumSection.classList.add('hidden');
-      }
- else {
+      } else {
         bgVideo.classList.remove('active');
         bgImages.classList.remove('hidden');
         premiumSection.classList.remove('hidden');
       }
     });
   </script>
+
 </body>
 </html>
 
