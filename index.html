@@ -31,17 +31,22 @@
     nav {
       background: black;
       padding: 15px 20px;
-      text-align: center;
-      z-index: 2;
+      display: flex;               /* updated */
+      justify-content: center;     /* updated */
+      flex-wrap: wrap;             /* updated */
+      align-items: center;         /* updated */
+      gap: 10px;                   /* updated */
       position: relative;
+      z-index: 2;
     }
 
     .nav-links {
       display: flex;
       justify-content: center;
+      align-items: center;         /* updated */
       gap: 20px;
       flex-wrap: wrap;
-      margin-bottom: 10px;
+      margin-bottom: 0;            /* updated */
     }
 
     .nav-links a {
@@ -61,8 +66,8 @@
       justify-content: center;
       align-items: center;
       gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 10px;
+      flex-wrap: nowrap;           /* updated */
+      margin-top: 0;               /* updated */
     }
 
     .search-input {
