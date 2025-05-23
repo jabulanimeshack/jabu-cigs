@@ -5,186 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Products | GrimmDraw</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    /* Base styles... (same as your code above) */
+
+    .highlight {
+      animation: flash 1.5s ease-in-out;
+      outline: 3px solid #f8c471;
+      outline-offset: 3px;
+      z-index: 1;
     }
 
-    html, body {
-      font-family: Arial, sans-serif;
-      color: white;
-      background: url('model holding cig.jpg') no-repeat center center fixed;
-      background-size: cover;
-    }
-
-    header {
-      background: rgba(0, 0, 0, 0.7);
-      padding: 20px;
-      font-size: 24px;
-      font-weight: bold;
-      text-align: center;
-    }
-
-    nav {
-      background: black;
-      padding: 15px;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-size: 18px;
-      font-weight: bold;
-    }
-
-    nav a:hover {
-      text-decoration: underline;
-      color: #f8c471;
-    }
-
-    main {
-      padding: 40px 20px;
-      text-align: center;
-    }
-
-    .category {
-      margin-bottom: 80px;
-      padding: 30px;
-      background-color: rgba(0, 0, 0, 0.6);
-      border-radius: 10px;
-      box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.2);
-    }
-
-    .category h2 {
-      font-size: 28px;
-      margin-bottom: 20px;
-      text-shadow: 1px 1px 3px black;
-    }
-
-    .product-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-      background: rgba(0, 0, 0, 0.6);
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .product {
-      width: 220px;
-      position: relative;
-      overflow: hidden;
-      cursor: pointer;
-      border-radius: 10px;
-      transition: transform 0.3s ease;
-    }
-
-    .product:hover {
-      transform: scale(0.95);
-    }
-
-    .product img {
-      width: 100%;
-      height: 250px;
-      object-fit: cover;
-      border-radius: 10px;
-      transition: transform 0.3s ease;
-    }
-
-    .product-info {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: rgba(0, 0, 0, 0.75);
-      color: white;
-      padding: 10px;
-      font-size: 14px;
-      opacity: 0;
-      transform: translateY(100%);
-      transition: all 0.3s ease;
-      text-align: center;
-    }
-
-    .product:hover .product-info {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .add-to-cart {
-      margin-top: 8px;
-      padding: 6px 12px;
-      background-color: #f8c471;
-      color: black;
-      border: none;
-      border-radius: 5px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-
-    .add-to-cart:hover {
-      background-color: #f0b849;
-    }
-
-    footer {
-      background: rgba(0, 0, 0, 0.8);
-      padding: 10px;
-      font-size: 14px;
-      text-align: center;
+    @keyframes flash {
+      0%, 100% { box-shadow: 0 0 0px #f8c471; }
+      50% { box-shadow: 0 0 25px #f8c471; }
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>GrimmDraw</h1>
-  </header>
-
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="product.html">Product</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-    <a href="feedback.html">Feedback</a>
-    <a href="cart.html">🛒 Cart: <span id="cart-count">0</span></a>    
-  </nav>
+  <!-- HEADER AND NAV (same as your code above) -->
 
   <main>
     <!-- PRODUCT CATEGORIES -->
-    <section class="category" id="tobacco">
-      <h2>Tobacco</h2>
-      <div class="product-grid" id="tobacco-grid"></div>
-    </section>
-
-    <section class="category" id="nicotine-pouches">
-      <h2>Nicotine Pouches</h2>
-      <div class="product-grid" id="nicotine-pouches-grid"></div>
-    </section>
-
-    <section class="category" id="lighters">
-      <h2>Lighters</h2>
-      <div class="product-grid" id="lighters-grid"></div>
-    </section>
-
-    <section class="category" id="vapes">
-      <h2>Vapes</h2>
-      <div class="product-grid" id="vapes-grid"></div>
-    </section>
-
-    <section class="category" id="other-items">
-      <h2>Other Items</h2>
-      <div class="product-grid" id="other-items-grid"></div>
-    </section>
+    <!-- (same as your code above) -->
   </main>
 
   <footer>
@@ -248,11 +90,11 @@
       otherItems: document.getElementById("other-items-grid")
     };
 
-    // Generate product cards for each category
     for (const category in products) {
       products[category].forEach(product => {
         const card = document.createElement("div");
         card.classList.add("product");
+        card.dataset.name = product.name.toLowerCase(); // for searching
 
         card.innerHTML = `
           <img src="${product.img}" alt="${product.name}" />
@@ -267,7 +109,6 @@
       });
     }
 
-    // Update cart count from localStorage on page load
     function updateCartCount() {
       const cart = JSON.parse(localStorage.getItem("cart")) || [];
       const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
@@ -276,13 +117,11 @@
 
     updateCartCount();
 
-    // Add to cart click handler
     document.addEventListener("click", function (e) {
       if (e.target.classList.contains("add-to-cart")) {
         const productCard = e.target.closest(".product");
         const name = productCard.querySelector("p").innerText;
 
-        // Find product by name in products
         let foundProduct = null;
         for (const category in products) {
           foundProduct = products[category].find(p => p.name === name);
@@ -299,7 +138,6 @@
         };
 
         let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
         const existingItem = cart.find(item => item.name === name);
         if (existingItem) {
           existingItem.quantity++;
@@ -311,7 +149,28 @@
         updateCartCount();
       }
     });
-  </script>
 
+    // ✅ Scroll and highlight products based on search param
+    function handleSearchParam() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const query = urlParams.get("search");
+      if (!query) return;
+
+      const lowerQuery = query.toLowerCase();
+      const matchedProducts = Array.from(document.querySelectorAll(".product"))
+        .filter(p => p.dataset.name.includes(lowerQuery));
+
+      if (matchedProducts.length > 0) {
+        const firstMatch = matchedProducts[0];
+        firstMatch.scrollIntoView({ behavior: "smooth", block: "center" });
+        matchedProducts.forEach(el => el.classList.add("highlight"));
+        setTimeout(() => {
+          matchedProducts.forEach(el => el.classList.remove("highlight"));
+        }, 3000);
+      }
+    }
+
+    window.addEventListener("load", handleSearchParam);
+  </script>
 </body>
 </html>
