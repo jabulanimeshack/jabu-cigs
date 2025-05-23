@@ -25,14 +25,14 @@
       font-weight: bold;
       text-align: center;
       position: relative;
-      z-index: 2;
+      z-index: 3;
     }
 
     nav {
       background: black;
       padding: 15px 20px;
       text-align: center;
-      z-index: 2;
+      z-index: 3;
       position: relative;
     }
 
@@ -92,7 +92,7 @@
       transition: opacity 1s ease-in-out;
       z-index: 0;
       position: fixed;
-      top: 0;
+      top: 120px; /* Push down below header + nav */
       left: 0;
     }
 
@@ -131,7 +131,7 @@
 
     main {
       position: absolute;
-      top: 50%;
+      top: 55%;
       left: 50%;
       transform: translate(-50%, -50%);
       background: rgba(0, 0, 0, 0.6);
@@ -185,7 +185,7 @@
       }
 
       main {
-        top: 40%;
+        top: 45%;
       }
     }
   </style>
@@ -241,10 +241,12 @@
 
     window.addEventListener('scroll', () => {
       if (window.scrollY > 100) {
+        // Scroll down: show video, hide images + main
         bgVideo.classList.add('active');
         bgImages.classList.add('hidden');
         premiumSection.classList.add('hidden');
       } else {
+        // Scroll up: show images + main, hide video
         bgVideo.classList.remove('active');
         bgImages.classList.remove('hidden');
         premiumSection.classList.remove('hidden');
