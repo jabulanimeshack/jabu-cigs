@@ -24,16 +24,18 @@
       font-size: 24px;
       font-weight: bold;
       text-align: center;
-      position: relative;
-      z-index: 2;
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
 
     nav {
       background: black;
       padding: 15px 20px;
       text-align: center;
-      z-index: 2;
-      position: relative;
+      z-index: 100;
+      position: sticky;
+      top: 80px;
     }
 
     .nav-links {
@@ -70,6 +72,15 @@
       border: none;
     }
 
+    .search-button {
+      padding: 8px 16px;
+      background-color: #f8c471;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
     .login-link, .signup-link {
       color: white;
       text-decoration: none;
@@ -88,9 +99,9 @@
     .background-container {
       display: flex;
       width: 100%;
-      height: calc(100vh - 120px); /* Adjusted to be below header and nav */
+      height: 100vh;
+      margin-top: 160px; /* Push below header + nav */
       transition: opacity 1s ease-in-out;
-      margin-top: 120px; /* Shifted below header + nav */
     }
 
     .bg-image {
@@ -103,58 +114,48 @@
     .bg2 { background-image: url('guy holding cig.jpg'); }
     .bg3 { background-image: url('couple smoking.jpg'); }
 
-    #backgroundImages.hidden {
+    .background-container.hidden {
       opacity: 0;
       pointer-events: none;
     }
 
-    .bg-video {
+    .bg-video, .video-text {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100vh;
-      object-fit: cover;
       z-index: -1;
-      opacity: 0;
       pointer-events: none;
+      opacity: 0;
       transition: opacity 1s ease-in-out;
     }
 
-    .bg-video.active {
+    .bg-video.active, .video-text.active {
       opacity: 1;
       pointer-events: auto;
     }
 
-    #videoMessage {
-      position: fixed;
-      top: 30%;
-      width: 100%;
+    .video-text {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-align: center;
       color: white;
-      font-size: 24px;
+      font-size: 32px;
       font-weight: bold;
-      z-index: 1;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 1s ease-in-out;
-    }
-
-    #videoMessage.active {
-      opacity: 1;
-      pointer-events: auto;
+      background: rgba(0, 0, 0, 0.5);
     }
 
     main {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      position: relative;
+      top: 40px;
       background: rgba(0, 0, 0, 0.6);
       padding: 20px;
       border-radius: 10px;
       box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
       max-width: 90%;
+      margin: 40px auto;
       z-index: 2;
       text-align: center;
       transition: opacity 0.5s ease;
@@ -187,14 +188,13 @@
         width: 100%;
       }
 
-      .login-link, .signup-link {
+      .login-link, .signup-link, .search-button {
         width: 100%;
         text-align: center;
       }
 
       .background-container {
         flex-direction: column;
-        height: auto;
       }
 
       .bg-image {
@@ -202,7 +202,12 @@
       }
 
       main {
-        top: 40%;
+        top: 20px;
+      }
+
+      .video-text {
+        font-size: 20px;
+        padding: 10px;
       }
     }
   </style>
@@ -223,13 +228,14 @@
       <a href="cart.html">🛒 Cart: <span id="cart-count">0</span></a>
     </div>
     <div class="nav-right">
-      <input type="text" placeholder="Search..." class="search-input">
+      <input type="text" id="searchInput" placeholder="Search..." class="search-input">
+      <button class="search-button" onclick="handleSearch()">Search</button>
       <a href="login.html" class="login-link">Login</a>
       <a href="signup.html" class="signup-link">Sign Up</a>
     </div>
   </nav>
 
-  <div id="backgroundImages" class="background-container">
+  <div class="background-container" id="backgroundImages">
     <div class="bg-image bg1"></div>
     <div class="bg-image bg2"></div>
     <div class="bg-image bg3"></div>
@@ -239,8 +245,8 @@
     <source src="smoking b roll.mov" type="video/mp4" />
   </video>
 
-  <div id="videoMessage">
-    <h2>Explore our wide variety of nicotine products – vapes, pouches, lighters, and more.</h2>
+  <div id="videoText" class="video-text">
+    Explore our wide variety of nicotine products including cigarettes, vapes, and pouches.
   </div>
 
   <main id="premiumSection">
@@ -256,21 +262,28 @@
     const bgVideo = document.getElementById('bgVideo');
     const bgImages = document.getElementById('backgroundImages');
     const premiumSection = document.getElementById('premiumSection');
-    const videoMessage = document.getElementById('videoMessage');
+    const videoText = document.getElementById('videoText');
 
     window.addEventListener('scroll', () => {
       if (window.scrollY > 100) {
         bgVideo.classList.add('active');
+        videoText.classList.add('active');
         bgImages.classList.add('hidden');
         premiumSection.classList.add('hidden');
-        videoMessage.classList.add('active');
       } else {
         bgVideo.classList.remove('active');
+        videoText.classList.remove('active');
         bgImages.classList.remove('hidden');
         premiumSection.classList.remove('hidden');
-        videoMessage.classList.remove('active');
       }
     });
+
+    function handleSearch() {
+      const query = document.getElementById('searchInput').value.trim();
+      if (query) {
+        window.location.href = `product.html?search=${encodeURIComponent(query)}`;
+      }
+    }
   </script>
 
 </body>
