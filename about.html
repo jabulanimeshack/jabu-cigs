@@ -21,7 +21,8 @@
       overflow-x: hidden;
     }
 
-    .bg-fade {
+    /* Parallax container for fixed background */
+    .parallax-bg {
       position: fixed;
       top: 0;
       left: 0;
@@ -29,6 +30,19 @@
       height: 100%;
       background: url('smoking in dark.jpg') no-repeat center center fixed;
       background-size: cover;
+      z-index: -2;
+      transform: translateZ(0);
+      will-change: transform;
+    }
+
+    /* Fading overlay */
+    .bg-fade {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
       opacity: 0;
       pointer-events: none;
       transition: opacity 1s ease-in-out;
@@ -42,7 +56,7 @@
     header {
       background: rgba(0, 0, 0, 0.7);
       padding: 20px;
-      font-size: 24px;
+      font-size: 2rem;
       font-weight: bold;
       text-align: center;
     }
@@ -68,7 +82,7 @@
     .nav-links a {
       color: white;
       text-decoration: none;
-      font-size: 18px;
+      font-size: 1.1rem;
       font-weight: bold;
     }
 
@@ -85,11 +99,11 @@
     }
 
     .section {
-      background: rgba(0, 0, 0, 0.6);
+      background: rgba(0, 0, 0, 0.65);
       padding: 40px;
       margin-bottom: 50px;
       border-radius: 10px;
-      box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
       opacity: 0;
       transform: translateY(50px);
       transition: opacity 0.6s ease, transform 0.6s ease;
@@ -102,21 +116,45 @@
 
     .section h2 {
       margin-bottom: 20px;
+      font-size: 2rem;
     }
 
-    .section p {
+    .section p, .section ul {
       margin-bottom: 15px;
+      font-size: 1.1rem;
+      line-height: 1.5;
+    }
+
+    .section ul {
+      list-style-type: disc;
+      padding-left: 20px;
+    }
+
+    /* Media styles for images/video */
+    .media-wrapper {
+      margin-top: 20px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(255,255,255,0.3);
+      max-width: 100%;
+    }
+
+    .media-wrapper img,
+    .media-wrapper video {
+      width: 100%;
+      display: block;
     }
 
     footer {
       background: rgba(0, 0, 0, 0.8);
       padding: 10px;
-      font-size: 14px;
+      font-size: 0.9rem;
       text-align: center;
       width: 100%;
       flex-shrink: 0;
     }
 
+    /* Animations */
     @keyframes fadeUp {
       0% {
         opacity: 0;
@@ -137,9 +175,51 @@
     .section.active > *:nth-child(2) { animation-delay: 0.4s; }
     .section.active > *:nth-child(3) { animation-delay: 0.6s; }
     .section.active > *:nth-child(4) { animation-delay: 0.8s; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header {
+        font-size: 1.5rem;
+        padding: 15px;
+      }
+      nav {
+        padding: 10px;
+      }
+      .nav-links a {
+        font-size: 1rem;
+        padding: 8px 6px;
+      }
+      .main-content {
+        padding: 30px 15px;
+      }
+      .section {
+        padding: 25px 20px;
+        margin-bottom: 35px;
+      }
+      .section h2 {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+      }
+      .section p, .section ul {
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      nav {
+        justify-content: center;
+      }
+      .nav-links {
+        gap: 12px;
+      }
+      .nav-links a {
+        font-size: 0.9rem;
+      }
+    }
   </style>
 </head>
 <body>
+  <div class="parallax-bg"></div>
   <div class="bg-fade" id="fadeBg"></div>
 
   <header>
@@ -173,6 +253,9 @@
       <h2>Our Story</h2>
       <p>GrimmDraw was born from a passion to challenge the conventional. Our roots lie in a deep respect for the ritual and culture of smoking, balanced with a vision for innovation.</p>
       <p>What began as boutique handcrafted blends evolved into a global lifestyle brand serving discerning users worldwide.</p>
+      <div class="media-wrapper">
+        <img src="our_story_image.jpg" alt="Historical photo of GrimmDraw founders" />
+      </div>
     </section>
 
     <section class="section" id="offerings">
@@ -184,6 +267,13 @@
         <li>Elegant, modern vape solutions</li>
         <li>Premium lighters and accessories</li>
       </ul>
+
+      <div class="media-wrapper">
+        <video autoplay muted loop playsinline>
+          <source src="vape_promo.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
     </section>
 
     <section class="section" id="health">
@@ -191,6 +281,10 @@
       <p>While we encourage responsible use, our products are developed with top-tier materials and modern standards.</p>
       <p>Each item undergoes strict quality checks to ensure safety and satisfaction.</p>
       <p>We promote mindful indulgence and offer smokeless options for those seeking cleaner alternatives.</p>
+
+      <div class="media-wrapper">
+        <img src="health_quality.jpg" alt="Quality assurance and clean vaping" />
+      </div>
     </section>
   </div>
 
@@ -200,12 +294,19 @@
 
   <script>
     const fadeBg = document.getElementById("fadeBg");
+    const parallaxBg = document.querySelector('.parallax-bg');
     const sections = document.querySelectorAll(".section");
 
     const handleScroll = () => {
-      const triggerPoint = window.innerHeight * 0.8;
+      const scrollY = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const triggerPoint = windowHeight * 0.8;
 
-      sections.forEach((section) => {
+      // Parallax effect for background (moves slower than scroll)
+      parallaxBg.style.transform = `translateY(${scrollY * 0.3}px)`;
+
+      // Activate sections when in viewport
+      sections.forEach(section => {
         const rect = section.getBoundingClientRect();
 
         if (rect.top < triggerPoint && rect.bottom > 100) {
@@ -215,7 +316,8 @@
         }
       });
 
-      fadeBg.classList.toggle("active", window.scrollY > window.innerHeight * 0.7);
+      // Background fade overlay activation
+      fadeBg.classList.toggle("active", scrollY > windowHeight * 0.7);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -223,4 +325,3 @@
   </script>
 </body>
 </html>
-
