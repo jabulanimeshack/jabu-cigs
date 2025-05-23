@@ -142,6 +142,11 @@
       font-size: 14px;
       text-align: center;
     }
+
+    .social-links img {
+      margin: 0 5px;
+      vertical-align: middle;
+    }
   </style>
 </head>
 <body>
@@ -160,7 +165,6 @@
   </nav>
 
   <main>
-
     <section class="category" id="tobacco">
       <h2>Tobacco</h2>
       <div class="product-grid" id="tobacco-grid"></div>
@@ -187,7 +191,7 @@
     </section>
   </main>
 
- <footer>
+  <footer>
     <p>&copy; 2025 GrimmDraw | All Rights Reserved</p>
     <div class="social-links">
       <a href="https://www.instagram.com/accounts/login/" target="_blank">
@@ -274,14 +278,14 @@
         const card = document.createElement("div");
         card.classList.add("product");
 
-        card.innerHTML = 
+        card.innerHTML = `
           <img src="${product.img}" alt="${product.name}" />
           <div class="product-info">
             <p>${product.name}</p>
             <p>Price: $${product.price.toFixed(2)}</p>
             <button class="add-to-cart">Add to Cart</button>
           </div>
-        ;
+        `;
 
         gridSections[category].appendChild(card);
       });
