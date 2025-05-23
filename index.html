@@ -17,7 +17,7 @@
       background: black;
       overflow-x: hidden;
     }
-    
+
     body::after {
       content: "";
       display: block;
@@ -223,6 +223,21 @@
       z-index: 2;
     }
 
+    .social-links {
+      margin-top: 8px;
+    }
+
+    .social-links a {
+      margin: 0 5px;
+      display: inline-block;
+    }
+
+    .social-links img {
+      width: 24px;
+      height: 24px;
+      vertical-align: middle;
+    }
+
     @media (max-width: 768px) {
       nav {
         padding: 10px 10px 2px 10px;
@@ -327,9 +342,28 @@
 
   <footer>
     <p>&copy; 2025 GrimmDraw | All Rights Reserved</p>
+    <div class="social-links">
+      <a href="https://www.instagram.com/yourusername" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/24/2111/2111463.png" alt="Instagram" />
+      </a>
+      <a href="https://twitter.com/yourusername" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/24/3670/3670151.png" alt="Twitter" />
+      </a>
+      <a href="https://www.snapchat.com/add/yourusername" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/24/3670/3670053.png" alt="Snapchat" />
+      </a>
+      <a href="https://www.tiktok.com/@yourusername" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/24/3046/3046121.png" alt="TikTok" />
+      </a>
+      <a href="https://www.youtube.com/@yourusername" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/24/3670/3670147.png" alt="YouTube" />
+      </a>
+      <a href="https://www.facebook.com/yourusername" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/24/145/145802.png" alt="Facebook" />
+      </a>
+    </div>
   </footer>
 
-  <!-- Age Verification Modal -->
   <div id="ageVerificationModal">
     <h2>Are you 21 years of age or older?</h2>
     <div>
@@ -383,6 +417,5 @@
       }
     });
   </script>
-
 </body>
 </html>
