@@ -1,8 +1,8 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>About Us | GrimmDraw</title>
   <style>
     * {
@@ -17,10 +17,9 @@
       color: white;
       overflow-x: hidden;
       scroll-behavior: smooth;
-      background: none; /* background handled by fixed divs */
+      background: none;
     }
 
-    /* Layered fixed backgrounds */
     .bg-original, .bg-smoke {
       position: fixed;
       top: 0; left: 0;
@@ -47,7 +46,6 @@
       z-index: -2;
     }
 
-    /* Fading overlay */
     .bg-fade {
       position: fixed;
       top: 0;
@@ -116,9 +114,12 @@
       margin-bottom: 50px;
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+
+      /* Make sections visible by default but hidden by transform */
       opacity: 0;
       transform: translateY(50px);
       transition: opacity 0.6s ease, transform 0.6s ease;
+      will-change: opacity, transform;
     }
 
     .section.active {
@@ -142,7 +143,6 @@
       padding-left: 20px;
     }
 
-    /* Media styles for images/video */
     .media-wrapper {
       margin-top: 20px;
       border-radius: 10px;
@@ -166,29 +166,6 @@
       flex-shrink: 0;
     }
 
-    /* Animations */
-    @keyframes fadeUp {
-      0% {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .section.active > * {
-      animation: fadeUp 0.6s ease-out forwards;
-      opacity: 0;
-    }
-
-    .section.active > *:nth-child(1) { animation-delay: 0.2s; }
-    .section.active > *:nth-child(2) { animation-delay: 0.4s; }
-    .section.active > *:nth-child(3) { animation-delay: 0.6s; }
-    .section.active > *:nth-child(4) { animation-delay: 0.8s; }
-
-    /* Responsive */
     @media (max-width: 768px) {
       header {
         font-size: 1.5rem;
@@ -231,7 +208,6 @@
   </style>
 </head>
 <body>
-  <!-- Background layers -->
   <div class="bg-original"></div>
   <div class="bg-smoke"></div>
   <div class="bg-fade" id="fadeBg"></div>
@@ -315,7 +291,7 @@
     const handleScroll = () => {
       const scrollY = window.scrollY;
       const windowHeight = window.innerHeight;
-      const triggerPoint = windowHeight * 0.7;
+      const triggerPoint = windowHeight * 0.3; // trigger earlier at 30% viewport height
 
       // Background fade overlay activation
       fadeBg.classList.toggle("active", scrollY > triggerPoint);
@@ -329,8 +305,8 @@
         bgSmoke.style.opacity = 0;
       }
 
-      // Activate sections when in viewport
-      const activateTrigger = windowHeight * 0.8;
+      // Activate sections when in viewport - using 85% viewport height to show sooner
+      const activateTrigger = windowHeight * 0.85;
       sections.forEach(section => {
         const rect = section.getBoundingClientRect();
 
