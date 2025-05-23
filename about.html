@@ -282,44 +282,36 @@
     <p>&copy; 2025 GrimmDraw | All Rights Reserved</p>
   </footer>
 
-  <script>
-    const fadeBg = document.getElementById("fadeBg");
-    const bgOriginal = document.querySelector(".bg-original");
-    const bgSmoke = document.querySelector(".bg-smoke");
-    const sections = document.querySelectorAll(".section");
+ <script>
+  const fadeBg = document.getElementById("fadeBg");
+  const bgOriginal = document.querySelector(".bg-original");
+  const bgSmoke = document.querySelector(".bg-smoke");
+  const sections = document.querySelectorAll(".section");
 
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      const windowHeight = window.innerHeight;
-      const triggerPoint = windowHeight * 0.3; // trigger earlier at 30% viewport height
+  let lastScrollY = window.scrollY;
 
-      // Background fade overlay activation
-      fadeBg.classList.toggle("active", scrollY > triggerPoint);
+  window.addEventListener("scroll", () => {
+    const currentScrollY = window.scrollY;
 
-      // Crossfade backgrounds based on scroll
-      if (scrollY > triggerPoint) {
-        bgOriginal.style.opacity = 0;
-        bgSmoke.style.opacity = 1;
-      } else {
-        bgOriginal.style.opacity = 1;
-        bgSmoke.style.opacity = 0;
+    // Fade in smoke background when scrolling down past 150px
+    if (currentScrollY > 150) {
+      bgSmoke.style.opacity = "1";
+      fadeBg.classList.add("active");
+    } else {
+      bgSmoke.style.opacity = "0";
+      fadeBg.classList.remove("active");
+    }
+
+    // Scroll-triggered section animations
+    sections.forEach(section => {
+      const rect = section.getBoundingClientRect();
+      if (rect.top < window.innerHeight * 0.8) {
+        section.classList.add("active");
       }
+    });
 
-      // Activate sections when in viewport - using 85% viewport height to show sooner
-      const activateTrigger = windowHeight * 0.85;
-      sections.forEach(section => {
-        const rect = section.getBoundingClientRect();
-
-        if (rect.top < activateTrigger && rect.bottom > 100) {
-          section.classList.add("active");
-        } else {
-          section.classList.remove("active");
-        }
-      });
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    window.addEventListener("load", handleScroll);
-  </script>
+    lastScrollY = currentScrollY;
+  });
+</script>
 </body>
 </html>
