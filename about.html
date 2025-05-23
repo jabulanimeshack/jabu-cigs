@@ -14,24 +14,24 @@
     html, body {
       height: 100%;
       font-family: Arial, sans-serif;
-      color: white;
       background: url('cig wallpaper.jpg') no-repeat center center fixed;
       background-size: cover;
       scroll-behavior: smooth;
       overflow-x: hidden;
+      color: white;
     }
 
     header, nav, footer {
       background: rgba(0, 0, 0, 0.7);
-      padding: 20px;
       text-align: center;
+      padding: 20px;
     }
 
     nav {
       display: flex;
       justify-content: center;
-      gap: 20px;
       flex-wrap: wrap;
+      gap: 20px;
     }
 
     nav a {
@@ -45,12 +45,11 @@
     }
 
     .main-content {
-      width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 100px;
-      padding: 40px 20px;
+      padding: 50px 20px;
     }
 
     .section {
@@ -59,7 +58,7 @@
       background: rgba(0, 0, 0, 0.6);
       padding: 40px;
       border-radius: 10px;
-      box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
       opacity: 0;
       transform: translateY(40px);
       transition: opacity 0.8s ease, transform 0.8s ease;
@@ -80,17 +79,12 @@
     .section.active > *:nth-child(2) { animation-delay: 0.4s; }
     .section.active > *:nth-child(3) { animation-delay: 0.6s; }
     .section.active > *:nth-child(4) { animation-delay: 0.8s; }
-    .section.active > *:nth-child(5) { animation-delay: 1s; }
 
     @keyframes fadeUp {
       to {
         opacity: 1;
         transform: translateY(0);
       }
-    }
-
-    footer {
-      font-size: 14px;
     }
 
     .bg-fade {
@@ -130,53 +124,32 @@
   <div class="main-content">
     <section class="section" id="intro">
       <h2>Premium Quality, Timeless Tradition</h2>
-      <p>
-        At <strong>GrimmDraw</strong>, we redefine indulgence with a curated selection of premium nicotine experiences—
-        from hand-crafted cigarettes to cutting-edge vapes and refined pouches.
-      </p>
-      <p>Each product embodies bold character, meticulous quality, and unapologetic distinction.</p>
+      <p>GrimmDraw offers hand-crafted cigarettes, advanced vapes, and refined pouches for modern connoisseurs.</p>
     </section>
 
     <section class="section" id="origin">
       <h2>Our Origins</h2>
-      <p>
-        GrimmDraw began as a small boutique supplier of specialty smokes, aiming to break convention in a saturated market.
-        What started with select tobacco blends has expanded into a dynamic brand for nicotine connoisseurs.
-      </p>
-      <p>Built on a foundation of rebellion and refinement, GrimmDraw fuses heritage and modernity.</p>
+      <p>Born from a passion for uniqueness, GrimmDraw began as a boutique supplier and evolved into a bold lifestyle brand.</p>
     </section>
 
     <section class="section" id="offerings">
       <h2>What We Offer</h2>
-      <p>
-        We provide a spectrum of lifestyle products including:
-        <ul>
-          <li>Signature Cigarette Blends</li>
-          <li>Premium Vapes & Cartridges</li>
-          <li>Nicotine Pouches & Scented Wraps</li>
-          <li>Branded Accessories & Limited Drops</li>
-        </ul>
-      </p>
-      <p>Every item reflects our commitment to design, satisfaction, and bold taste.</p>
+      <ul>
+        <li>Signature Cigarette Blends</li>
+        <li>Premium Vapes & Cartridges</li>
+        <li>Nicotine Pouches</li>
+        <li>Accessories & Merchandise</li>
+      </ul>
     </section>
 
     <section class="section" id="health">
       <h2>Health Awareness</h2>
-      <p>
-        While we champion style and expression, GrimmDraw encourages informed enjoyment.
-        Our products are intended for adult users only and should be consumed responsibly.
-      </p>
-      <p>
-        We support transparency and responsible messaging in nicotine consumption and align with health regulations.
-      </p>
+      <p>Products intended for adults. We promote informed and responsible enjoyment of nicotine.</p>
     </section>
 
     <section class="section" id="vision">
       <h2>Our Vision</h2>
-      <p>
-        We strive to be the iconic name in alternative nicotine culture—celebrated for originality,
-        bold storytelling, and unmistakable quality in a competitive landscape.
-      </p>
+      <p>To lead alternative nicotine culture with originality, boldness, and superior quality.</p>
     </section>
   </div>
 
@@ -189,22 +162,19 @@
     const sections = document.querySelectorAll(".section");
 
     function handleScroll() {
-      const scrollY = window.scrollY;
       const windowH = window.innerHeight;
 
-      sections.forEach((section, index) => {
-        const sectionTop = section.getBoundingClientRect().top;
-
-        if (sectionTop < windowH * 0.75) {
+      sections.forEach(section => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top < windowH * 0.75 && rect.bottom > 0) {
           section.classList.add("active");
         } else {
           section.classList.remove("active");
         }
       });
 
-      // Background fade trigger
-      const triggerFade = document.getElementById("offerings").getBoundingClientRect().top < windowH * 0.5;
-      fadeBg.classList.toggle("active", triggerFade);
+      const offeringsSection = document.getElementById("offerings");
+      fadeBg.classList.toggle("active", offeringsSection.getBoundingClientRect().top < windowH * 0.5);
     }
 
     window.addEventListener("scroll", handleScroll);
@@ -212,3 +182,4 @@
   </script>
 </body>
 </html>
+
