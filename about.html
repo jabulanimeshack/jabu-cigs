@@ -14,77 +14,11 @@
     html, body {
       height: 100%;
       font-family: Arial, sans-serif;
+      color: white;
       background: url('cig wallpaper.jpg') no-repeat center center fixed;
       background-size: cover;
       scroll-behavior: smooth;
       overflow-x: hidden;
-      color: white;
-    }
-
-    header, nav, footer {
-      background: rgba(0, 0, 0, 0.7);
-      text-align: center;
-      padding: 20px;
-    }
-
-    nav {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    nav a:hover {
-      color: #f8c471;
-    }
-
-    .main-content {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 100px;
-      padding: 50px 20px;
-    }
-
-    .section {
-      width: 100%;
-      max-width: 900px;
-      background: rgba(0, 0, 0, 0.6);
-      padding: 40px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-
-    .section.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .section > * {
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeUp 0.6s ease-out forwards;
-    }
-
-    .section.active > *:nth-child(1) { animation-delay: 0.2s; }
-    .section.active > *:nth-child(2) { animation-delay: 0.4s; }
-    .section.active > *:nth-child(3) { animation-delay: 0.6s; }
-    .section.active > *:nth-child(4) { animation-delay: 0.8s; }
-
-    @keyframes fadeUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
     }
 
     .bg-fade {
@@ -104,52 +38,159 @@
     .bg-fade.active {
       opacity: 1;
     }
+
+    header {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      font-size: 24px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    nav {
+      background: black;
+      padding: 15px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex: 1;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .nav-links a:hover {
+      text-decoration: underline;
+      color: #f8c471;
+    }
+
+    .main-content {
+      width: 100%;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .section {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 40px;
+      margin-bottom: 50px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .section.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .section h2 {
+      margin-bottom: 20px;
+    }
+
+    .section p {
+      margin-bottom: 15px;
+    }
+
+    footer {
+      background: rgba(0, 0, 0, 0.8);
+      padding: 10px;
+      font-size: 14px;
+      text-align: center;
+      width: 100%;
+      flex-shrink: 0;
+    }
+
+    @keyframes fadeUp {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .section.active > * {
+      animation: fadeUp 0.6s ease-out forwards;
+      opacity: 0;
+    }
+
+    .section.active > *:nth-child(1) { animation-delay: 0.2s; }
+    .section.active > *:nth-child(2) { animation-delay: 0.4s; }
+    .section.active > *:nth-child(3) { animation-delay: 0.6s; }
+    .section.active > *:nth-child(4) { animation-delay: 0.8s; }
   </style>
 </head>
-
 <body>
   <div class="bg-fade" id="fadeBg"></div>
 
-  <header><h1>About GrimmDraw</h1></header>
+  <header>
+    <h1>About GrimmDraw</h1>
+  </header>
 
   <nav>
-    <a href="index.html">Home</a>
-    <a href="product.html">Product</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-    <a href="feedback.html">Feedback</a>
-    <a href="cart.html">🛒 Cart: <span id="cart-count">0</span></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="product.html">Product</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="feedback.html">Feedback</a>
+      <a href="cart.html">🛒 Cart: <span id="cart-count">0</span></a>
+    </div>
   </nav>
 
   <div class="main-content">
-    <section class="section" id="intro">
+    <section class="section" id="heroSection">
       <h2>Premium Quality, Timeless Tradition</h2>
-      <p>GrimmDraw offers hand-crafted cigarettes, advanced vapes, and refined pouches for modern connoisseurs.</p>
+      <p>
+        At <strong>GrimmDraw</strong>, we redefine indulgence with a curated selection of premium nicotine experiences.
+        From rich, hand-crafted cigarettes to cutting-edge vape innovations and refined nicotine blends, our offerings are
+        designed for those who appreciate sophistication with an edge.
+      </p>
+      <p>Each product embodies bold character, meticulous quality, and a taste for the unapologetically distinct.</p>
+      <p>Welcome to <strong>GrimmDraw</strong> – where sophistication meets indulgence.</p>
     </section>
 
-    <section class="section" id="origin">
-      <h2>Our Origins</h2>
-      <p>Born from a passion for uniqueness, GrimmDraw began as a boutique supplier and evolved into a bold lifestyle brand.</p>
+    <section class="section" id="ourStory">
+      <h2>Our Story</h2>
+      <p>GrimmDraw was born from a passion to challenge the conventional. Our roots lie in a deep respect for the ritual and culture of smoking, balanced with a vision for innovation.</p>
+      <p>What began as boutique handcrafted blends evolved into a global lifestyle brand serving discerning users worldwide.</p>
     </section>
 
     <section class="section" id="offerings">
       <h2>What We Offer</h2>
+      <p>We offer a diverse range of carefully curated products:</p>
       <ul>
-        <li>Signature Cigarette Blends</li>
-        <li>Premium Vapes & Cartridges</li>
-        <li>Nicotine Pouches</li>
-        <li>Accessories & Merchandise</li>
+        <li>Signature hand-rolled cigarettes</li>
+        <li>Flavor-rich nicotine pouches</li>
+        <li>Elegant, modern vape solutions</li>
+        <li>Premium lighters and accessories</li>
       </ul>
     </section>
 
     <section class="section" id="health">
-      <h2>Health Awareness</h2>
-      <p>Products intended for adults. We promote informed and responsible enjoyment of nicotine.</p>
-    </section>
-
-    <section class="section" id="vision">
-      <h2>Our Vision</h2>
-      <p>To lead alternative nicotine culture with originality, boldness, and superior quality.</p>
+      <h2>Health, Quality & Satisfaction</h2>
+      <p>While we encourage responsible use, our products are developed with top-tier materials and modern standards.</p>
+      <p>Each item undergoes strict quality checks to ensure safety and satisfaction.</p>
+      <p>We promote mindful indulgence and offer smokeless options for those seeking cleaner alternatives.</p>
     </section>
   </div>
 
@@ -161,21 +202,21 @@
     const fadeBg = document.getElementById("fadeBg");
     const sections = document.querySelectorAll(".section");
 
-    function handleScroll() {
-      const windowH = window.innerHeight;
+    const handleScroll = () => {
+      const triggerPoint = window.innerHeight * 0.8;
 
-      sections.forEach(section => {
+      sections.forEach((section) => {
         const rect = section.getBoundingClientRect();
-        if (rect.top < windowH * 0.75 && rect.bottom > 0) {
+
+        if (rect.top < triggerPoint && rect.bottom > 100) {
           section.classList.add("active");
         } else {
           section.classList.remove("active");
         }
       });
 
-      const offeringsSection = document.getElementById("offerings");
-      fadeBg.classList.toggle("active", offeringsSection.getBoundingClientRect().top < windowH * 0.5);
-    }
+      fadeBg.classList.toggle("active", window.scrollY > window.innerHeight * 0.7);
+    };
 
     window.addEventListener("scroll", handleScroll);
     window.addEventListener("load", handleScroll);
