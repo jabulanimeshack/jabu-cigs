@@ -2,227 +2,148 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>About Us | GrimmDraw</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us</title>
+  <link rel="stylesheet" href="styles.css" />
   <style>
-    * {
-      margin: 0; padding: 0; box-sizing: border-box;
+    .section {
+      padding: 80px 0;
     }
 
-    body {
-      font-family: Arial, sans-serif;
-      color: white;
-      background: black;
-      overflow-x: hidden;
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
     }
 
-    header, nav, footer {
-      position: relative;
-      z-index: 10;
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
     }
 
-    header {
-      background: rgba(0, 0, 0, 0.7);
-      padding: 20px;
-      font-size: 2rem;
-      font-weight: bold;
-      text-align: center;
-    }
-
-    nav {
-      background: black;
-      padding: 15px;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-
-    .nav-links a {
-      color: white;
-      text-decoration: none;
-      font-size: 1.1rem;
-      font-weight: bold;
-    }
-
-    .nav-links a:hover {
-      color: #f8c471;
-      text-decoration: underline;
-    }
-
-    .main-content {
-      max-width: 900px;
-      margin: 60px auto 120px;
-      padding: 20px;
-      background: rgba(0, 0, 0, 0.6);
-      border-radius: 10px;
-      box-shadow: 0 0 20px rgba(255,255,255,0.2);
-      position: relative;
-      z-index: 10;
-    }
-
-    section {
-      margin-bottom: 40px;
-    }
-
-    section h2 {
-      font-size: 2rem;
-      margin-bottom: 15px;
-    }
-
-    section p {
+    p {
       font-size: 1.1rem;
       line-height: 1.6;
-      margin-bottom: 15px;
+      margin-bottom: 20px;
     }
 
-    .founder-image {
-      max-width: 100%;
-      border-radius: 10px;
-      box-shadow: 0 0 15px rgba(255,255,255,0.3);
-      margin-top: 20px;
+    .staggered-section {
+      display: flex;
+      flex-direction: column;
+      gap: 4rem;
+      margin-top: 2rem;
     }
 
-    footer {
-      background: rgba(0, 0, 0, 0.8);
-      padding: 15px;
-      font-size: 0.9rem;
-      text-align: center;
-      color: #ccc;
+    .image-text {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
     }
 
-    .social-links img {
-      width: 24px;
-      height: 24px;
-      margin: 0 5px;
+    .image-text img {
+      width: 50%;
+      border-radius: 1rem;
+      object-fit: cover;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
-    .background-container {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100vh;
-      z-index: -1;
-      overflow: hidden;
+    .image-text.reverse {
+      flex-direction: row-reverse;
     }
 
-    .bg-image {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background-position: center center;
-      background-size: cover;
+    .fade-in-left, .fade-in-right {
       opacity: 0;
-      transition: opacity 1s ease-in-out;
+      transition: all 1s ease-out;
     }
 
-    .bg-image.active {
+    .fade-in-left {
+      transform: translateX(-50px);
+    }
+
+    .fade-in-right {
+      transform: translateX(50px);
+    }
+
+    .fade-in-left.visible, .fade-in-right.visible {
       opacity: 1;
-    }
-
-    /* Mobile adjustments */
-    @media (max-width: 768px) {
-      header {
-        font-size: 1.5rem;
-      }
-      .nav-links {
-        gap: 12px;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-      .nav-links a {
-        font-size: 1rem;
-      }
-      .main-content {
-        margin: 30px 15px 60px;
-        padding: 20px;
-      }
+      transform: translateX(0);
     }
   </style>
 </head>
 <body>
 
-  <!-- Backgrounds -->
-  <div class="background-container">
-    <div class="bg-image bg1 active" style="background-image: url('cig wallpaper.jpg');"></div>
-    <div class="bg-image bg2" style="background-image: url('smoking in dark.jpg');"></div>
-    <div class="bg-image bg3" style="background-image: url('white guy with cig.jpg');"></div>
-  </div>
-
-  <!-- Header & Nav -->
-  <header>
-    <h1>About GrimmDraw</h1>
-  </header>
-
-  <nav class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="product.html">Product</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-    <a href="feedback.html">Feedback</a>
-    <a href="cart.html">🛒 Cart: <span id="cart-count">0</span></a>
-  </nav>
-
-  <!-- Main Content -->
-  <main class="main-content">
-    <section id="origins">
-      <h2>Our Origins</h2>
-      <p>
-        GrimmDraw began as a humble dream fueled by passion and dedication to the art of nicotine craftsmanship.
-        Founded by a visionary with an unwavering commitment to quality, the company honors the rich traditions
-        of smoking culture while embracing innovation for modern tastes.
-      </p>
-      <p>
-        Our founder believed in crafting products that don’t just satisfy but create an experience – one of elegance,
-        character, and refinement.
-      </p>
-      <img src="jabu.JPG" alt="GrimmDraw Founder" class="founder-image" />
-    </section>
-
-    <section id="expansion">
+  <section id="expanding-horizons" class="section fade-in">
+    <div class="container">
       <h2>Expanding Horizons</h2>
       <p>
-        As GrimmDraw continues to grow, we are excited to expand our range of products and reach new customers worldwide.
-        Innovation, quality, and customer satisfaction remain at the heart of everything we do.
+        Our journey began with a spark of passion — and that spark ignited a vision. 
+        Over the years, we've grown from a humble startup into a community-driven brand, committed to bold designs, innovative products, and meaningful impact.
       </p>
       <p>
-        It would be our pleasure to grow alongside you, continuing to provide sophisticated experiences for discerning
-        users everywhere.
+        As we expand our reach, we stay grounded in the values that brought us here: authenticity, creativity, and resilience. 
+        We're pushing boundaries not just in our products, but in how we inspire the culture around us.
       </p>
-    </section>
-  </main>
+      <p>
+        Every new line, every collaboration, and every story we tell is a step toward building something that lasts — not just a brand, but a legacy.
+      </p>
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 GrimmDraw | All Rights Reserved</p>
-    <div class="social-links">
-      <a href="https://www.instagram.com/accounts/login/" target="_blank"><img src="https://cdn-icons-png.flaticon.com/24/2111/2111463.png" alt="Instagram" /></a>
-      <a href="https://twitter.com/login" target="_blank"><img src="https://cdn-icons-png.flaticon.com/24/3670/3670151.png" alt="Twitter" /></a>
-      <a href="https://accounts.snapchat.com/accounts/login" target="_blank"><img src="https://cdn-icons-png.flaticon.com/24/3670/3670053.png" alt="Snapchat" /></a>
-      <a href="https://www.tiktok.com/login" target="_blank"><img src="https://cdn-icons-png.flaticon.com/24/3046/3046121.png" alt="TikTok" /></a>
-      <a href="https://accounts.google.com/ServiceLogin?service=youtube" target="_blank"><img src="https://cdn-icons-png.flaticon.com/24/3670/3670147.png" alt="YouTube" /></a>
-      <a href="https://www.facebook.com/login" target="_blank"><img src="https://cdn-icons-png.flaticon.com/24/145/145802.png" alt="Facebook" /></a>
+      <div class="staggered-section">
+        <div class="image-text fade-in-left">
+          <img src="images/growth.jpg" alt="Company Growth" />
+          <div>
+            <h3>Our Growth</h3>
+            <p>From local pop-ups to global shipping, we’ve scaled with style and purpose, staying true to our roots.</p>
+          </div>
+        </div>
+
+        <div class="image-text reverse fade-in-right">
+          <img src="images/community.jpg" alt="Community" />
+          <div>
+            <h3>Community First</h3>
+            <p>We thrive because of our people. Our community is at the heart of everything we create and celebrate.</p>
+          </div>
+        </div>
+
+        <div class="image-text fade-in-left">
+          <img src="images/innovation.jpg" alt="Innovation" />
+          <div>
+            <h3>Innovating Daily</h3>
+            <p>Design, function, and storytelling evolve constantly — and we evolve with them, bringing fresh ideas to life.</p>
+          </div>
+        </div>
+
+        <div class="image-text reverse fade-in-right">
+          <img src="images/vision.jpg" alt="Vision" />
+          <div>
+            <h3>Our Vision</h3>
+            <p>We envision a future where creativity breaks barriers. Our mission is to craft experiences that resonate far beyond the surface.</p>
+          </div>
+        </div>
+
+        <div class="image-text fade-in-left">
+          <img src="images/impact.jpg" alt="Impact" />
+          <div>
+            <h3>Real Impact</h3>
+            <p>Whether through sustainability, culture, or connection — everything we do aims to make a difference.</p>
+          </div>
+        </div>
+      </div>
     </div>
-  </footer>
+  </section>
 
   <script>
-    const bgImages = document.querySelectorAll('.bg-image');
-
-    window.addEventListener('scroll', () => {
-      const scrollY = window.scrollY;
-      const docHeight = document.body.scrollHeight - window.innerHeight;
-      const scrollPercent = scrollY / docHeight;
-
-      let index = 0;
-      if (scrollPercent > 0.66) {
-        index = 2;
-      } else if (scrollPercent > 0.33) {
-        index = 1;
-      }
-
-      bgImages.forEach((bg, i) => {
-        bg.classList.toggle('active', i === index);
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
       });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('.fade-in-left, .fade-in-right').forEach(el => {
+      observer.observe(el);
     });
   </script>
+
 </body>
 </html>
