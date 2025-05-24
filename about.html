@@ -85,7 +85,7 @@
       text-decoration: underline;
     }
 
-    /* Main content */
+    
     .main-content {
       max-width: 900px;
       margin: 50px auto 80px;
@@ -118,7 +118,7 @@
       margin-top: 20px;
     }
 
-    /* Footer */
+  
     footer {
       background: rgba(0, 0, 0, 0.8);
       padding: 15px;
@@ -129,7 +129,7 @@
       z-index: 10;
     }
 
-    /* Responsive */
+   
     @media (max-width: 768px) {
       header {
         font-size: 1.5rem;
@@ -157,7 +157,7 @@
 </head>
 <body>
 
-  <!-- Background wallpapers -->
+ 
   <div class="bg-original"></div>
   <div class="bg-scroll"></div>
   <div class="bg-expand"></div>
@@ -241,15 +241,15 @@
         // Near bottom: show expansion wallpaper only
         bgOriginal.style.opacity = '0';
         bgScroll.style.opacity = '0';
-        bgExpand.style.opacity = '1';
+        bgExpand.style.opacity = '2';
       } else if (currentScrollY > lastScrollY) {
         // Scrolling down but not near bottom: show scroll wallpaper
         bgOriginal.style.opacity = '0';
-        bgScroll.style.opacity = '1';
+        bgScroll.style.opacity = '2';
         bgExpand.style.opacity = '0';
       } else {
         // Scrolling up: show original wallpaper
-        bgOriginal.style.opacity = '1';
+        bgOriginal.style.opacity = '2';
         bgScroll.style.opacity = '0';
         bgExpand.style.opacity = '0';
       }
