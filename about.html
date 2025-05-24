@@ -45,7 +45,8 @@
       font-weight: bold;
     }
 
-    .nav-links a:hover {
+    .nav-links a:hover,
+    .nav-links a.active {
       color: #f8c471;
       text-decoration: underline;
     }
@@ -279,17 +280,18 @@
   <footer>
     <p>&copy; 2025 GrimmDraw | All Rights Reserved</p>
     <div class="social-links">
-      <a href="https://www.instagram.com/accounts/login/" target="_blank"><img src="https://cdn-icons-png.flaticon.com/24/2111/2111463.png" alt="Instagram" /></a>
-      <a href="https://twitter.com/login" target="_blank"><img src="https://cdn-icons-png.flaticon.com/24/3670/3670151.png" alt="Twitter" /></a>
-      <a href="https://accounts.snapchat.com/accounts/login" target="_blank"><img src="https://cdn-icons-png.flaticon.com/24/3670/3670053.png" alt="Snapchat" /></a>
-      <a href="https://www.tiktok.com/login" target="_blank"><img src="https://cdn-icons-png.flaticon.com/24/3046/3046121.png" alt="TikTok" /></a>
-      <a href="https://accounts.google.com/ServiceLogin?service=youtube" target="_blank"><img src="https://cdn-icons-png.flaticon.com/24/3670/3670147.png" alt="YouTube" /></a>
-      <a href="https://www.facebook.com/login" target="_blank"><img src="https://cdn-icons-png.flaticon.com/24/145/145802.png" alt="Facebook" /></a>
+      <a href="https://www.instagram.com/accounts/login/" target="_blank" aria-label="Visit our Instagram"><img src="https://cdn-icons-png.flaticon.com/24/2111/2111463.png" alt="Instagram" /></a>
+      <a href="https://twitter.com/login" target="_blank" aria-label="Visit our Twitter"><img src="https://cdn-icons-png.flaticon.com/24/3670/3670151.png" alt="Twitter" /></a>
+      <a href="https://accounts.snapchat.com/accounts/login" target="_blank" aria-label="Visit our Snapchat"><img src="https://cdn-icons-png.flaticon.com/24/3670/3670053.png" alt="Snapchat" /></a>
+      <a href="https://www.tiktok.com/login" target="_blank" aria-label="Visit our TikTok"><img src="https://cdn-icons-png.flaticon.com/24/3046/3046121.png" alt="TikTok" /></a>
+      <a href="https://accounts.google.com/ServiceLogin?service=youtube" target="_blank" aria-label="Visit our YouTube"><img src="https://cdn-icons-png.flaticon.com/24/3670/3670147.png" alt="YouTube" /></a>
+      <a href="https://www.facebook.com/login" target="_blank" aria-label="Visit our Facebook"><img src="https://cdn-icons-png.flaticon.com/24/145/145802.png" alt="Facebook" /></a>
     </div>
   </footer>
 
   <script>
     const bgImages = document.querySelectorAll('.bg-image');
+    let lastIndex = 0;
 
     window.addEventListener('scroll', () => {
       const scrollY = window.scrollY;
@@ -303,8 +305,23 @@
         index = 1;
       }
 
-      bgImages.forEach((bg, i) => {
-        bg.classList.toggle('active', i === index);
+      if (index !== lastIndex) {
+        bgImages[lastIndex].classList.remove('active');
+        bgImages[index].classList.add('active');
+        lastIndex = index;
+      }
+
+      const navLinks = document.querySelectorAll('.nav-links a');
+      const sections = Array.from(document.querySelectorAll('main section'));
+
+      let current = '';
+      sections.forEach(section => {
+        const top = section.offsetTop - 200;
+        if (pageYOffset >= top) current = section.id;
+      });
+
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
       });
     });
 
