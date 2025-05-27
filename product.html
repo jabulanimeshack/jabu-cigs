@@ -272,7 +272,7 @@
       otherItems: document.getElementById("other-items-grid")
     };
 
-    // Generate product cards for each category
+   
     for (const category in products) {
       products[category].forEach(product => {
         const card = document.createElement("div");
@@ -291,7 +291,6 @@
       });
     }
 
-    // Update cart count from localStorage on page load
     function updateCartCount() {
       const cart = JSON.parse(localStorage.getItem("cart")) || [];
       const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
@@ -300,13 +299,11 @@
 
     updateCartCount();
 
-    // Add to cart click handler
     document.addEventListener("click", function (e) {
       if (e.target.classList.contains("add-to-cart")) {
         const productCard = e.target.closest(".product");
         const name = productCard.querySelector("p").innerText;
 
-        // Find product by name in products
         let foundProduct = null;
         for (const category in products) {
           foundProduct = products[category].find(p => p.name === name);
